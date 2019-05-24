@@ -106,33 +106,6 @@
 /* Material design color: brown */
 /* Material design color: grey */
 /* Material design color: blue-grey */
-.size-largest {
-  font-size: 2rem !important; }
-
-.size-larger {
-  font-size: 1.5rem !important; }
-
-.size-normal {
-  font-size: 1rem !important; }
-
-.size-smaller {
-  font-size: 0.625rem !important; }
-
-.size-small {
-  font-size: 0.625rem !important; }
-
-.size-extra-small {
-  font-size: 0.5rem !important; }
-
-.has-text-align-center {
-  text-align: center; }
-
-.is-fullheight {
-  height: 100%; }
-
-.has-text-weight-bold {
-  font-weight: bold; }
-
 /*
     Generates root-level selectors for a component variant.
     Example:
@@ -241,33 +214,6 @@
 /* Material design color: brown */
 /* Material design color: grey */
 /* Material design color: blue-grey */
-.size-largest {
-  font-size: 2rem !important; }
-
-.size-larger {
-  font-size: 1.5rem !important; }
-
-.size-normal {
-  font-size: 1rem !important; }
-
-.size-smaller {
-  font-size: 0.625rem !important; }
-
-.size-small {
-  font-size: 0.625rem !important; }
-
-.size-extra-small {
-  font-size: 0.5rem !important; }
-
-.has-text-align-center {
-  text-align: center; }
-
-.is-fullheight {
-  height: 100%; }
-
-.has-text-weight-bold {
-  font-weight: bold; }
-
 @media screen and (min-width: 1025px) {
   html, body {
     overflow: hidden; } }
@@ -398,33 +344,6 @@ a[href] {
 /* Material design color: brown */
 /* Material design color: grey */
 /* Material design color: blue-grey */
-.size-largest[data-v-3b78b493] {
-  font-size: 2rem !important;
-}
-.size-larger[data-v-3b78b493] {
-  font-size: 1.5rem !important;
-}
-.size-normal[data-v-3b78b493] {
-  font-size: 1rem !important;
-}
-.size-smaller[data-v-3b78b493] {
-  font-size: 0.625rem !important;
-}
-.size-small[data-v-3b78b493] {
-  font-size: 0.625rem !important;
-}
-.size-extra-small[data-v-3b78b493] {
-  font-size: 0.5rem !important;
-}
-.has-text-align-center[data-v-3b78b493] {
-  text-align: center;
-}
-.is-fullheight[data-v-3b78b493] {
-  height: 100%;
-}
-.has-text-weight-bold[data-v-3b78b493] {
-  font-weight: bold;
-}
 .weapon[data-v-3b78b493] {
   display: inline-flex;
   align-items: center;
@@ -602,33 +521,6 @@ a[href] {
 /* Material design color: brown */
 /* Material design color: grey */
 /* Material design color: blue-grey */
-.size-largest[data-v-17ec623e] {
-  font-size: 2rem !important;
-}
-.size-larger[data-v-17ec623e] {
-  font-size: 1.5rem !important;
-}
-.size-normal[data-v-17ec623e] {
-  font-size: 1rem !important;
-}
-.size-smaller[data-v-17ec623e] {
-  font-size: 0.625rem !important;
-}
-.size-small[data-v-17ec623e] {
-  font-size: 0.625rem !important;
-}
-.size-extra-small[data-v-17ec623e] {
-  font-size: 0.5rem !important;
-}
-.has-text-align-center[data-v-17ec623e] {
-  text-align: center;
-}
-.is-fullheight[data-v-17ec623e] {
-  height: 100%;
-}
-.has-text-weight-bold[data-v-17ec623e] {
-  font-weight: bold;
-}
 .attribute-bar-container[data-v-17ec623e] {
   font-size: 0.85rem;
 }
@@ -797,33 +689,6 @@ a[href] {
 /* Material design color: brown */
 /* Material design color: grey */
 /* Material design color: blue-grey */
-.size-largest[data-v-0a6dfb62] {
-  font-size: 2rem !important;
-}
-.size-larger[data-v-0a6dfb62] {
-  font-size: 1.5rem !important;
-}
-.size-normal[data-v-0a6dfb62] {
-  font-size: 1rem !important;
-}
-.size-smaller[data-v-0a6dfb62] {
-  font-size: 0.625rem !important;
-}
-.size-small[data-v-0a6dfb62] {
-  font-size: 0.625rem !important;
-}
-.size-extra-small[data-v-0a6dfb62] {
-  font-size: 0.5rem !important;
-}
-.has-text-align-center[data-v-0a6dfb62] {
-  text-align: center;
-}
-.is-fullheight[data-v-0a6dfb62] {
-  height: 100%;
-}
-.has-text-weight-bold[data-v-0a6dfb62] {
-  font-weight: bold;
-}
 .loading-message[data-v-0a6dfb62] {
   color: #ffffff;
   background-color: #212121;
