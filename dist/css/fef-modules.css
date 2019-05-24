@@ -1,3 +1,1191 @@
-.size-largest{font-size:2rem!important}.size-larger{font-size:1.5rem!important}.size-normal{font-size:1rem!important}.size-small,.size-smaller{font-size:.625rem!important}.size-extra-small{font-size:.5rem!important}.has-text-align-center{text-align:center}.is-fullheight{height:100%}.has-text-weight-bold{font-weight:700}.input[type=checkbox],.input[type=radio]{position:relative;vertical-align:top;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-decoration:none;font-size:inherit;font-family:Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;line-height:1.5;min-height:2.375em;-webkit-appearance:none;-moz-appearance:none;appearance:none;flex-direction:row;max-height:2.375em;padding:.375em .875em;transition-property:color,background,background-color,border-color,border-radius,box-shadow;transition-duration:.125s;transition-timing-function:ease-in-out;border-width:.0625em;border-style:solid;border-radius:0;background-color:#fff;width:100%}.input[type=checkbox]:disabled,.input[type=radio]:disabled{opacity:.55;cursor:not-allowed}.input[type=checkbox]:active:not(:disabled),.input[type=checkbox]:focus:not(:disabled),.input[type=radio]:active:not(:disabled),.input[type=radio]:focus:not(:disabled){outline:none}@supports not (-ms-high-contrast:none){.input[type=checkbox],.input[type=radio]{border-width:.0625em;border-style:solid;border-radius:0}}.input[type=checkbox]::-ms-check,.input[type=radio]::-ms-check{border-width:.0625em;border-style:solid;border-radius:0}.input[type=checkbox]:disabled,.input[type=radio]:disabled{border-color:transparent;box-shadow:none;background-color:#eee;opacity:.65}.input[type=checkbox]:-moz-read-only,.input[type=radio]:-moz-read-only{background-color:#fafafa}.input[type=checkbox]:read-only,.input[type=radio]:read-only{background-color:#fafafa}.input[type=checkbox]:focus:not(:disabled):not(:-moz-read-only),.input[type=radio]:focus:not(:disabled):not(:-moz-read-only){z-index:1}.input[type=checkbox]:focus:not(:disabled):not(:read-only),.input[type=radio]:focus:not(:disabled):not(:read-only){z-index:1}.input[type=checkbox]:focus:not(:disabled):not(:-moz-read-only):not(select):-moz-read-only,.input[type=radio]:focus:not(:disabled):not(:-moz-read-only):not(select):-moz-read-only{box-shadow:none}.input[type=checkbox]:focus:not(:disabled):not(:read-only):not(select):read-only,.input[type=radio]:focus:not(:disabled):not(:read-only):not(select):read-only{box-shadow:none}.apply-is-default .input,.input,.input.is-default{box-shadow:inset 0 .0625em .125em rgba(66,66,66,.1);color:#424242}@supports not (-ms-high-contrast:none){.apply-is-default .input,.input,.input.is-default{border-color:#bdbdbd}}.apply-is-default .input::-ms-check,.input.is-default::-ms-check,.input::-ms-check{border-color:#bdbdbd}@supports not (-ms-high-contrast:none){.apply-is-default .input:hover:not(:disabled),.input.is-default:hover:not(:disabled),.input:hover:not(:disabled){border-color:#9e9e9e}}.apply-is-default .input:hover:not(:disabled)::-ms-check,.input.is-default:hover:not(:disabled)::-ms-check,.input:hover:not(:disabled)::-ms-check{border-color:#9e9e9e}.apply-is-default .input:focus:not(:disabled),.input.is-default:focus:not(:disabled),.input:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em hsla(0,0%,74.1%,.5)}@supports not (-ms-high-contrast:none){.apply-is-default .input:focus:not(:disabled):-moz-read-only,.input.is-default:focus:not(:disabled):-moz-read-only,.input:focus:not(:disabled):-moz-read-only{border-color:#9e9e9e}.apply-is-default .input:focus:not(:disabled):read-only,.input.is-default:focus:not(:disabled):read-only,.input:focus:not(:disabled):read-only{border-color:#9e9e9e}}.apply-is-default .input:focus:not(:disabled):read-only::-ms-check,.input.is-default:focus:not(:disabled):read-only::-ms-check,.input:focus:not(:disabled):read-only::-ms-check{border-color:#9e9e9e}@supports not (-ms-high-contrast:none){.apply-is-default .input:active:not(:disabled),.input.is-default:active:not(:disabled),.input:active:not(:disabled){border-color:#757575;background-color:rgba(66,66,66,.02)}}.apply-is-default .input:active:not(:disabled)::-ms-check,.input.is-default:active:not(:disabled)::-ms-check,.input:active:not(:disabled)::-ms-check{border-color:#757575;background-color:rgba(66,66,66,.02)}.apply-is-default .input:active:not(:disabled):-moz-read-only,.input.is-default:active:not(:disabled):-moz-read-only,.input:active:not(:disabled):-moz-read-only{background-color:rgba(66,66,66,.05)}.apply-is-default .input:active:not(:disabled):read-only,.input.is-default:active:not(:disabled):read-only,.input:active:not(:disabled):read-only{background-color:rgba(66,66,66,.05)}.apply-is-default .input:hover:not(:disabled),.input.is-default:hover:not(:disabled),.input:hover:not(:disabled){color:#212121}.apply-is-default .input:active:not(:disabled),.apply-is-default .input:disabled,.input.is-default:active:not(:disabled),.input.is-default:disabled,.input:active:not(:disabled),.input:disabled{color:#000}.apply-is-default .input::-webkit-input-placeholder,.input.is-default::-webkit-input-placeholder,.input::-webkit-input-placeholder{color:rgba(66,66,66,.5)}.apply-is-default .input::-moz-placeholder,.input.is-default::-moz-placeholder,.input::-moz-placeholder{color:rgba(66,66,66,.5)}.apply-is-default .input:-ms-input-placeholder,.input.is-default:-ms-input-placeholder,.input:-ms-input-placeholder{color:rgba(66,66,66,.5)}.apply-is-default .input::-ms-input-placeholder,.input.is-default::-ms-input-placeholder,.input::-ms-input-placeholder{color:rgba(66,66,66,.5)}.apply-is-default .input::placeholder,.input.is-default::placeholder,.input::placeholder{color:rgba(66,66,66,.5)}.apply-is-white .input,.input.is-white{box-shadow:inset 0 .0625em .125em hsla(0,0%,100%,.1)}@supports not (-ms-high-contrast:none){.apply-is-white .input,.input.is-white{border-color:#fff}}.apply-is-white .input::-ms-check,.input.is-white::-ms-check{border-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-white .input:hover:not(:disabled),.input.is-white:hover:not(:disabled){border-color:#fafafa}}.apply-is-white .input:hover:not(:disabled)::-ms-check,.input.is-white:hover:not(:disabled)::-ms-check{border-color:#fafafa}.apply-is-white .input:focus:not(:disabled),.input.is-white:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em hsla(0,0%,100%,.5)}@supports not (-ms-high-contrast:none){.apply-is-white .input:focus:not(:disabled):-moz-read-only,.input.is-white:focus:not(:disabled):-moz-read-only{border-color:#fafafa}.apply-is-white .input:focus:not(:disabled):read-only,.input.is-white:focus:not(:disabled):read-only{border-color:#fafafa}}.apply-is-white .input:focus:not(:disabled):read-only::-ms-check,.input.is-white:focus:not(:disabled):read-only::-ms-check{border-color:#fafafa}@supports not (-ms-high-contrast:none){.apply-is-white .input:active:not(:disabled),.input.is-white:active:not(:disabled){border-color:#f5f5f5;background-color:hsla(0,0%,100%,.02)}}.apply-is-white .input:active:not(:disabled)::-ms-check,.input.is-white:active:not(:disabled)::-ms-check{border-color:#f5f5f5;background-color:hsla(0,0%,100%,.02)}.apply-is-white .input:active:not(:disabled):-moz-read-only,.input.is-white:active:not(:disabled):-moz-read-only{background-color:hsla(0,0%,100%,.05)}.apply-is-white .input:active:not(:disabled):read-only,.input.is-white:active:not(:disabled):read-only{background-color:hsla(0,0%,100%,.05)}.apply-has-colored-text.apply-is-white .input,.apply-has-colored-text .input.is-white,.apply-is-white .input.has-colored-text,.input.has-colored-text.is-white{color:#fff}.apply-has-colored-text.apply-is-white .input:hover:not(:disabled),.apply-has-colored-text .input.is-white:hover:not(:disabled),.apply-is-white .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-white:hover:not(:disabled){color:#fafafa}.apply-has-colored-text.apply-is-white .input:active:not(:disabled),.apply-has-colored-text.apply-is-white .input:disabled,.apply-has-colored-text .input.is-white:active:not(:disabled),.apply-has-colored-text .input.is-white:disabled,.apply-is-white .input.has-colored-text:active:not(:disabled),.apply-is-white .input.has-colored-text:disabled,.input.has-colored-text.is-white:active:not(:disabled),.input.has-colored-text.is-white:disabled{color:#f5f5f5}.apply-has-colored-text.apply-is-white .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-white::-webkit-input-placeholder,.apply-is-white .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-white::-webkit-input-placeholder{color:hsla(0,0%,100%,.5)}.apply-has-colored-text.apply-is-white .input::-moz-placeholder,.apply-has-colored-text .input.is-white::-moz-placeholder,.apply-is-white .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-white::-moz-placeholder{color:hsla(0,0%,100%,.5)}.apply-has-colored-text.apply-is-white .input:-ms-input-placeholder,.apply-has-colored-text .input.is-white:-ms-input-placeholder,.apply-is-white .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-white:-ms-input-placeholder{color:hsla(0,0%,100%,.5)}.apply-has-colored-text.apply-is-white .input::-ms-input-placeholder,.apply-has-colored-text .input.is-white::-ms-input-placeholder,.apply-is-white .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-white::-ms-input-placeholder{color:hsla(0,0%,100%,.5)}.apply-has-colored-text.apply-is-white .input::placeholder,.apply-has-colored-text .input.is-white::placeholder,.apply-is-white .input.has-colored-text::placeholder,.input.has-colored-text.is-white::placeholder{color:hsla(0,0%,100%,.5)}.apply-is-light .input,.input.is-light{box-shadow:inset 0 .0625em .125em hsla(0,0%,93.3%,.1)}@supports not (-ms-high-contrast:none){.apply-is-light .input,.input.is-light{border-color:#eee}}.apply-is-light .input::-ms-check,.input.is-light::-ms-check{border-color:#eee}@supports not (-ms-high-contrast:none){.apply-is-light .input:hover:not(:disabled),.input.is-light:hover:not(:disabled){border-color:#e0e0e0}}.apply-is-light .input:hover:not(:disabled)::-ms-check,.input.is-light:hover:not(:disabled)::-ms-check{border-color:#e0e0e0}.apply-is-light .input:focus:not(:disabled),.input.is-light:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em hsla(0,0%,93.3%,.5)}@supports not (-ms-high-contrast:none){.apply-is-light .input:focus:not(:disabled):-moz-read-only,.input.is-light:focus:not(:disabled):-moz-read-only{border-color:#e0e0e0}.apply-is-light .input:focus:not(:disabled):read-only,.input.is-light:focus:not(:disabled):read-only{border-color:#e0e0e0}}.apply-is-light .input:focus:not(:disabled):read-only::-ms-check,.input.is-light:focus:not(:disabled):read-only::-ms-check{border-color:#e0e0e0}@supports not (-ms-high-contrast:none){.apply-is-light .input:active:not(:disabled),.input.is-light:active:not(:disabled){border-color:#bdbdbd;background-color:hsla(0,0%,93.3%,.02)}}.apply-is-light .input:active:not(:disabled)::-ms-check,.input.is-light:active:not(:disabled)::-ms-check{border-color:#bdbdbd;background-color:hsla(0,0%,93.3%,.02)}.apply-is-light .input:active:not(:disabled):-moz-read-only,.input.is-light:active:not(:disabled):-moz-read-only{background-color:hsla(0,0%,93.3%,.05)}.apply-is-light .input:active:not(:disabled):read-only,.input.is-light:active:not(:disabled):read-only{background-color:hsla(0,0%,93.3%,.05)}.apply-has-colored-text.apply-is-light .input,.apply-has-colored-text .input.is-light,.apply-is-light .input.has-colored-text,.input.has-colored-text.is-light{color:#eee}.apply-has-colored-text.apply-is-light .input:hover:not(:disabled),.apply-has-colored-text .input.is-light:hover:not(:disabled),.apply-is-light .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-light:hover:not(:disabled){color:#e0e0e0}.apply-has-colored-text.apply-is-light .input:active:not(:disabled),.apply-has-colored-text.apply-is-light .input:disabled,.apply-has-colored-text .input.is-light:active:not(:disabled),.apply-has-colored-text .input.is-light:disabled,.apply-is-light .input.has-colored-text:active:not(:disabled),.apply-is-light .input.has-colored-text:disabled,.input.has-colored-text.is-light:active:not(:disabled),.input.has-colored-text.is-light:disabled{color:#bdbdbd}.apply-has-colored-text.apply-is-light .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-light::-webkit-input-placeholder,.apply-is-light .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-light::-webkit-input-placeholder{color:hsla(0,0%,93.3%,.5)}.apply-has-colored-text.apply-is-light .input::-moz-placeholder,.apply-has-colored-text .input.is-light::-moz-placeholder,.apply-is-light .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-light::-moz-placeholder{color:hsla(0,0%,93.3%,.5)}.apply-has-colored-text.apply-is-light .input:-ms-input-placeholder,.apply-has-colored-text .input.is-light:-ms-input-placeholder,.apply-is-light .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-light:-ms-input-placeholder{color:hsla(0,0%,93.3%,.5)}.apply-has-colored-text.apply-is-light .input::-ms-input-placeholder,.apply-has-colored-text .input.is-light::-ms-input-placeholder,.apply-is-light .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-light::-ms-input-placeholder{color:hsla(0,0%,93.3%,.5)}.apply-has-colored-text.apply-is-light .input::placeholder,.apply-has-colored-text .input.is-light::placeholder,.apply-is-light .input.has-colored-text::placeholder,.input.has-colored-text.is-light::placeholder{color:hsla(0,0%,93.3%,.5)}.apply-is-grey .input,.input.is-grey{box-shadow:inset 0 .0625em .125em hsla(0,0%,45.9%,.1)}@supports not (-ms-high-contrast:none){.apply-is-grey .input,.input.is-grey{border-color:#757575}}.apply-is-grey .input::-ms-check,.input.is-grey::-ms-check{border-color:#757575}@supports not (-ms-high-contrast:none){.apply-is-grey .input:hover:not(:disabled),.input.is-grey:hover:not(:disabled){border-color:#616161}}.apply-is-grey .input:hover:not(:disabled)::-ms-check,.input.is-grey:hover:not(:disabled)::-ms-check{border-color:#616161}.apply-is-grey .input:focus:not(:disabled),.input.is-grey:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em hsla(0,0%,45.9%,.5)}@supports not (-ms-high-contrast:none){.apply-is-grey .input:focus:not(:disabled):-moz-read-only,.input.is-grey:focus:not(:disabled):-moz-read-only{border-color:#616161}.apply-is-grey .input:focus:not(:disabled):read-only,.input.is-grey:focus:not(:disabled):read-only{border-color:#616161}}.apply-is-grey .input:focus:not(:disabled):read-only::-ms-check,.input.is-grey:focus:not(:disabled):read-only::-ms-check{border-color:#616161}@supports not (-ms-high-contrast:none){.apply-is-grey .input:active:not(:disabled),.input.is-grey:active:not(:disabled){border-color:#424242;background-color:hsla(0,0%,45.9%,.02)}}.apply-is-grey .input:active:not(:disabled)::-ms-check,.input.is-grey:active:not(:disabled)::-ms-check{border-color:#424242;background-color:hsla(0,0%,45.9%,.02)}.apply-is-grey .input:active:not(:disabled):-moz-read-only,.input.is-grey:active:not(:disabled):-moz-read-only{background-color:hsla(0,0%,45.9%,.05)}.apply-is-grey .input:active:not(:disabled):read-only,.input.is-grey:active:not(:disabled):read-only{background-color:hsla(0,0%,45.9%,.05)}.apply-has-colored-text.apply-is-grey .input,.apply-has-colored-text .input.is-grey,.apply-is-grey .input.has-colored-text,.input.has-colored-text.is-grey{color:#757575}.apply-has-colored-text.apply-is-grey .input:hover:not(:disabled),.apply-has-colored-text .input.is-grey:hover:not(:disabled),.apply-is-grey .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-grey:hover:not(:disabled){color:#616161}.apply-has-colored-text.apply-is-grey .input:active:not(:disabled),.apply-has-colored-text.apply-is-grey .input:disabled,.apply-has-colored-text .input.is-grey:active:not(:disabled),.apply-has-colored-text .input.is-grey:disabled,.apply-is-grey .input.has-colored-text:active:not(:disabled),.apply-is-grey .input.has-colored-text:disabled,.input.has-colored-text.is-grey:active:not(:disabled),.input.has-colored-text.is-grey:disabled{color:#424242}.apply-has-colored-text.apply-is-grey .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-grey::-webkit-input-placeholder,.apply-is-grey .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-grey::-webkit-input-placeholder{color:hsla(0,0%,45.9%,.5)}.apply-has-colored-text.apply-is-grey .input::-moz-placeholder,.apply-has-colored-text .input.is-grey::-moz-placeholder,.apply-is-grey .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-grey::-moz-placeholder{color:hsla(0,0%,45.9%,.5)}.apply-has-colored-text.apply-is-grey .input:-ms-input-placeholder,.apply-has-colored-text .input.is-grey:-ms-input-placeholder,.apply-is-grey .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-grey:-ms-input-placeholder{color:hsla(0,0%,45.9%,.5)}.apply-has-colored-text.apply-is-grey .input::-ms-input-placeholder,.apply-has-colored-text .input.is-grey::-ms-input-placeholder,.apply-is-grey .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-grey::-ms-input-placeholder{color:hsla(0,0%,45.9%,.5)}.apply-has-colored-text.apply-is-grey .input::placeholder,.apply-has-colored-text .input.is-grey::placeholder,.apply-is-grey .input.has-colored-text::placeholder,.input.has-colored-text.is-grey::placeholder{color:hsla(0,0%,45.9%,.5)}.apply-is-dark .input,.input.is-dark{box-shadow:inset 0 .0625em .125em rgba(66,66,66,.1)}@supports not (-ms-high-contrast:none){.apply-is-dark .input,.input.is-dark{border-color:#424242}}.apply-is-dark .input::-ms-check,.input.is-dark::-ms-check{border-color:#424242}@supports not (-ms-high-contrast:none){.apply-is-dark .input:hover:not(:disabled),.input.is-dark:hover:not(:disabled){border-color:#212121}}.apply-is-dark .input:hover:not(:disabled)::-ms-check,.input.is-dark:hover:not(:disabled)::-ms-check{border-color:#212121}.apply-is-dark .input:focus:not(:disabled),.input.is-dark:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em rgba(66,66,66,.5)}@supports not (-ms-high-contrast:none){.apply-is-dark .input:focus:not(:disabled):-moz-read-only,.input.is-dark:focus:not(:disabled):-moz-read-only{border-color:#212121}.apply-is-dark .input:focus:not(:disabled):read-only,.input.is-dark:focus:not(:disabled):read-only{border-color:#212121}}.apply-is-dark .input:focus:not(:disabled):read-only::-ms-check,.input.is-dark:focus:not(:disabled):read-only::-ms-check{border-color:#212121}@supports not (-ms-high-contrast:none){.apply-is-dark .input:active:not(:disabled),.input.is-dark:active:not(:disabled){border-color:#141414;background-color:rgba(66,66,66,.02)}}.apply-is-dark .input:active:not(:disabled)::-ms-check,.input.is-dark:active:not(:disabled)::-ms-check{border-color:#141414;background-color:rgba(66,66,66,.02)}.apply-is-dark .input:active:not(:disabled):-moz-read-only,.input.is-dark:active:not(:disabled):-moz-read-only{background-color:rgba(66,66,66,.05)}.apply-is-dark .input:active:not(:disabled):read-only,.input.is-dark:active:not(:disabled):read-only{background-color:rgba(66,66,66,.05)}.apply-has-colored-text.apply-is-dark .input,.apply-has-colored-text .input.is-dark,.apply-is-dark .input.has-colored-text,.input.has-colored-text.is-dark{color:#424242}.apply-has-colored-text.apply-is-dark .input:hover:not(:disabled),.apply-has-colored-text .input.is-dark:hover:not(:disabled),.apply-is-dark .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-dark:hover:not(:disabled){color:#212121}.apply-has-colored-text.apply-is-dark .input:active:not(:disabled),.apply-has-colored-text.apply-is-dark .input:disabled,.apply-has-colored-text .input.is-dark:active:not(:disabled),.apply-has-colored-text .input.is-dark:disabled,.apply-is-dark .input.has-colored-text:active:not(:disabled),.apply-is-dark .input.has-colored-text:disabled,.input.has-colored-text.is-dark:active:not(:disabled),.input.has-colored-text.is-dark:disabled{color:#141414}.apply-has-colored-text.apply-is-dark .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-dark::-webkit-input-placeholder,.apply-is-dark .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-dark::-webkit-input-placeholder{color:rgba(66,66,66,.5)}.apply-has-colored-text.apply-is-dark .input::-moz-placeholder,.apply-has-colored-text .input.is-dark::-moz-placeholder,.apply-is-dark .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-dark::-moz-placeholder{color:rgba(66,66,66,.5)}.apply-has-colored-text.apply-is-dark .input:-ms-input-placeholder,.apply-has-colored-text .input.is-dark:-ms-input-placeholder,.apply-is-dark .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-dark:-ms-input-placeholder{color:rgba(66,66,66,.5)}.apply-has-colored-text.apply-is-dark .input::-ms-input-placeholder,.apply-has-colored-text .input.is-dark::-ms-input-placeholder,.apply-is-dark .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-dark::-ms-input-placeholder{color:rgba(66,66,66,.5)}.apply-has-colored-text.apply-is-dark .input::placeholder,.apply-has-colored-text .input.is-dark::placeholder,.apply-is-dark .input.has-colored-text::placeholder,.input.has-colored-text.is-dark::placeholder{color:rgba(66,66,66,.5)}.apply-is-black .input,.input.is-black{box-shadow:inset 0 .0625em .125em rgba(33,33,33,.1)}@supports not (-ms-high-contrast:none){.apply-is-black .input,.input.is-black{border-color:#212121}}.apply-is-black .input::-ms-check,.input.is-black::-ms-check{border-color:#212121}@supports not (-ms-high-contrast:none){.apply-is-black .input:hover:not(:disabled),.input.is-black:hover:not(:disabled){border-color:#141414}}.apply-is-black .input:hover:not(:disabled)::-ms-check,.input.is-black:hover:not(:disabled)::-ms-check{border-color:#141414}.apply-is-black .input:focus:not(:disabled),.input.is-black:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em rgba(33,33,33,.5)}@supports not (-ms-high-contrast:none){.apply-is-black .input:focus:not(:disabled):-moz-read-only,.input.is-black:focus:not(:disabled):-moz-read-only{border-color:#141414}.apply-is-black .input:focus:not(:disabled):read-only,.input.is-black:focus:not(:disabled):read-only{border-color:#141414}}.apply-is-black .input:focus:not(:disabled):read-only::-ms-check,.input.is-black:focus:not(:disabled):read-only::-ms-check{border-color:#141414}@supports not (-ms-high-contrast:none){.apply-is-black .input:active:not(:disabled),.input.is-black:active:not(:disabled){border-color:#000;background-color:rgba(33,33,33,.02)}}.apply-is-black .input:active:not(:disabled)::-ms-check,.input.is-black:active:not(:disabled)::-ms-check{border-color:#000;background-color:rgba(33,33,33,.02)}.apply-is-black .input:active:not(:disabled):-moz-read-only,.input.is-black:active:not(:disabled):-moz-read-only{background-color:rgba(33,33,33,.05)}.apply-is-black .input:active:not(:disabled):read-only,.input.is-black:active:not(:disabled):read-only{background-color:rgba(33,33,33,.05)}.apply-has-colored-text.apply-is-black .input,.apply-has-colored-text .input.is-black,.apply-is-black .input.has-colored-text,.input.has-colored-text.is-black{color:#212121}.apply-has-colored-text.apply-is-black .input:hover:not(:disabled),.apply-has-colored-text .input.is-black:hover:not(:disabled),.apply-is-black .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-black:hover:not(:disabled){color:#141414}.apply-has-colored-text.apply-is-black .input:active:not(:disabled),.apply-has-colored-text.apply-is-black .input:disabled,.apply-has-colored-text .input.is-black:active:not(:disabled),.apply-has-colored-text .input.is-black:disabled,.apply-is-black .input.has-colored-text:active:not(:disabled),.apply-is-black .input.has-colored-text:disabled,.input.has-colored-text.is-black:active:not(:disabled),.input.has-colored-text.is-black:disabled{color:#000}.apply-has-colored-text.apply-is-black .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-black::-webkit-input-placeholder,.apply-is-black .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-black::-webkit-input-placeholder{color:rgba(33,33,33,.5)}.apply-has-colored-text.apply-is-black .input::-moz-placeholder,.apply-has-colored-text .input.is-black::-moz-placeholder,.apply-is-black .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-black::-moz-placeholder{color:rgba(33,33,33,.5)}.apply-has-colored-text.apply-is-black .input:-ms-input-placeholder,.apply-has-colored-text .input.is-black:-ms-input-placeholder,.apply-is-black .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-black:-ms-input-placeholder{color:rgba(33,33,33,.5)}.apply-has-colored-text.apply-is-black .input::-ms-input-placeholder,.apply-has-colored-text .input.is-black::-ms-input-placeholder,.apply-is-black .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-black::-ms-input-placeholder{color:rgba(33,33,33,.5)}.apply-has-colored-text.apply-is-black .input::placeholder,.apply-has-colored-text .input.is-black::placeholder,.apply-is-black .input.has-colored-text::placeholder,.input.has-colored-text.is-black::placeholder{color:rgba(33,33,33,.5)}.apply-is-primary .input,.input.is-primary{box-shadow:inset 0 .0625em .125em rgba(30,136,229,.1)}@supports not (-ms-high-contrast:none){.apply-is-primary .input,.input.is-primary{border-color:#1e88e5}}.apply-is-primary .input::-ms-check,.input.is-primary::-ms-check{border-color:#1e88e5}@supports not (-ms-high-contrast:none){.apply-is-primary .input:hover:not(:disabled),.input.is-primary:hover:not(:disabled){border-color:#1976d2}}.apply-is-primary .input:hover:not(:disabled)::-ms-check,.input.is-primary:hover:not(:disabled)::-ms-check{border-color:#1976d2}.apply-is-primary .input:focus:not(:disabled),.input.is-primary:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em rgba(30,136,229,.5)}@supports not (-ms-high-contrast:none){.apply-is-primary .input:focus:not(:disabled):-moz-read-only,.input.is-primary:focus:not(:disabled):-moz-read-only{border-color:#1976d2}.apply-is-primary .input:focus:not(:disabled):read-only,.input.is-primary:focus:not(:disabled):read-only{border-color:#1976d2}}.apply-is-primary .input:focus:not(:disabled):read-only::-ms-check,.input.is-primary:focus:not(:disabled):read-only::-ms-check{border-color:#1976d2}@supports not (-ms-high-contrast:none){.apply-is-primary .input:active:not(:disabled),.input.is-primary:active:not(:disabled){border-color:#1565c0;background-color:rgba(30,136,229,.02)}}.apply-is-primary .input:active:not(:disabled)::-ms-check,.input.is-primary:active:not(:disabled)::-ms-check{border-color:#1565c0;background-color:rgba(30,136,229,.02)}.apply-is-primary .input:active:not(:disabled):-moz-read-only,.input.is-primary:active:not(:disabled):-moz-read-only{background-color:rgba(30,136,229,.05)}.apply-is-primary .input:active:not(:disabled):read-only,.input.is-primary:active:not(:disabled):read-only{background-color:rgba(30,136,229,.05)}.apply-has-colored-text.apply-is-primary .input,.apply-has-colored-text .input.is-primary,.apply-is-primary .input.has-colored-text,.input.has-colored-text.is-primary{color:#1e88e5}.apply-has-colored-text.apply-is-primary .input:hover:not(:disabled),.apply-has-colored-text .input.is-primary:hover:not(:disabled),.apply-is-primary .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-primary:hover:not(:disabled){color:#1976d2}.apply-has-colored-text.apply-is-primary .input:active:not(:disabled),.apply-has-colored-text.apply-is-primary .input:disabled,.apply-has-colored-text .input.is-primary:active:not(:disabled),.apply-has-colored-text .input.is-primary:disabled,.apply-is-primary .input.has-colored-text:active:not(:disabled),.apply-is-primary .input.has-colored-text:disabled,.input.has-colored-text.is-primary:active:not(:disabled),.input.has-colored-text.is-primary:disabled{color:#1565c0}.apply-has-colored-text.apply-is-primary .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-primary::-webkit-input-placeholder,.apply-is-primary .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-primary::-webkit-input-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-primary .input::-moz-placeholder,.apply-has-colored-text .input.is-primary::-moz-placeholder,.apply-is-primary .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-primary::-moz-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-primary .input:-ms-input-placeholder,.apply-has-colored-text .input.is-primary:-ms-input-placeholder,.apply-is-primary .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-primary:-ms-input-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-primary .input::-ms-input-placeholder,.apply-has-colored-text .input.is-primary::-ms-input-placeholder,.apply-is-primary .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-primary::-ms-input-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-primary .input::placeholder,.apply-has-colored-text .input.is-primary::placeholder,.apply-is-primary .input.has-colored-text::placeholder,.input.has-colored-text.is-primary::placeholder{color:rgba(30,136,229,.5)}.apply-is-info .input,.input.is-info{box-shadow:inset 0 .0625em .125em rgba(30,136,229,.1)}@supports not (-ms-high-contrast:none){.apply-is-info .input,.input.is-info{border-color:#1e88e5}}.apply-is-info .input::-ms-check,.input.is-info::-ms-check{border-color:#1e88e5}@supports not (-ms-high-contrast:none){.apply-is-info .input:hover:not(:disabled),.input.is-info:hover:not(:disabled){border-color:#1976d2}}.apply-is-info .input:hover:not(:disabled)::-ms-check,.input.is-info:hover:not(:disabled)::-ms-check{border-color:#1976d2}.apply-is-info .input:focus:not(:disabled),.input.is-info:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em rgba(30,136,229,.5)}@supports not (-ms-high-contrast:none){.apply-is-info .input:focus:not(:disabled):-moz-read-only,.input.is-info:focus:not(:disabled):-moz-read-only{border-color:#1976d2}.apply-is-info .input:focus:not(:disabled):read-only,.input.is-info:focus:not(:disabled):read-only{border-color:#1976d2}}.apply-is-info .input:focus:not(:disabled):read-only::-ms-check,.input.is-info:focus:not(:disabled):read-only::-ms-check{border-color:#1976d2}@supports not (-ms-high-contrast:none){.apply-is-info .input:active:not(:disabled),.input.is-info:active:not(:disabled){border-color:#1565c0;background-color:rgba(30,136,229,.02)}}.apply-is-info .input:active:not(:disabled)::-ms-check,.input.is-info:active:not(:disabled)::-ms-check{border-color:#1565c0;background-color:rgba(30,136,229,.02)}.apply-is-info .input:active:not(:disabled):-moz-read-only,.input.is-info:active:not(:disabled):-moz-read-only{background-color:rgba(30,136,229,.05)}.apply-is-info .input:active:not(:disabled):read-only,.input.is-info:active:not(:disabled):read-only{background-color:rgba(30,136,229,.05)}.apply-has-colored-text.apply-is-info .input,.apply-has-colored-text .input.is-info,.apply-is-info .input.has-colored-text,.input.has-colored-text.is-info{color:#1e88e5}.apply-has-colored-text.apply-is-info .input:hover:not(:disabled),.apply-has-colored-text .input.is-info:hover:not(:disabled),.apply-is-info .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-info:hover:not(:disabled){color:#1976d2}.apply-has-colored-text.apply-is-info .input:active:not(:disabled),.apply-has-colored-text.apply-is-info .input:disabled,.apply-has-colored-text .input.is-info:active:not(:disabled),.apply-has-colored-text .input.is-info:disabled,.apply-is-info .input.has-colored-text:active:not(:disabled),.apply-is-info .input.has-colored-text:disabled,.input.has-colored-text.is-info:active:not(:disabled),.input.has-colored-text.is-info:disabled{color:#1565c0}.apply-has-colored-text.apply-is-info .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-info::-webkit-input-placeholder,.apply-is-info .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-info::-webkit-input-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-info .input::-moz-placeholder,.apply-has-colored-text .input.is-info::-moz-placeholder,.apply-is-info .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-info::-moz-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-info .input:-ms-input-placeholder,.apply-has-colored-text .input.is-info:-ms-input-placeholder,.apply-is-info .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-info:-ms-input-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-info .input::-ms-input-placeholder,.apply-has-colored-text .input.is-info::-ms-input-placeholder,.apply-is-info .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-info::-ms-input-placeholder{color:rgba(30,136,229,.5)}.apply-has-colored-text.apply-is-info .input::placeholder,.apply-has-colored-text .input.is-info::placeholder,.apply-is-info .input.has-colored-text::placeholder,.input.has-colored-text.is-info::placeholder{color:rgba(30,136,229,.5)}.apply-is-success .input,.input.is-success{box-shadow:inset 0 .0625em .125em rgba(67,160,71,.1)}@supports not (-ms-high-contrast:none){.apply-is-success .input,.input.is-success{border-color:#43a047}}.apply-is-success .input::-ms-check,.input.is-success::-ms-check{border-color:#43a047}@supports not (-ms-high-contrast:none){.apply-is-success .input:hover:not(:disabled),.input.is-success:hover:not(:disabled){border-color:#388e3c}}.apply-is-success .input:hover:not(:disabled)::-ms-check,.input.is-success:hover:not(:disabled)::-ms-check{border-color:#388e3c}.apply-is-success .input:focus:not(:disabled),.input.is-success:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em rgba(67,160,71,.5)}@supports not (-ms-high-contrast:none){.apply-is-success .input:focus:not(:disabled):-moz-read-only,.input.is-success:focus:not(:disabled):-moz-read-only{border-color:#388e3c}.apply-is-success .input:focus:not(:disabled):read-only,.input.is-success:focus:not(:disabled):read-only{border-color:#388e3c}}.apply-is-success .input:focus:not(:disabled):read-only::-ms-check,.input.is-success:focus:not(:disabled):read-only::-ms-check{border-color:#388e3c}@supports not (-ms-high-contrast:none){.apply-is-success .input:active:not(:disabled),.input.is-success:active:not(:disabled){border-color:#2e7d32;background-color:rgba(67,160,71,.02)}}.apply-is-success .input:active:not(:disabled)::-ms-check,.input.is-success:active:not(:disabled)::-ms-check{border-color:#2e7d32;background-color:rgba(67,160,71,.02)}.apply-is-success .input:active:not(:disabled):-moz-read-only,.input.is-success:active:not(:disabled):-moz-read-only{background-color:rgba(67,160,71,.05)}.apply-is-success .input:active:not(:disabled):read-only,.input.is-success:active:not(:disabled):read-only{background-color:rgba(67,160,71,.05)}.apply-has-colored-text.apply-is-success .input,.apply-has-colored-text .input.is-success,.apply-is-success .input.has-colored-text,.input.has-colored-text.is-success{color:#43a047}.apply-has-colored-text.apply-is-success .input:hover:not(:disabled),.apply-has-colored-text .input.is-success:hover:not(:disabled),.apply-is-success .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-success:hover:not(:disabled){color:#388e3c}.apply-has-colored-text.apply-is-success .input:active:not(:disabled),.apply-has-colored-text.apply-is-success .input:disabled,.apply-has-colored-text .input.is-success:active:not(:disabled),.apply-has-colored-text .input.is-success:disabled,.apply-is-success .input.has-colored-text:active:not(:disabled),.apply-is-success .input.has-colored-text:disabled,.input.has-colored-text.is-success:active:not(:disabled),.input.has-colored-text.is-success:disabled{color:#2e7d32}.apply-has-colored-text.apply-is-success .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-success::-webkit-input-placeholder,.apply-is-success .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-success::-webkit-input-placeholder{color:rgba(67,160,71,.5)}.apply-has-colored-text.apply-is-success .input::-moz-placeholder,.apply-has-colored-text .input.is-success::-moz-placeholder,.apply-is-success .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-success::-moz-placeholder{color:rgba(67,160,71,.5)}.apply-has-colored-text.apply-is-success .input:-ms-input-placeholder,.apply-has-colored-text .input.is-success:-ms-input-placeholder,.apply-is-success .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-success:-ms-input-placeholder{color:rgba(67,160,71,.5)}.apply-has-colored-text.apply-is-success .input::-ms-input-placeholder,.apply-has-colored-text .input.is-success::-ms-input-placeholder,.apply-is-success .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-success::-ms-input-placeholder{color:rgba(67,160,71,.5)}.apply-has-colored-text.apply-is-success .input::placeholder,.apply-has-colored-text .input.is-success::placeholder,.apply-is-success .input.has-colored-text::placeholder,.input.has-colored-text.is-success::placeholder{color:rgba(67,160,71,.5)}.apply-is-warning .input,.input.is-warning{box-shadow:inset 0 .0625em .125em rgba(253,216,53,.1)}@supports not (-ms-high-contrast:none){.apply-is-warning .input,.input.is-warning{border-color:#fdd835}}.apply-is-warning .input::-ms-check,.input.is-warning::-ms-check{border-color:#fdd835}@supports not (-ms-high-contrast:none){.apply-is-warning .input:hover:not(:disabled),.input.is-warning:hover:not(:disabled){border-color:#fbc02d}}.apply-is-warning .input:hover:not(:disabled)::-ms-check,.input.is-warning:hover:not(:disabled)::-ms-check{border-color:#fbc02d}.apply-is-warning .input:focus:not(:disabled),.input.is-warning:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em rgba(253,216,53,.5)}@supports not (-ms-high-contrast:none){.apply-is-warning .input:focus:not(:disabled):-moz-read-only,.input.is-warning:focus:not(:disabled):-moz-read-only{border-color:#fbc02d}.apply-is-warning .input:focus:not(:disabled):read-only,.input.is-warning:focus:not(:disabled):read-only{border-color:#fbc02d}}.apply-is-warning .input:focus:not(:disabled):read-only::-ms-check,.input.is-warning:focus:not(:disabled):read-only::-ms-check{border-color:#fbc02d}@supports not (-ms-high-contrast:none){.apply-is-warning .input:active:not(:disabled),.input.is-warning:active:not(:disabled){border-color:#f9a825;background-color:rgba(253,216,53,.02)}}.apply-is-warning .input:active:not(:disabled)::-ms-check,.input.is-warning:active:not(:disabled)::-ms-check{border-color:#f9a825;background-color:rgba(253,216,53,.02)}.apply-is-warning .input:active:not(:disabled):-moz-read-only,.input.is-warning:active:not(:disabled):-moz-read-only{background-color:rgba(253,216,53,.05)}.apply-is-warning .input:active:not(:disabled):read-only,.input.is-warning:active:not(:disabled):read-only{background-color:rgba(253,216,53,.05)}.apply-has-colored-text.apply-is-warning .input,.apply-has-colored-text .input.is-warning,.apply-is-warning .input.has-colored-text,.input.has-colored-text.is-warning{color:#fdd835}.apply-has-colored-text.apply-is-warning .input:hover:not(:disabled),.apply-has-colored-text .input.is-warning:hover:not(:disabled),.apply-is-warning .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-warning:hover:not(:disabled){color:#fbc02d}.apply-has-colored-text.apply-is-warning .input:active:not(:disabled),.apply-has-colored-text.apply-is-warning .input:disabled,.apply-has-colored-text .input.is-warning:active:not(:disabled),.apply-has-colored-text .input.is-warning:disabled,.apply-is-warning .input.has-colored-text:active:not(:disabled),.apply-is-warning .input.has-colored-text:disabled,.input.has-colored-text.is-warning:active:not(:disabled),.input.has-colored-text.is-warning:disabled{color:#f9a825}.apply-has-colored-text.apply-is-warning .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-warning::-webkit-input-placeholder,.apply-is-warning .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-warning::-webkit-input-placeholder{color:rgba(253,216,53,.5)}.apply-has-colored-text.apply-is-warning .input::-moz-placeholder,.apply-has-colored-text .input.is-warning::-moz-placeholder,.apply-is-warning .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-warning::-moz-placeholder{color:rgba(253,216,53,.5)}.apply-has-colored-text.apply-is-warning .input:-ms-input-placeholder,.apply-has-colored-text .input.is-warning:-ms-input-placeholder,.apply-is-warning .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-warning:-ms-input-placeholder{color:rgba(253,216,53,.5)}.apply-has-colored-text.apply-is-warning .input::-ms-input-placeholder,.apply-has-colored-text .input.is-warning::-ms-input-placeholder,.apply-is-warning .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-warning::-ms-input-placeholder{color:rgba(253,216,53,.5)}.apply-has-colored-text.apply-is-warning .input::placeholder,.apply-has-colored-text .input.is-warning::placeholder,.apply-is-warning .input.has-colored-text::placeholder,.input.has-colored-text.is-warning::placeholder{color:rgba(253,216,53,.5)}.apply-is-danger .input,.input.is-danger{box-shadow:inset 0 .0625em .125em rgba(229,57,53,.1)}@supports not (-ms-high-contrast:none){.apply-is-danger .input,.input.is-danger{border-color:#e53935}}.apply-is-danger .input::-ms-check,.input.is-danger::-ms-check{border-color:#e53935}@supports not (-ms-high-contrast:none){.apply-is-danger .input:hover:not(:disabled),.input.is-danger:hover:not(:disabled){border-color:#d32f2f}}.apply-is-danger .input:hover:not(:disabled)::-ms-check,.input.is-danger:hover:not(:disabled)::-ms-check{border-color:#d32f2f}.apply-is-danger .input:focus:not(:disabled),.input.is-danger:focus:not(:disabled){box-shadow:inset 0 0 transparent,0 0 0 .175em rgba(229,57,53,.5)}@supports not (-ms-high-contrast:none){.apply-is-danger .input:focus:not(:disabled):-moz-read-only,.input.is-danger:focus:not(:disabled):-moz-read-only{border-color:#d32f2f}.apply-is-danger .input:focus:not(:disabled):read-only,.input.is-danger:focus:not(:disabled):read-only{border-color:#d32f2f}}.apply-is-danger .input:focus:not(:disabled):read-only::-ms-check,.input.is-danger:focus:not(:disabled):read-only::-ms-check{border-color:#d32f2f}@supports not (-ms-high-contrast:none){.apply-is-danger .input:active:not(:disabled),.input.is-danger:active:not(:disabled){border-color:#c62828;background-color:rgba(229,57,53,.02)}}.apply-is-danger .input:active:not(:disabled)::-ms-check,.input.is-danger:active:not(:disabled)::-ms-check{border-color:#c62828;background-color:rgba(229,57,53,.02)}.apply-is-danger .input:active:not(:disabled):-moz-read-only,.input.is-danger:active:not(:disabled):-moz-read-only{background-color:rgba(229,57,53,.05)}.apply-is-danger .input:active:not(:disabled):read-only,.input.is-danger:active:not(:disabled):read-only{background-color:rgba(229,57,53,.05)}.apply-has-colored-text.apply-is-danger .input,.apply-has-colored-text .input.is-danger,.apply-is-danger .input.has-colored-text,.input.has-colored-text.is-danger{color:#e53935}.apply-has-colored-text.apply-is-danger .input:hover:not(:disabled),.apply-has-colored-text .input.is-danger:hover:not(:disabled),.apply-is-danger .input.has-colored-text:hover:not(:disabled),.input.has-colored-text.is-danger:hover:not(:disabled){color:#d32f2f}.apply-has-colored-text.apply-is-danger .input:active:not(:disabled),.apply-has-colored-text.apply-is-danger .input:disabled,.apply-has-colored-text .input.is-danger:active:not(:disabled),.apply-has-colored-text .input.is-danger:disabled,.apply-is-danger .input.has-colored-text:active:not(:disabled),.apply-is-danger .input.has-colored-text:disabled,.input.has-colored-text.is-danger:active:not(:disabled),.input.has-colored-text.is-danger:disabled{color:#c62828}.apply-has-colored-text.apply-is-danger .input::-webkit-input-placeholder,.apply-has-colored-text .input.is-danger::-webkit-input-placeholder,.apply-is-danger .input.has-colored-text::-webkit-input-placeholder,.input.has-colored-text.is-danger::-webkit-input-placeholder{color:rgba(229,57,53,.5)}.apply-has-colored-text.apply-is-danger .input::-moz-placeholder,.apply-has-colored-text .input.is-danger::-moz-placeholder,.apply-is-danger .input.has-colored-text::-moz-placeholder,.input.has-colored-text.is-danger::-moz-placeholder{color:rgba(229,57,53,.5)}.apply-has-colored-text.apply-is-danger .input:-ms-input-placeholder,.apply-has-colored-text .input.is-danger:-ms-input-placeholder,.apply-is-danger .input.has-colored-text:-ms-input-placeholder,.input.has-colored-text.is-danger:-ms-input-placeholder{color:rgba(229,57,53,.5)}.apply-has-colored-text.apply-is-danger .input::-ms-input-placeholder,.apply-has-colored-text .input.is-danger::-ms-input-placeholder,.apply-is-danger .input.has-colored-text::-ms-input-placeholder,.input.has-colored-text.is-danger::-ms-input-placeholder{color:rgba(229,57,53,.5)}.apply-has-colored-text.apply-is-danger .input::placeholder,.apply-has-colored-text .input.is-danger::placeholder,.apply-is-danger .input.has-colored-text::placeholder,.input.has-colored-text.is-danger::placeholder{color:rgba(229,57,53,.5)}.input[type=checkbox]{-webkit-appearance:none;-moz-appearance:none;appearance:none;transition-property:color,background-color,border-color,border-radius,box-shadow;width:1.25em;height:1.25em;min-width:1.25em;min-height:1.25em;max-width:1.25em;max-height:1.25em;border-radius:0;display:inline-block;padding:0;vertical-align:text-bottom}@supports not (-ms-high-contrast:none){.input[type=checkbox]{color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");background-repeat:no-repeat}}.input[type=checkbox]::-ms-check{color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");background-repeat:no-repeat}@supports not (-ms-high-contrast:none){.input[type=checkbox]{border-width:.0625em;border-radius:0;background-size:.75em;background-position:center .25em}}.input[type=checkbox]::-ms-check{border-width:.0625em;border-radius:0;background-size:.75em;background-position:center .25em}.apply-is-default .input[type=checkbox],.apply-is-default .input[type=checkbox]:-moz-read-only,.input[type=checkbox],.input[type=checkbox].is-default,.input[type=checkbox].is-default:-moz-read-only,.input[type=checkbox]:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-default .input[type=checkbox]:checked,.input[type=checkbox].is-default:checked,.input[type=checkbox]:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-default .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-default:checked::-ms-check,.input[type=checkbox]:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-white .input[type=checkbox],.apply-is-white .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-white,.input[type=checkbox].is-white:-moz-read-only{background-color:#4d4d4d}@supports not (-ms-high-contrast:none){.apply-is-white .input[type=checkbox]:checked,.input[type=checkbox].is-white:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23fff'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-white .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-white:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23fff'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-light .input[type=checkbox],.apply-is-light .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-light,.input[type=checkbox].is-light:-moz-read-only{background-color:#4d4d4d}@supports not (-ms-high-contrast:none){.apply-is-light .input[type=checkbox]:checked,.input[type=checkbox].is-light:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23EEE'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-light .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-light:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23EEE'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-grey .input[type=checkbox],.apply-is-grey .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-grey,.input[type=checkbox].is-grey:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-grey .input[type=checkbox]:checked,.input[type=checkbox].is-grey:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23757575'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-grey .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-grey:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23757575'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-dark .input[type=checkbox],.apply-is-dark .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-dark,.input[type=checkbox].is-dark:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-dark .input[type=checkbox]:checked,.input[type=checkbox].is-dark:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-dark .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-dark:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-black .input[type=checkbox],.apply-is-black .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-black,.input[type=checkbox].is-black:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-black .input[type=checkbox]:checked,.input[type=checkbox].is-black:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23212121'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-black .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-black:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23212121'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-primary .input[type=checkbox],.apply-is-primary .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-primary,.input[type=checkbox].is-primary:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-primary .input[type=checkbox]:checked,.input[type=checkbox].is-primary:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-primary .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-primary:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-info .input[type=checkbox],.apply-is-info .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-info,.input[type=checkbox].is-info:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-info .input[type=checkbox]:checked,.input[type=checkbox].is-info:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-info .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-info:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-success .input[type=checkbox],.apply-is-success .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-success,.input[type=checkbox].is-success:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-success .input[type=checkbox]:checked,.input[type=checkbox].is-success:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%2343A047'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-success .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-success:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%2343A047'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-warning .input[type=checkbox],.apply-is-warning .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-warning,.input[type=checkbox].is-warning:-moz-read-only{background-color:#4d4d4d}@supports not (-ms-high-contrast:none){.apply-is-warning .input[type=checkbox]:checked,.input[type=checkbox].is-warning:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23FDD835'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-warning .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-warning:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23FDD835'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.apply-is-danger .input[type=checkbox],.apply-is-danger .input[type=checkbox]:-moz-read-only,.input[type=checkbox].is-danger,.input[type=checkbox].is-danger:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-danger .input[type=checkbox]:checked,.input[type=checkbox].is-danger:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23E53935'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}}.apply-is-danger .input[type=checkbox]:checked::-ms-check,.input[type=checkbox].is-danger:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='.5em' height='.5em' fill='%23E53935'%3E%3Cpath d='M6.41 0l-.69.72L2.94 3.5l-.81-.78L1.41 2 0 3.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 0z'/%3E%3C/svg%3E")}.input[type=radio]{input:radio;-webkit-appearance:none;-moz-appearance:none;appearance:none;transition-property:color,background-color,border-color,border-radius,box-shadow;width:1.25em;height:1.25em;min-width:1.25em;min-height:1.25em;max-width:1.25em;max-height:1.25em;border-radius:2147483647px;display:inline-block;padding:0;vertical-align:text-bottom}@supports not (-ms-high-contrast:none){.input[type=radio]{color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");background-repeat:no-repeat}}.input[type=radio]::-ms-check{color:transparent;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");background-repeat:no-repeat}@supports not (-ms-high-contrast:none){.input[type=radio]{border-radius:2147483647px;border-width:.0625em;background-size:1em;background-position:50%}}.input[type=radio]::-ms-check{border-radius:2147483647px;border-width:.0625em;background-size:1em;background-position:50%}.apply-is-default .input[type=radio],.apply-is-default .input[type=radio]:-moz-read-only,.input[type=radio],.input[type=radio].is-default,.input[type=radio].is-default:-moz-read-only,.input[type=radio]:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-default .input[type=radio]:checked,.input[type=radio].is-default:checked,.input[type=radio]:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-default .input[type=radio]:checked::-ms-check,.input[type=radio].is-default:checked::-ms-check,.input[type=radio]:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-white .input[type=radio],.apply-is-white .input[type=radio]:-moz-read-only,.input[type=radio].is-white,.input[type=radio].is-white:-moz-read-only{background-color:#4d4d4d}@supports not (-ms-high-contrast:none){.apply-is-white .input[type=radio]:checked,.input[type=radio].is-white:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23fff'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-white .input[type=radio]:checked::-ms-check,.input[type=radio].is-white:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23fff'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-light .input[type=radio],.apply-is-light .input[type=radio]:-moz-read-only,.input[type=radio].is-light,.input[type=radio].is-light:-moz-read-only{background-color:#4d4d4d}@supports not (-ms-high-contrast:none){.apply-is-light .input[type=radio]:checked,.input[type=radio].is-light:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23EEE'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-light .input[type=radio]:checked::-ms-check,.input[type=radio].is-light:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23EEE'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-grey .input[type=radio],.apply-is-grey .input[type=radio]:-moz-read-only,.input[type=radio].is-grey,.input[type=radio].is-grey:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-grey .input[type=radio]:checked,.input[type=radio].is-grey:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23757575'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-grey .input[type=radio]:checked::-ms-check,.input[type=radio].is-grey:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23757575'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-dark .input[type=radio],.apply-is-dark .input[type=radio]:-moz-read-only,.input[type=radio].is-dark,.input[type=radio].is-dark:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-dark .input[type=radio]:checked,.input[type=radio].is-dark:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-dark .input[type=radio]:checked::-ms-check,.input[type=radio].is-dark:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-black .input[type=radio],.apply-is-black .input[type=radio]:-moz-read-only,.input[type=radio].is-black,.input[type=radio].is-black:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-black .input[type=radio]:checked,.input[type=radio].is-black:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23212121'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-black .input[type=radio]:checked::-ms-check,.input[type=radio].is-black:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23212121'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-primary .input[type=radio],.apply-is-primary .input[type=radio]:-moz-read-only,.input[type=radio].is-primary,.input[type=radio].is-primary:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-primary .input[type=radio]:checked,.input[type=radio].is-primary:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-primary .input[type=radio]:checked::-ms-check,.input[type=radio].is-primary:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-info .input[type=radio],.apply-is-info .input[type=radio]:-moz-read-only,.input[type=radio].is-info,.input[type=radio].is-info:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-info .input[type=radio]:checked,.input[type=radio].is-info:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-info .input[type=radio]:checked::-ms-check,.input[type=radio].is-info:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-success .input[type=radio],.apply-is-success .input[type=radio]:-moz-read-only,.input[type=radio].is-success,.input[type=radio].is-success:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-success .input[type=radio]:checked,.input[type=radio].is-success:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%2343A047'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-success .input[type=radio]:checked::-ms-check,.input[type=radio].is-success:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%2343A047'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-warning .input[type=radio],.apply-is-warning .input[type=radio]:-moz-read-only,.input[type=radio].is-warning,.input[type=radio].is-warning:-moz-read-only{background-color:#4d4d4d}@supports not (-ms-high-contrast:none){.apply-is-warning .input[type=radio]:checked,.input[type=radio].is-warning:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23FDD835'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-warning .input[type=radio]:checked::-ms-check,.input[type=radio].is-warning:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23FDD835'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}.apply-is-danger .input[type=radio],.apply-is-danger .input[type=radio]:-moz-read-only,.input[type=radio].is-danger,.input[type=radio].is-danger:-moz-read-only{background-color:#fff}@supports not (-ms-high-contrast:none){.apply-is-danger .input[type=radio]:checked,.input[type=radio].is-danger:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23E53935'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}}.apply-is-danger .input[type=radio]:checked::-ms-check,.input[type=radio].is-danger:checked::-ms-check{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23E53935'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E")}
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+.size-largest {
+  font-size: 2rem !important; }
+
+.size-larger {
+  font-size: 1.5rem !important; }
+
+.size-normal {
+  font-size: 1rem !important; }
+
+.size-smaller {
+  font-size: 0.625rem !important; }
+
+.size-small {
+  font-size: 0.625rem !important; }
+
+.size-extra-small {
+  font-size: 0.5rem !important; }
+
+.has-text-align-center {
+  text-align: center; }
+
+.is-fullheight {
+  height: 100%; }
+
+.has-text-weight-bold {
+  font-weight: bold; }
+
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+.size-largest {
+  font-size: 2rem !important; }
+
+.size-larger {
+  font-size: 1.5rem !important; }
+
+.size-normal {
+  font-size: 1rem !important; }
+
+.size-smaller {
+  font-size: 0.625rem !important; }
+
+.size-small {
+  font-size: 0.625rem !important; }
+
+.size-extra-small {
+  font-size: 0.5rem !important; }
+
+.has-text-align-center {
+  text-align: center; }
+
+.is-fullheight {
+  height: 100%; }
+
+.has-text-weight-bold {
+  font-weight: bold; }
+
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+.size-largest {
+  font-size: 2rem !important; }
+
+.size-larger {
+  font-size: 1.5rem !important; }
+
+.size-normal {
+  font-size: 1rem !important; }
+
+.size-smaller {
+  font-size: 0.625rem !important; }
+
+.size-small {
+  font-size: 0.625rem !important; }
+
+.size-extra-small {
+  font-size: 0.5rem !important; }
+
+.has-text-align-center {
+  text-align: center; }
+
+.is-fullheight {
+  height: 100%; }
+
+.has-text-weight-bold {
+  font-weight: bold; }
+
+.input[type="checkbox"], .input[type="radio"] {
+  position: relative;
+  vertical-align: top;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-radius: 0;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+  line-height: 1.5;
+  min-height: 2.375em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  flex-direction: row;
+  max-height: 2.375em;
+  padding-top: 0.375em;
+  padding-bottom: 0.375em;
+  padding-left: 0.875em;
+  padding-right: 0.875em;
+  transition-property: color, background, background-color, border-color, border-radius, box-shadow;
+  transition-duration: 0.125s;
+  transition-timing-function: ease-in-out;
+  border-width: 0.0625em;
+  border-style: solid;
+  border-radius: 0;
+  background-color: #ffffff;
+  width: 100%; }
+  .input[type="checkbox"]:disabled, .input[type="radio"]:disabled {
+    opacity: 0.55;
+    cursor: not-allowed; }
+  .input[type="checkbox"]:focus:not(:disabled), .input[type="checkbox"]:active:not(:disabled), .input[type="radio"]:focus:not(:disabled), .input[type="radio"]:active:not(:disabled) {
+    outline: none; }
+  @supports not (-ms-high-contrast: none) {
+    .input[type="checkbox"], .input[type="radio"] {
+      border-width: 0.0625em;
+      border-style: solid;
+      border-radius: 0; } }
+  .input[type="checkbox"]::-ms-check, .input[type="radio"]::-ms-check {
+    border-width: 0.0625em;
+    border-style: solid;
+    border-radius: 0; }
+  .input[type="checkbox"]:disabled, .input[type="radio"]:disabled {
+    border-color: transparent;
+    box-shadow: none;
+    background-color: #EEEEEE;
+    opacity: 0.65; }
+  .input[type="checkbox"]:-moz-read-only, .input[type="radio"]:-moz-read-only {
+    background-color: #FAFAFA; }
+  .input[type="checkbox"]:read-only, .input[type="radio"]:read-only {
+    background-color: #FAFAFA; }
+  .input[type="checkbox"]:focus:not(:disabled):not(:-moz-read-only), .input[type="radio"]:focus:not(:disabled):not(:-moz-read-only) {
+    z-index: 1; }
+  .input[type="checkbox"]:focus:not(:disabled):not(:read-only), .input[type="radio"]:focus:not(:disabled):not(:read-only) {
+    z-index: 1; }
+    .input[type="checkbox"]:focus:not(:disabled):not(:-moz-read-only):not(select):-moz-read-only, .input[type="radio"]:focus:not(:disabled):not(:-moz-read-only):not(select):-moz-read-only {
+      box-shadow: none; }
+    .input[type="checkbox"]:focus:not(:disabled):not(:read-only):not(select):read-only, .input[type="radio"]:focus:not(:disabled):not(:read-only):not(select):read-only {
+      box-shadow: none; }
+  .apply-is-default .input, .input.is-default, .input {
+    box-shadow: inset 0 0.0625em 0.125em rgba(66, 66, 66, 0.1);
+    color: #424242; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-default .input, .input.is-default, .input {
+        border-color: #BDBDBD; } }
+    .apply-is-default .input::-ms-check, .input.is-default::-ms-check, .input::-ms-check {
+      border-color: #BDBDBD; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-default .input:hover:not(:disabled), .input.is-default:hover:not(:disabled), .input:hover:not(:disabled) {
+        border-color: #9E9E9E; } }
+    .apply-is-default .input:hover:not(:disabled)::-ms-check, .input.is-default:hover:not(:disabled)::-ms-check, .input:hover:not(:disabled)::-ms-check {
+      border-color: #9E9E9E; }
+    .apply-is-default .input:focus:not(:disabled), .input.is-default:focus:not(:disabled), .input:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(189, 189, 189, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-default .input:focus:not(:disabled):-moz-read-only, .input.is-default:focus:not(:disabled):-moz-read-only, .input:focus:not(:disabled):-moz-read-only {
+          border-color: #9E9E9E; }
+        .apply-is-default .input:focus:not(:disabled):read-only, .input.is-default:focus:not(:disabled):read-only, .input:focus:not(:disabled):read-only {
+          border-color: #9E9E9E; } }
+      .apply-is-default .input:focus:not(:disabled):read-only::-ms-check, .input.is-default:focus:not(:disabled):read-only::-ms-check, .input:focus:not(:disabled):read-only::-ms-check {
+        border-color: #9E9E9E; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-default .input:active:not(:disabled), .input.is-default:active:not(:disabled), .input:active:not(:disabled) {
+        border-color: #757575;
+        background-color: rgba(66, 66, 66, 0.02); } }
+    .apply-is-default .input:active:not(:disabled)::-ms-check, .input.is-default:active:not(:disabled)::-ms-check, .input:active:not(:disabled)::-ms-check {
+      border-color: #757575;
+      background-color: rgba(66, 66, 66, 0.02); }
+    .apply-is-default .input:active:not(:disabled):-moz-read-only, .input.is-default:active:not(:disabled):-moz-read-only, .input:active:not(:disabled):-moz-read-only {
+      background-color: rgba(66, 66, 66, 0.05); }
+    .apply-is-default .input:active:not(:disabled):read-only, .input.is-default:active:not(:disabled):read-only, .input:active:not(:disabled):read-only {
+      background-color: rgba(66, 66, 66, 0.05); }
+    .apply-is-default .input:hover:not(:disabled), .input.is-default:hover:not(:disabled), .input:hover:not(:disabled) {
+      color: #212121; }
+    .apply-is-default .input:active:not(:disabled), .input.is-default:active:not(:disabled), .input:active:not(:disabled) {
+      color: #000000; }
+    .apply-is-default .input:disabled, .input.is-default:disabled, .input:disabled {
+      color: #000000; }
+    .apply-is-default .input::-webkit-input-placeholder, .input.is-default::-webkit-input-placeholder, .input::-webkit-input-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-is-default .input::-moz-placeholder, .input.is-default::-moz-placeholder, .input::-moz-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-is-default .input:-ms-input-placeholder, .input.is-default:-ms-input-placeholder, .input:-ms-input-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-is-default .input::-ms-input-placeholder, .input.is-default::-ms-input-placeholder, .input::-ms-input-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-is-default .input::placeholder, .input.is-default::placeholder, .input::placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+  .apply-is-white .input, .input.is-white {
+    box-shadow: inset 0 0.0625em 0.125em rgba(255, 255, 255, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-white .input, .input.is-white {
+        border-color: #ffffff; } }
+    .apply-is-white .input::-ms-check, .input.is-white::-ms-check {
+      border-color: #ffffff; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-white .input:hover:not(:disabled), .input.is-white:hover:not(:disabled) {
+        border-color: #FAFAFA; } }
+    .apply-is-white .input:hover:not(:disabled)::-ms-check, .input.is-white:hover:not(:disabled)::-ms-check {
+      border-color: #FAFAFA; }
+    .apply-is-white .input:focus:not(:disabled), .input.is-white:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(255, 255, 255, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-white .input:focus:not(:disabled):-moz-read-only, .input.is-white:focus:not(:disabled):-moz-read-only {
+          border-color: #FAFAFA; }
+        .apply-is-white .input:focus:not(:disabled):read-only, .input.is-white:focus:not(:disabled):read-only {
+          border-color: #FAFAFA; } }
+      .apply-is-white .input:focus:not(:disabled):read-only::-ms-check, .input.is-white:focus:not(:disabled):read-only::-ms-check {
+        border-color: #FAFAFA; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-white .input:active:not(:disabled), .input.is-white:active:not(:disabled) {
+        border-color: #F5F5F5;
+        background-color: rgba(255, 255, 255, 0.02); } }
+    .apply-is-white .input:active:not(:disabled)::-ms-check, .input.is-white:active:not(:disabled)::-ms-check {
+      border-color: #F5F5F5;
+      background-color: rgba(255, 255, 255, 0.02); }
+    .apply-is-white .input:active:not(:disabled):-moz-read-only, .input.is-white:active:not(:disabled):-moz-read-only {
+      background-color: rgba(255, 255, 255, 0.05); }
+    .apply-is-white .input:active:not(:disabled):read-only, .input.is-white:active:not(:disabled):read-only {
+      background-color: rgba(255, 255, 255, 0.05); }
+  .apply-has-colored-text.apply-is-white .input, .apply-has-colored-text .input.is-white, .apply-is-white .input.has-colored-text, .input.has-colored-text.is-white {
+    color: #ffffff; }
+    .apply-has-colored-text.apply-is-white .input:hover:not(:disabled), .apply-has-colored-text .input.is-white:hover:not(:disabled), .apply-is-white .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-white:hover:not(:disabled) {
+      color: #FAFAFA; }
+    .apply-has-colored-text.apply-is-white .input:active:not(:disabled), .apply-has-colored-text .input.is-white:active:not(:disabled), .apply-is-white .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-white:active:not(:disabled) {
+      color: #F5F5F5; }
+    .apply-has-colored-text.apply-is-white .input:disabled, .apply-has-colored-text .input.is-white:disabled, .apply-is-white .input.has-colored-text:disabled, .input.has-colored-text.is-white:disabled {
+      color: #F5F5F5; }
+    .apply-has-colored-text.apply-is-white .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-white::-webkit-input-placeholder, .apply-is-white .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-white::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    .apply-has-colored-text.apply-is-white .input::-moz-placeholder, .apply-has-colored-text .input.is-white::-moz-placeholder, .apply-is-white .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-white::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    .apply-has-colored-text.apply-is-white .input:-ms-input-placeholder, .apply-has-colored-text .input.is-white:-ms-input-placeholder, .apply-is-white .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-white:-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    .apply-has-colored-text.apply-is-white .input::-ms-input-placeholder, .apply-has-colored-text .input.is-white::-ms-input-placeholder, .apply-is-white .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-white::-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    .apply-has-colored-text.apply-is-white .input::placeholder, .apply-has-colored-text .input.is-white::placeholder, .apply-is-white .input.has-colored-text::placeholder, .input.has-colored-text.is-white::placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+  .apply-is-light .input, .input.is-light {
+    box-shadow: inset 0 0.0625em 0.125em rgba(238, 238, 238, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-light .input, .input.is-light {
+        border-color: #EEEEEE; } }
+    .apply-is-light .input::-ms-check, .input.is-light::-ms-check {
+      border-color: #EEEEEE; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-light .input:hover:not(:disabled), .input.is-light:hover:not(:disabled) {
+        border-color: #E0E0E0; } }
+    .apply-is-light .input:hover:not(:disabled)::-ms-check, .input.is-light:hover:not(:disabled)::-ms-check {
+      border-color: #E0E0E0; }
+    .apply-is-light .input:focus:not(:disabled), .input.is-light:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(238, 238, 238, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-light .input:focus:not(:disabled):-moz-read-only, .input.is-light:focus:not(:disabled):-moz-read-only {
+          border-color: #E0E0E0; }
+        .apply-is-light .input:focus:not(:disabled):read-only, .input.is-light:focus:not(:disabled):read-only {
+          border-color: #E0E0E0; } }
+      .apply-is-light .input:focus:not(:disabled):read-only::-ms-check, .input.is-light:focus:not(:disabled):read-only::-ms-check {
+        border-color: #E0E0E0; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-light .input:active:not(:disabled), .input.is-light:active:not(:disabled) {
+        border-color: #BDBDBD;
+        background-color: rgba(238, 238, 238, 0.02); } }
+    .apply-is-light .input:active:not(:disabled)::-ms-check, .input.is-light:active:not(:disabled)::-ms-check {
+      border-color: #BDBDBD;
+      background-color: rgba(238, 238, 238, 0.02); }
+    .apply-is-light .input:active:not(:disabled):-moz-read-only, .input.is-light:active:not(:disabled):-moz-read-only {
+      background-color: rgba(238, 238, 238, 0.05); }
+    .apply-is-light .input:active:not(:disabled):read-only, .input.is-light:active:not(:disabled):read-only {
+      background-color: rgba(238, 238, 238, 0.05); }
+  .apply-has-colored-text.apply-is-light .input, .apply-has-colored-text .input.is-light, .apply-is-light .input.has-colored-text, .input.has-colored-text.is-light {
+    color: #EEEEEE; }
+    .apply-has-colored-text.apply-is-light .input:hover:not(:disabled), .apply-has-colored-text .input.is-light:hover:not(:disabled), .apply-is-light .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-light:hover:not(:disabled) {
+      color: #E0E0E0; }
+    .apply-has-colored-text.apply-is-light .input:active:not(:disabled), .apply-has-colored-text .input.is-light:active:not(:disabled), .apply-is-light .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-light:active:not(:disabled) {
+      color: #BDBDBD; }
+    .apply-has-colored-text.apply-is-light .input:disabled, .apply-has-colored-text .input.is-light:disabled, .apply-is-light .input.has-colored-text:disabled, .input.has-colored-text.is-light:disabled {
+      color: #BDBDBD; }
+    .apply-has-colored-text.apply-is-light .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-light::-webkit-input-placeholder, .apply-is-light .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-light::-webkit-input-placeholder {
+      color: rgba(238, 238, 238, 0.5); }
+    .apply-has-colored-text.apply-is-light .input::-moz-placeholder, .apply-has-colored-text .input.is-light::-moz-placeholder, .apply-is-light .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-light::-moz-placeholder {
+      color: rgba(238, 238, 238, 0.5); }
+    .apply-has-colored-text.apply-is-light .input:-ms-input-placeholder, .apply-has-colored-text .input.is-light:-ms-input-placeholder, .apply-is-light .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-light:-ms-input-placeholder {
+      color: rgba(238, 238, 238, 0.5); }
+    .apply-has-colored-text.apply-is-light .input::-ms-input-placeholder, .apply-has-colored-text .input.is-light::-ms-input-placeholder, .apply-is-light .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-light::-ms-input-placeholder {
+      color: rgba(238, 238, 238, 0.5); }
+    .apply-has-colored-text.apply-is-light .input::placeholder, .apply-has-colored-text .input.is-light::placeholder, .apply-is-light .input.has-colored-text::placeholder, .input.has-colored-text.is-light::placeholder {
+      color: rgba(238, 238, 238, 0.5); }
+  .apply-is-grey .input, .input.is-grey {
+    box-shadow: inset 0 0.0625em 0.125em rgba(117, 117, 117, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-grey .input, .input.is-grey {
+        border-color: #757575; } }
+    .apply-is-grey .input::-ms-check, .input.is-grey::-ms-check {
+      border-color: #757575; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-grey .input:hover:not(:disabled), .input.is-grey:hover:not(:disabled) {
+        border-color: #616161; } }
+    .apply-is-grey .input:hover:not(:disabled)::-ms-check, .input.is-grey:hover:not(:disabled)::-ms-check {
+      border-color: #616161; }
+    .apply-is-grey .input:focus:not(:disabled), .input.is-grey:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(117, 117, 117, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-grey .input:focus:not(:disabled):-moz-read-only, .input.is-grey:focus:not(:disabled):-moz-read-only {
+          border-color: #616161; }
+        .apply-is-grey .input:focus:not(:disabled):read-only, .input.is-grey:focus:not(:disabled):read-only {
+          border-color: #616161; } }
+      .apply-is-grey .input:focus:not(:disabled):read-only::-ms-check, .input.is-grey:focus:not(:disabled):read-only::-ms-check {
+        border-color: #616161; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-grey .input:active:not(:disabled), .input.is-grey:active:not(:disabled) {
+        border-color: #424242;
+        background-color: rgba(117, 117, 117, 0.02); } }
+    .apply-is-grey .input:active:not(:disabled)::-ms-check, .input.is-grey:active:not(:disabled)::-ms-check {
+      border-color: #424242;
+      background-color: rgba(117, 117, 117, 0.02); }
+    .apply-is-grey .input:active:not(:disabled):-moz-read-only, .input.is-grey:active:not(:disabled):-moz-read-only {
+      background-color: rgba(117, 117, 117, 0.05); }
+    .apply-is-grey .input:active:not(:disabled):read-only, .input.is-grey:active:not(:disabled):read-only {
+      background-color: rgba(117, 117, 117, 0.05); }
+  .apply-has-colored-text.apply-is-grey .input, .apply-has-colored-text .input.is-grey, .apply-is-grey .input.has-colored-text, .input.has-colored-text.is-grey {
+    color: #757575; }
+    .apply-has-colored-text.apply-is-grey .input:hover:not(:disabled), .apply-has-colored-text .input.is-grey:hover:not(:disabled), .apply-is-grey .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-grey:hover:not(:disabled) {
+      color: #616161; }
+    .apply-has-colored-text.apply-is-grey .input:active:not(:disabled), .apply-has-colored-text .input.is-grey:active:not(:disabled), .apply-is-grey .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-grey:active:not(:disabled) {
+      color: #424242; }
+    .apply-has-colored-text.apply-is-grey .input:disabled, .apply-has-colored-text .input.is-grey:disabled, .apply-is-grey .input.has-colored-text:disabled, .input.has-colored-text.is-grey:disabled {
+      color: #424242; }
+    .apply-has-colored-text.apply-is-grey .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-grey::-webkit-input-placeholder, .apply-is-grey .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-grey::-webkit-input-placeholder {
+      color: rgba(117, 117, 117, 0.5); }
+    .apply-has-colored-text.apply-is-grey .input::-moz-placeholder, .apply-has-colored-text .input.is-grey::-moz-placeholder, .apply-is-grey .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-grey::-moz-placeholder {
+      color: rgba(117, 117, 117, 0.5); }
+    .apply-has-colored-text.apply-is-grey .input:-ms-input-placeholder, .apply-has-colored-text .input.is-grey:-ms-input-placeholder, .apply-is-grey .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-grey:-ms-input-placeholder {
+      color: rgba(117, 117, 117, 0.5); }
+    .apply-has-colored-text.apply-is-grey .input::-ms-input-placeholder, .apply-has-colored-text .input.is-grey::-ms-input-placeholder, .apply-is-grey .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-grey::-ms-input-placeholder {
+      color: rgba(117, 117, 117, 0.5); }
+    .apply-has-colored-text.apply-is-grey .input::placeholder, .apply-has-colored-text .input.is-grey::placeholder, .apply-is-grey .input.has-colored-text::placeholder, .input.has-colored-text.is-grey::placeholder {
+      color: rgba(117, 117, 117, 0.5); }
+  .apply-is-dark .input, .input.is-dark {
+    box-shadow: inset 0 0.0625em 0.125em rgba(66, 66, 66, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-dark .input, .input.is-dark {
+        border-color: #424242; } }
+    .apply-is-dark .input::-ms-check, .input.is-dark::-ms-check {
+      border-color: #424242; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-dark .input:hover:not(:disabled), .input.is-dark:hover:not(:disabled) {
+        border-color: #212121; } }
+    .apply-is-dark .input:hover:not(:disabled)::-ms-check, .input.is-dark:hover:not(:disabled)::-ms-check {
+      border-color: #212121; }
+    .apply-is-dark .input:focus:not(:disabled), .input.is-dark:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(66, 66, 66, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-dark .input:focus:not(:disabled):-moz-read-only, .input.is-dark:focus:not(:disabled):-moz-read-only {
+          border-color: #212121; }
+        .apply-is-dark .input:focus:not(:disabled):read-only, .input.is-dark:focus:not(:disabled):read-only {
+          border-color: #212121; } }
+      .apply-is-dark .input:focus:not(:disabled):read-only::-ms-check, .input.is-dark:focus:not(:disabled):read-only::-ms-check {
+        border-color: #212121; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-dark .input:active:not(:disabled), .input.is-dark:active:not(:disabled) {
+        border-color: #141414;
+        background-color: rgba(66, 66, 66, 0.02); } }
+    .apply-is-dark .input:active:not(:disabled)::-ms-check, .input.is-dark:active:not(:disabled)::-ms-check {
+      border-color: #141414;
+      background-color: rgba(66, 66, 66, 0.02); }
+    .apply-is-dark .input:active:not(:disabled):-moz-read-only, .input.is-dark:active:not(:disabled):-moz-read-only {
+      background-color: rgba(66, 66, 66, 0.05); }
+    .apply-is-dark .input:active:not(:disabled):read-only, .input.is-dark:active:not(:disabled):read-only {
+      background-color: rgba(66, 66, 66, 0.05); }
+  .apply-has-colored-text.apply-is-dark .input, .apply-has-colored-text .input.is-dark, .apply-is-dark .input.has-colored-text, .input.has-colored-text.is-dark {
+    color: #424242; }
+    .apply-has-colored-text.apply-is-dark .input:hover:not(:disabled), .apply-has-colored-text .input.is-dark:hover:not(:disabled), .apply-is-dark .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-dark:hover:not(:disabled) {
+      color: #212121; }
+    .apply-has-colored-text.apply-is-dark .input:active:not(:disabled), .apply-has-colored-text .input.is-dark:active:not(:disabled), .apply-is-dark .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-dark:active:not(:disabled) {
+      color: #141414; }
+    .apply-has-colored-text.apply-is-dark .input:disabled, .apply-has-colored-text .input.is-dark:disabled, .apply-is-dark .input.has-colored-text:disabled, .input.has-colored-text.is-dark:disabled {
+      color: #141414; }
+    .apply-has-colored-text.apply-is-dark .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-dark::-webkit-input-placeholder, .apply-is-dark .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-dark::-webkit-input-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-has-colored-text.apply-is-dark .input::-moz-placeholder, .apply-has-colored-text .input.is-dark::-moz-placeholder, .apply-is-dark .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-dark::-moz-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-has-colored-text.apply-is-dark .input:-ms-input-placeholder, .apply-has-colored-text .input.is-dark:-ms-input-placeholder, .apply-is-dark .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-dark:-ms-input-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-has-colored-text.apply-is-dark .input::-ms-input-placeholder, .apply-has-colored-text .input.is-dark::-ms-input-placeholder, .apply-is-dark .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-dark::-ms-input-placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+    .apply-has-colored-text.apply-is-dark .input::placeholder, .apply-has-colored-text .input.is-dark::placeholder, .apply-is-dark .input.has-colored-text::placeholder, .input.has-colored-text.is-dark::placeholder {
+      color: rgba(66, 66, 66, 0.5); }
+  .apply-is-black .input, .input.is-black {
+    box-shadow: inset 0 0.0625em 0.125em rgba(33, 33, 33, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-black .input, .input.is-black {
+        border-color: #212121; } }
+    .apply-is-black .input::-ms-check, .input.is-black::-ms-check {
+      border-color: #212121; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-black .input:hover:not(:disabled), .input.is-black:hover:not(:disabled) {
+        border-color: #141414; } }
+    .apply-is-black .input:hover:not(:disabled)::-ms-check, .input.is-black:hover:not(:disabled)::-ms-check {
+      border-color: #141414; }
+    .apply-is-black .input:focus:not(:disabled), .input.is-black:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(33, 33, 33, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-black .input:focus:not(:disabled):-moz-read-only, .input.is-black:focus:not(:disabled):-moz-read-only {
+          border-color: #141414; }
+        .apply-is-black .input:focus:not(:disabled):read-only, .input.is-black:focus:not(:disabled):read-only {
+          border-color: #141414; } }
+      .apply-is-black .input:focus:not(:disabled):read-only::-ms-check, .input.is-black:focus:not(:disabled):read-only::-ms-check {
+        border-color: #141414; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-black .input:active:not(:disabled), .input.is-black:active:not(:disabled) {
+        border-color: #000000;
+        background-color: rgba(33, 33, 33, 0.02); } }
+    .apply-is-black .input:active:not(:disabled)::-ms-check, .input.is-black:active:not(:disabled)::-ms-check {
+      border-color: #000000;
+      background-color: rgba(33, 33, 33, 0.02); }
+    .apply-is-black .input:active:not(:disabled):-moz-read-only, .input.is-black:active:not(:disabled):-moz-read-only {
+      background-color: rgba(33, 33, 33, 0.05); }
+    .apply-is-black .input:active:not(:disabled):read-only, .input.is-black:active:not(:disabled):read-only {
+      background-color: rgba(33, 33, 33, 0.05); }
+  .apply-has-colored-text.apply-is-black .input, .apply-has-colored-text .input.is-black, .apply-is-black .input.has-colored-text, .input.has-colored-text.is-black {
+    color: #212121; }
+    .apply-has-colored-text.apply-is-black .input:hover:not(:disabled), .apply-has-colored-text .input.is-black:hover:not(:disabled), .apply-is-black .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-black:hover:not(:disabled) {
+      color: #141414; }
+    .apply-has-colored-text.apply-is-black .input:active:not(:disabled), .apply-has-colored-text .input.is-black:active:not(:disabled), .apply-is-black .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-black:active:not(:disabled) {
+      color: #000000; }
+    .apply-has-colored-text.apply-is-black .input:disabled, .apply-has-colored-text .input.is-black:disabled, .apply-is-black .input.has-colored-text:disabled, .input.has-colored-text.is-black:disabled {
+      color: #000000; }
+    .apply-has-colored-text.apply-is-black .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-black::-webkit-input-placeholder, .apply-is-black .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-black::-webkit-input-placeholder {
+      color: rgba(33, 33, 33, 0.5); }
+    .apply-has-colored-text.apply-is-black .input::-moz-placeholder, .apply-has-colored-text .input.is-black::-moz-placeholder, .apply-is-black .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-black::-moz-placeholder {
+      color: rgba(33, 33, 33, 0.5); }
+    .apply-has-colored-text.apply-is-black .input:-ms-input-placeholder, .apply-has-colored-text .input.is-black:-ms-input-placeholder, .apply-is-black .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-black:-ms-input-placeholder {
+      color: rgba(33, 33, 33, 0.5); }
+    .apply-has-colored-text.apply-is-black .input::-ms-input-placeholder, .apply-has-colored-text .input.is-black::-ms-input-placeholder, .apply-is-black .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-black::-ms-input-placeholder {
+      color: rgba(33, 33, 33, 0.5); }
+    .apply-has-colored-text.apply-is-black .input::placeholder, .apply-has-colored-text .input.is-black::placeholder, .apply-is-black .input.has-colored-text::placeholder, .input.has-colored-text.is-black::placeholder {
+      color: rgba(33, 33, 33, 0.5); }
+  .apply-is-primary .input, .input.is-primary {
+    box-shadow: inset 0 0.0625em 0.125em rgba(30, 136, 229, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-primary .input, .input.is-primary {
+        border-color: #1E88E5; } }
+    .apply-is-primary .input::-ms-check, .input.is-primary::-ms-check {
+      border-color: #1E88E5; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-primary .input:hover:not(:disabled), .input.is-primary:hover:not(:disabled) {
+        border-color: #1976D2; } }
+    .apply-is-primary .input:hover:not(:disabled)::-ms-check, .input.is-primary:hover:not(:disabled)::-ms-check {
+      border-color: #1976D2; }
+    .apply-is-primary .input:focus:not(:disabled), .input.is-primary:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(30, 136, 229, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-primary .input:focus:not(:disabled):-moz-read-only, .input.is-primary:focus:not(:disabled):-moz-read-only {
+          border-color: #1976D2; }
+        .apply-is-primary .input:focus:not(:disabled):read-only, .input.is-primary:focus:not(:disabled):read-only {
+          border-color: #1976D2; } }
+      .apply-is-primary .input:focus:not(:disabled):read-only::-ms-check, .input.is-primary:focus:not(:disabled):read-only::-ms-check {
+        border-color: #1976D2; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-primary .input:active:not(:disabled), .input.is-primary:active:not(:disabled) {
+        border-color: #1565C0;
+        background-color: rgba(30, 136, 229, 0.02); } }
+    .apply-is-primary .input:active:not(:disabled)::-ms-check, .input.is-primary:active:not(:disabled)::-ms-check {
+      border-color: #1565C0;
+      background-color: rgba(30, 136, 229, 0.02); }
+    .apply-is-primary .input:active:not(:disabled):-moz-read-only, .input.is-primary:active:not(:disabled):-moz-read-only {
+      background-color: rgba(30, 136, 229, 0.05); }
+    .apply-is-primary .input:active:not(:disabled):read-only, .input.is-primary:active:not(:disabled):read-only {
+      background-color: rgba(30, 136, 229, 0.05); }
+  .apply-has-colored-text.apply-is-primary .input, .apply-has-colored-text .input.is-primary, .apply-is-primary .input.has-colored-text, .input.has-colored-text.is-primary {
+    color: #1E88E5; }
+    .apply-has-colored-text.apply-is-primary .input:hover:not(:disabled), .apply-has-colored-text .input.is-primary:hover:not(:disabled), .apply-is-primary .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-primary:hover:not(:disabled) {
+      color: #1976D2; }
+    .apply-has-colored-text.apply-is-primary .input:active:not(:disabled), .apply-has-colored-text .input.is-primary:active:not(:disabled), .apply-is-primary .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-primary:active:not(:disabled) {
+      color: #1565C0; }
+    .apply-has-colored-text.apply-is-primary .input:disabled, .apply-has-colored-text .input.is-primary:disabled, .apply-is-primary .input.has-colored-text:disabled, .input.has-colored-text.is-primary:disabled {
+      color: #1565C0; }
+    .apply-has-colored-text.apply-is-primary .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-primary::-webkit-input-placeholder, .apply-is-primary .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-primary::-webkit-input-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-primary .input::-moz-placeholder, .apply-has-colored-text .input.is-primary::-moz-placeholder, .apply-is-primary .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-primary::-moz-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-primary .input:-ms-input-placeholder, .apply-has-colored-text .input.is-primary:-ms-input-placeholder, .apply-is-primary .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-primary:-ms-input-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-primary .input::-ms-input-placeholder, .apply-has-colored-text .input.is-primary::-ms-input-placeholder, .apply-is-primary .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-primary::-ms-input-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-primary .input::placeholder, .apply-has-colored-text .input.is-primary::placeholder, .apply-is-primary .input.has-colored-text::placeholder, .input.has-colored-text.is-primary::placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+  .apply-is-info .input, .input.is-info {
+    box-shadow: inset 0 0.0625em 0.125em rgba(30, 136, 229, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-info .input, .input.is-info {
+        border-color: #1E88E5; } }
+    .apply-is-info .input::-ms-check, .input.is-info::-ms-check {
+      border-color: #1E88E5; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-info .input:hover:not(:disabled), .input.is-info:hover:not(:disabled) {
+        border-color: #1976D2; } }
+    .apply-is-info .input:hover:not(:disabled)::-ms-check, .input.is-info:hover:not(:disabled)::-ms-check {
+      border-color: #1976D2; }
+    .apply-is-info .input:focus:not(:disabled), .input.is-info:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(30, 136, 229, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-info .input:focus:not(:disabled):-moz-read-only, .input.is-info:focus:not(:disabled):-moz-read-only {
+          border-color: #1976D2; }
+        .apply-is-info .input:focus:not(:disabled):read-only, .input.is-info:focus:not(:disabled):read-only {
+          border-color: #1976D2; } }
+      .apply-is-info .input:focus:not(:disabled):read-only::-ms-check, .input.is-info:focus:not(:disabled):read-only::-ms-check {
+        border-color: #1976D2; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-info .input:active:not(:disabled), .input.is-info:active:not(:disabled) {
+        border-color: #1565C0;
+        background-color: rgba(30, 136, 229, 0.02); } }
+    .apply-is-info .input:active:not(:disabled)::-ms-check, .input.is-info:active:not(:disabled)::-ms-check {
+      border-color: #1565C0;
+      background-color: rgba(30, 136, 229, 0.02); }
+    .apply-is-info .input:active:not(:disabled):-moz-read-only, .input.is-info:active:not(:disabled):-moz-read-only {
+      background-color: rgba(30, 136, 229, 0.05); }
+    .apply-is-info .input:active:not(:disabled):read-only, .input.is-info:active:not(:disabled):read-only {
+      background-color: rgba(30, 136, 229, 0.05); }
+  .apply-has-colored-text.apply-is-info .input, .apply-has-colored-text .input.is-info, .apply-is-info .input.has-colored-text, .input.has-colored-text.is-info {
+    color: #1E88E5; }
+    .apply-has-colored-text.apply-is-info .input:hover:not(:disabled), .apply-has-colored-text .input.is-info:hover:not(:disabled), .apply-is-info .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-info:hover:not(:disabled) {
+      color: #1976D2; }
+    .apply-has-colored-text.apply-is-info .input:active:not(:disabled), .apply-has-colored-text .input.is-info:active:not(:disabled), .apply-is-info .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-info:active:not(:disabled) {
+      color: #1565C0; }
+    .apply-has-colored-text.apply-is-info .input:disabled, .apply-has-colored-text .input.is-info:disabled, .apply-is-info .input.has-colored-text:disabled, .input.has-colored-text.is-info:disabled {
+      color: #1565C0; }
+    .apply-has-colored-text.apply-is-info .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-info::-webkit-input-placeholder, .apply-is-info .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-info::-webkit-input-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-info .input::-moz-placeholder, .apply-has-colored-text .input.is-info::-moz-placeholder, .apply-is-info .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-info::-moz-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-info .input:-ms-input-placeholder, .apply-has-colored-text .input.is-info:-ms-input-placeholder, .apply-is-info .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-info:-ms-input-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-info .input::-ms-input-placeholder, .apply-has-colored-text .input.is-info::-ms-input-placeholder, .apply-is-info .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-info::-ms-input-placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+    .apply-has-colored-text.apply-is-info .input::placeholder, .apply-has-colored-text .input.is-info::placeholder, .apply-is-info .input.has-colored-text::placeholder, .input.has-colored-text.is-info::placeholder {
+      color: rgba(30, 136, 229, 0.5); }
+  .apply-is-success .input, .input.is-success {
+    box-shadow: inset 0 0.0625em 0.125em rgba(67, 160, 71, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-success .input, .input.is-success {
+        border-color: #43A047; } }
+    .apply-is-success .input::-ms-check, .input.is-success::-ms-check {
+      border-color: #43A047; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-success .input:hover:not(:disabled), .input.is-success:hover:not(:disabled) {
+        border-color: #388E3C; } }
+    .apply-is-success .input:hover:not(:disabled)::-ms-check, .input.is-success:hover:not(:disabled)::-ms-check {
+      border-color: #388E3C; }
+    .apply-is-success .input:focus:not(:disabled), .input.is-success:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(67, 160, 71, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-success .input:focus:not(:disabled):-moz-read-only, .input.is-success:focus:not(:disabled):-moz-read-only {
+          border-color: #388E3C; }
+        .apply-is-success .input:focus:not(:disabled):read-only, .input.is-success:focus:not(:disabled):read-only {
+          border-color: #388E3C; } }
+      .apply-is-success .input:focus:not(:disabled):read-only::-ms-check, .input.is-success:focus:not(:disabled):read-only::-ms-check {
+        border-color: #388E3C; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-success .input:active:not(:disabled), .input.is-success:active:not(:disabled) {
+        border-color: #2E7D32;
+        background-color: rgba(67, 160, 71, 0.02); } }
+    .apply-is-success .input:active:not(:disabled)::-ms-check, .input.is-success:active:not(:disabled)::-ms-check {
+      border-color: #2E7D32;
+      background-color: rgba(67, 160, 71, 0.02); }
+    .apply-is-success .input:active:not(:disabled):-moz-read-only, .input.is-success:active:not(:disabled):-moz-read-only {
+      background-color: rgba(67, 160, 71, 0.05); }
+    .apply-is-success .input:active:not(:disabled):read-only, .input.is-success:active:not(:disabled):read-only {
+      background-color: rgba(67, 160, 71, 0.05); }
+  .apply-has-colored-text.apply-is-success .input, .apply-has-colored-text .input.is-success, .apply-is-success .input.has-colored-text, .input.has-colored-text.is-success {
+    color: #43A047; }
+    .apply-has-colored-text.apply-is-success .input:hover:not(:disabled), .apply-has-colored-text .input.is-success:hover:not(:disabled), .apply-is-success .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-success:hover:not(:disabled) {
+      color: #388E3C; }
+    .apply-has-colored-text.apply-is-success .input:active:not(:disabled), .apply-has-colored-text .input.is-success:active:not(:disabled), .apply-is-success .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-success:active:not(:disabled) {
+      color: #2E7D32; }
+    .apply-has-colored-text.apply-is-success .input:disabled, .apply-has-colored-text .input.is-success:disabled, .apply-is-success .input.has-colored-text:disabled, .input.has-colored-text.is-success:disabled {
+      color: #2E7D32; }
+    .apply-has-colored-text.apply-is-success .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-success::-webkit-input-placeholder, .apply-is-success .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-success::-webkit-input-placeholder {
+      color: rgba(67, 160, 71, 0.5); }
+    .apply-has-colored-text.apply-is-success .input::-moz-placeholder, .apply-has-colored-text .input.is-success::-moz-placeholder, .apply-is-success .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-success::-moz-placeholder {
+      color: rgba(67, 160, 71, 0.5); }
+    .apply-has-colored-text.apply-is-success .input:-ms-input-placeholder, .apply-has-colored-text .input.is-success:-ms-input-placeholder, .apply-is-success .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-success:-ms-input-placeholder {
+      color: rgba(67, 160, 71, 0.5); }
+    .apply-has-colored-text.apply-is-success .input::-ms-input-placeholder, .apply-has-colored-text .input.is-success::-ms-input-placeholder, .apply-is-success .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-success::-ms-input-placeholder {
+      color: rgba(67, 160, 71, 0.5); }
+    .apply-has-colored-text.apply-is-success .input::placeholder, .apply-has-colored-text .input.is-success::placeholder, .apply-is-success .input.has-colored-text::placeholder, .input.has-colored-text.is-success::placeholder {
+      color: rgba(67, 160, 71, 0.5); }
+  .apply-is-warning .input, .input.is-warning {
+    box-shadow: inset 0 0.0625em 0.125em rgba(253, 216, 53, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-warning .input, .input.is-warning {
+        border-color: #FDD835; } }
+    .apply-is-warning .input::-ms-check, .input.is-warning::-ms-check {
+      border-color: #FDD835; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-warning .input:hover:not(:disabled), .input.is-warning:hover:not(:disabled) {
+        border-color: #FBC02D; } }
+    .apply-is-warning .input:hover:not(:disabled)::-ms-check, .input.is-warning:hover:not(:disabled)::-ms-check {
+      border-color: #FBC02D; }
+    .apply-is-warning .input:focus:not(:disabled), .input.is-warning:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(253, 216, 53, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-warning .input:focus:not(:disabled):-moz-read-only, .input.is-warning:focus:not(:disabled):-moz-read-only {
+          border-color: #FBC02D; }
+        .apply-is-warning .input:focus:not(:disabled):read-only, .input.is-warning:focus:not(:disabled):read-only {
+          border-color: #FBC02D; } }
+      .apply-is-warning .input:focus:not(:disabled):read-only::-ms-check, .input.is-warning:focus:not(:disabled):read-only::-ms-check {
+        border-color: #FBC02D; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-warning .input:active:not(:disabled), .input.is-warning:active:not(:disabled) {
+        border-color: #F9A825;
+        background-color: rgba(253, 216, 53, 0.02); } }
+    .apply-is-warning .input:active:not(:disabled)::-ms-check, .input.is-warning:active:not(:disabled)::-ms-check {
+      border-color: #F9A825;
+      background-color: rgba(253, 216, 53, 0.02); }
+    .apply-is-warning .input:active:not(:disabled):-moz-read-only, .input.is-warning:active:not(:disabled):-moz-read-only {
+      background-color: rgba(253, 216, 53, 0.05); }
+    .apply-is-warning .input:active:not(:disabled):read-only, .input.is-warning:active:not(:disabled):read-only {
+      background-color: rgba(253, 216, 53, 0.05); }
+  .apply-has-colored-text.apply-is-warning .input, .apply-has-colored-text .input.is-warning, .apply-is-warning .input.has-colored-text, .input.has-colored-text.is-warning {
+    color: #FDD835; }
+    .apply-has-colored-text.apply-is-warning .input:hover:not(:disabled), .apply-has-colored-text .input.is-warning:hover:not(:disabled), .apply-is-warning .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-warning:hover:not(:disabled) {
+      color: #FBC02D; }
+    .apply-has-colored-text.apply-is-warning .input:active:not(:disabled), .apply-has-colored-text .input.is-warning:active:not(:disabled), .apply-is-warning .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-warning:active:not(:disabled) {
+      color: #F9A825; }
+    .apply-has-colored-text.apply-is-warning .input:disabled, .apply-has-colored-text .input.is-warning:disabled, .apply-is-warning .input.has-colored-text:disabled, .input.has-colored-text.is-warning:disabled {
+      color: #F9A825; }
+    .apply-has-colored-text.apply-is-warning .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-warning::-webkit-input-placeholder, .apply-is-warning .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-warning::-webkit-input-placeholder {
+      color: rgba(253, 216, 53, 0.5); }
+    .apply-has-colored-text.apply-is-warning .input::-moz-placeholder, .apply-has-colored-text .input.is-warning::-moz-placeholder, .apply-is-warning .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-warning::-moz-placeholder {
+      color: rgba(253, 216, 53, 0.5); }
+    .apply-has-colored-text.apply-is-warning .input:-ms-input-placeholder, .apply-has-colored-text .input.is-warning:-ms-input-placeholder, .apply-is-warning .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-warning:-ms-input-placeholder {
+      color: rgba(253, 216, 53, 0.5); }
+    .apply-has-colored-text.apply-is-warning .input::-ms-input-placeholder, .apply-has-colored-text .input.is-warning::-ms-input-placeholder, .apply-is-warning .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-warning::-ms-input-placeholder {
+      color: rgba(253, 216, 53, 0.5); }
+    .apply-has-colored-text.apply-is-warning .input::placeholder, .apply-has-colored-text .input.is-warning::placeholder, .apply-is-warning .input.has-colored-text::placeholder, .input.has-colored-text.is-warning::placeholder {
+      color: rgba(253, 216, 53, 0.5); }
+  .apply-is-danger .input, .input.is-danger {
+    box-shadow: inset 0 0.0625em 0.125em rgba(229, 57, 53, 0.1); }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-danger .input, .input.is-danger {
+        border-color: #E53935; } }
+    .apply-is-danger .input::-ms-check, .input.is-danger::-ms-check {
+      border-color: #E53935; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-danger .input:hover:not(:disabled), .input.is-danger:hover:not(:disabled) {
+        border-color: #D32F2F; } }
+    .apply-is-danger .input:hover:not(:disabled)::-ms-check, .input.is-danger:hover:not(:disabled)::-ms-check {
+      border-color: #D32F2F; }
+    .apply-is-danger .input:focus:not(:disabled), .input.is-danger:focus:not(:disabled) {
+      box-shadow: inset 0 0 transparent, 0 0 0 0.175em rgba(229, 57, 53, 0.5); }
+      @supports not (-ms-high-contrast: none) {
+        .apply-is-danger .input:focus:not(:disabled):-moz-read-only, .input.is-danger:focus:not(:disabled):-moz-read-only {
+          border-color: #D32F2F; }
+        .apply-is-danger .input:focus:not(:disabled):read-only, .input.is-danger:focus:not(:disabled):read-only {
+          border-color: #D32F2F; } }
+      .apply-is-danger .input:focus:not(:disabled):read-only::-ms-check, .input.is-danger:focus:not(:disabled):read-only::-ms-check {
+        border-color: #D32F2F; }
+    @supports not (-ms-high-contrast: none) {
+      .apply-is-danger .input:active:not(:disabled), .input.is-danger:active:not(:disabled) {
+        border-color: #C62828;
+        background-color: rgba(229, 57, 53, 0.02); } }
+    .apply-is-danger .input:active:not(:disabled)::-ms-check, .input.is-danger:active:not(:disabled)::-ms-check {
+      border-color: #C62828;
+      background-color: rgba(229, 57, 53, 0.02); }
+    .apply-is-danger .input:active:not(:disabled):-moz-read-only, .input.is-danger:active:not(:disabled):-moz-read-only {
+      background-color: rgba(229, 57, 53, 0.05); }
+    .apply-is-danger .input:active:not(:disabled):read-only, .input.is-danger:active:not(:disabled):read-only {
+      background-color: rgba(229, 57, 53, 0.05); }
+  .apply-has-colored-text.apply-is-danger .input, .apply-has-colored-text .input.is-danger, .apply-is-danger .input.has-colored-text, .input.has-colored-text.is-danger {
+    color: #E53935; }
+    .apply-has-colored-text.apply-is-danger .input:hover:not(:disabled), .apply-has-colored-text .input.is-danger:hover:not(:disabled), .apply-is-danger .input.has-colored-text:hover:not(:disabled), .input.has-colored-text.is-danger:hover:not(:disabled) {
+      color: #D32F2F; }
+    .apply-has-colored-text.apply-is-danger .input:active:not(:disabled), .apply-has-colored-text .input.is-danger:active:not(:disabled), .apply-is-danger .input.has-colored-text:active:not(:disabled), .input.has-colored-text.is-danger:active:not(:disabled) {
+      color: #C62828; }
+    .apply-has-colored-text.apply-is-danger .input:disabled, .apply-has-colored-text .input.is-danger:disabled, .apply-is-danger .input.has-colored-text:disabled, .input.has-colored-text.is-danger:disabled {
+      color: #C62828; }
+    .apply-has-colored-text.apply-is-danger .input::-webkit-input-placeholder, .apply-has-colored-text .input.is-danger::-webkit-input-placeholder, .apply-is-danger .input.has-colored-text::-webkit-input-placeholder, .input.has-colored-text.is-danger::-webkit-input-placeholder {
+      color: rgba(229, 57, 53, 0.5); }
+    .apply-has-colored-text.apply-is-danger .input::-moz-placeholder, .apply-has-colored-text .input.is-danger::-moz-placeholder, .apply-is-danger .input.has-colored-text::-moz-placeholder, .input.has-colored-text.is-danger::-moz-placeholder {
+      color: rgba(229, 57, 53, 0.5); }
+    .apply-has-colored-text.apply-is-danger .input:-ms-input-placeholder, .apply-has-colored-text .input.is-danger:-ms-input-placeholder, .apply-is-danger .input.has-colored-text:-ms-input-placeholder, .input.has-colored-text.is-danger:-ms-input-placeholder {
+      color: rgba(229, 57, 53, 0.5); }
+    .apply-has-colored-text.apply-is-danger .input::-ms-input-placeholder, .apply-has-colored-text .input.is-danger::-ms-input-placeholder, .apply-is-danger .input.has-colored-text::-ms-input-placeholder, .input.has-colored-text.is-danger::-ms-input-placeholder {
+      color: rgba(229, 57, 53, 0.5); }
+    .apply-has-colored-text.apply-is-danger .input::placeholder, .apply-has-colored-text .input.is-danger::placeholder, .apply-is-danger .input.has-colored-text::placeholder, .input.has-colored-text.is-danger::placeholder {
+      color: rgba(229, 57, 53, 0.5); }
+
+.input[type="checkbox"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition-property: color, background-color, border-color, border-radius, box-shadow;
+  width: 1.25em;
+  height: 1.25em;
+  min-width: 1.25em;
+  min-height: 1.25em;
+  max-width: 1.25em;
+  max-height: 1.25em;
+  border-radius: 0;
+  display: inline-block;
+  padding: 0;
+  vertical-align: text-bottom; }
+  @supports not (-ms-high-contrast: none) {
+    .input[type="checkbox"] {
+      color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' %3E%3C/svg%3E");
+      background-repeat: no-repeat; } }
+  .input[type="checkbox"]::-ms-check {
+    color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' %3E%3C/svg%3E");
+    background-repeat: no-repeat; }
+  @supports not (-ms-high-contrast: none) {
+    .input[type="checkbox"] {
+      border-width: 0.0625em;
+      border-radius: 0;
+      background-size: 0.75em;
+      background-position: center 0.25em; } }
+  .input[type="checkbox"]::-ms-check {
+    border-width: 0.0625em;
+    border-radius: 0;
+    background-size: 0.75em;
+    background-position: center 0.25em; }
+  .apply-is-default .input[type="checkbox"], .apply-is-default .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-default, .input[type="checkbox"].is-default:-moz-read-only, .input[type="checkbox"], .input[type="checkbox"]:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-default .input[type="checkbox"]:checked, .input[type="checkbox"].is-default:checked, .input[type="checkbox"]:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-default .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-default:checked::-ms-check, .input[type="checkbox"]:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-white .input[type="checkbox"], .apply-is-white .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-white, .input[type="checkbox"].is-white:-moz-read-only {
+    background-color: #4d4d4d; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-white .input[type="checkbox"]:checked, .input[type="checkbox"].is-white:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23ffffff'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-white .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-white:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23ffffff'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-light .input[type="checkbox"], .apply-is-light .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-light, .input[type="checkbox"].is-light:-moz-read-only {
+    background-color: #4d4d4d; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-light .input[type="checkbox"]:checked, .input[type="checkbox"].is-light:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23EEEEEE'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-light .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-light:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23EEEEEE'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-grey .input[type="checkbox"], .apply-is-grey .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-grey, .input[type="checkbox"].is-grey:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-grey .input[type="checkbox"]:checked, .input[type="checkbox"].is-grey:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23757575'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-grey .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-grey:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23757575'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-dark .input[type="checkbox"], .apply-is-dark .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-dark, .input[type="checkbox"].is-dark:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-dark .input[type="checkbox"]:checked, .input[type="checkbox"].is-dark:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-dark .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-dark:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23424242'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-black .input[type="checkbox"], .apply-is-black .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-black, .input[type="checkbox"].is-black:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-black .input[type="checkbox"]:checked, .input[type="checkbox"].is-black:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23212121'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-black .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-black:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23212121'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-primary .input[type="checkbox"], .apply-is-primary .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-primary, .input[type="checkbox"].is-primary:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-primary .input[type="checkbox"]:checked, .input[type="checkbox"].is-primary:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-primary .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-primary:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-info .input[type="checkbox"], .apply-is-info .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-info, .input[type="checkbox"].is-info:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-info .input[type="checkbox"]:checked, .input[type="checkbox"].is-info:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-info .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-info:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%231E88E5'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-success .input[type="checkbox"], .apply-is-success .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-success, .input[type="checkbox"].is-success:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-success .input[type="checkbox"]:checked, .input[type="checkbox"].is-success:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%2343A047'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-success .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-success:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%2343A047'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-warning .input[type="checkbox"], .apply-is-warning .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-warning, .input[type="checkbox"].is-warning:-moz-read-only {
+    background-color: #4d4d4d; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-warning .input[type="checkbox"]:checked, .input[type="checkbox"].is-warning:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23FDD835'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-warning .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-warning:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23FDD835'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+  .apply-is-danger .input[type="checkbox"], .apply-is-danger .input[type="checkbox"]:-moz-read-only, .input[type="checkbox"].is-danger, .input[type="checkbox"].is-danger:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-danger .input[type="checkbox"]:checked, .input[type="checkbox"].is-danger:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23E53935'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); } }
+  .apply-is-danger .input[type="checkbox"]:checked::-ms-check, .input[type="checkbox"].is-danger:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='0.5em' height='0.5em' fill='%23E53935'%3E%3Cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z'/%3E%3C/svg%3E"); }
+
+.input[type="radio"] {
+  input: radio;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition-property: color, background-color, border-color, border-radius, box-shadow;
+  width: 1.25em;
+  height: 1.25em;
+  min-width: 1.25em;
+  min-height: 1.25em;
+  max-width: 1.25em;
+  max-height: 1.25em;
+  border-radius: 2147483647px;
+  display: inline-block;
+  padding: 0;
+  vertical-align: text-bottom; }
+  @supports not (-ms-high-contrast: none) {
+    .input[type="radio"] {
+      color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' %3E%3C/svg%3E");
+      background-repeat: no-repeat; } }
+  .input[type="radio"]::-ms-check {
+    color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' %3E%3C/svg%3E");
+    background-repeat: no-repeat; }
+  @supports not (-ms-high-contrast: none) {
+    .input[type="radio"] {
+      border-radius: 2147483647px;
+      border-width: 0.0625em;
+      background-size: 1em;
+      background-position: center center; } }
+  .input[type="radio"]::-ms-check {
+    border-radius: 2147483647px;
+    border-width: 0.0625em;
+    background-size: 1em;
+    background-position: center center; }
+  .apply-is-default .input[type="radio"], .apply-is-default .input[type="radio"]:-moz-read-only, .input[type="radio"].is-default, .input[type="radio"].is-default:-moz-read-only, .input[type="radio"], .input[type="radio"]:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-default .input[type="radio"]:checked, .input[type="radio"].is-default:checked, .input[type="radio"]:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-default .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-default:checked::-ms-check, .input[type="radio"]:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-white .input[type="radio"], .apply-is-white .input[type="radio"]:-moz-read-only, .input[type="radio"].is-white, .input[type="radio"].is-white:-moz-read-only {
+    background-color: #4d4d4d; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-white .input[type="radio"]:checked, .input[type="radio"].is-white:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23ffffff'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-white .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-white:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23ffffff'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-light .input[type="radio"], .apply-is-light .input[type="radio"]:-moz-read-only, .input[type="radio"].is-light, .input[type="radio"].is-light:-moz-read-only {
+    background-color: #4d4d4d; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-light .input[type="radio"]:checked, .input[type="radio"].is-light:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23EEEEEE'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-light .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-light:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23EEEEEE'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-grey .input[type="radio"], .apply-is-grey .input[type="radio"]:-moz-read-only, .input[type="radio"].is-grey, .input[type="radio"].is-grey:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-grey .input[type="radio"]:checked, .input[type="radio"].is-grey:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23757575'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-grey .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-grey:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23757575'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-dark .input[type="radio"], .apply-is-dark .input[type="radio"]:-moz-read-only, .input[type="radio"].is-dark, .input[type="radio"].is-dark:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-dark .input[type="radio"]:checked, .input[type="radio"].is-dark:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-dark .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-dark:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23424242'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-black .input[type="radio"], .apply-is-black .input[type="radio"]:-moz-read-only, .input[type="radio"].is-black, .input[type="radio"].is-black:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-black .input[type="radio"]:checked, .input[type="radio"].is-black:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23212121'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-black .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-black:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23212121'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-primary .input[type="radio"], .apply-is-primary .input[type="radio"]:-moz-read-only, .input[type="radio"].is-primary, .input[type="radio"].is-primary:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-primary .input[type="radio"]:checked, .input[type="radio"].is-primary:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-primary .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-primary:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-info .input[type="radio"], .apply-is-info .input[type="radio"]:-moz-read-only, .input[type="radio"].is-info, .input[type="radio"].is-info:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-info .input[type="radio"]:checked, .input[type="radio"].is-info:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-info .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-info:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%231E88E5'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-success .input[type="radio"], .apply-is-success .input[type="radio"]:-moz-read-only, .input[type="radio"].is-success, .input[type="radio"].is-success:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-success .input[type="radio"]:checked, .input[type="radio"].is-success:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%2343A047'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-success .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-success:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%2343A047'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-warning .input[type="radio"], .apply-is-warning .input[type="radio"]:-moz-read-only, .input[type="radio"].is-warning, .input[type="radio"].is-warning:-moz-read-only {
+    background-color: #4d4d4d; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-warning .input[type="radio"]:checked, .input[type="radio"].is-warning:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23FDD835'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-warning .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-warning:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23FDD835'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+  .apply-is-danger .input[type="radio"], .apply-is-danger .input[type="radio"]:-moz-read-only, .input[type="radio"].is-danger, .input[type="radio"].is-danger:-moz-read-only {
+    background-color: #ffffff; }
+  @supports not (-ms-high-contrast: none) {
+    .apply-is-danger .input[type="radio"]:checked, .input[type="radio"].is-danger:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23E53935'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); } }
+  .apply-is-danger .input[type="radio"]:checked::-ms-check, .input[type="radio"].is-danger:checked::-ms-check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.25em' height='1.25em' fill='%23E53935'%3E%3Ccircle r='25%25' cx='50%25' cy='50%25'/%3E%3C/svg%3E"); }
+
 
 /*# sourceMappingURL=fef-modules.css.map*/
