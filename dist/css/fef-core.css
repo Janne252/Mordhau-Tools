@@ -1790,6 +1790,8 @@ body {
   align-items: stretch; }
   .apply-is-inline .control-group, .control-group.is-inline {
     display: inline-flex; }
+  .control-group.is-vertically-centered {
+    align-items: center; }
   .control-group ~ .control-group:not(.no-adjacent-margin) {
     margin-top: 0.5em; }
   .control-group ~ .control-group.no-adjacent-margin {

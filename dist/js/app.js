@@ -271,9 +271,10 @@ var App = /** @class */ (function (_super) {
     function App() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.isLoading = true;
-        _this.uniqueWeaponsByNameCount = 0;
         _this.weapons = [];
+        _this.uniqueWeaponsByNameCount = 0;
         _this.displayWeapons = [];
+        _this.projectiles = [];
         _this.filteredWeapons = [];
         _this.selectedWeaponCount = 0;
         _this.defaults = {
@@ -283,7 +284,9 @@ var App = /** @class */ (function (_super) {
             showAltModeWeapons: false,
             showStrikeWeapons: true,
             showThrustWeapons: false,
+            showProjectiles: true,
             sortValues: false,
+            globalCompare: true,
         };
         _this.search = null;
         _this.showOneHandedWeapons = null;
@@ -291,7 +294,9 @@ var App = /** @class */ (function (_super) {
         _this.showAltModeWeapons = null;
         _this.showStrikeWeapons = null;
         _this.showThrustWeapons = null;
+        _this.showProjectiles = null;
         _this.sortValues = null;
+        _this.globalCompare = null;
         _this.highestWeaponComputedAverageDamage = 0;
         _this.highestWeaponComputedAttackSpeed = 0;
         _this.highestWeaponLength = 0;
@@ -311,30 +316,23 @@ var App = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    App.prototype.sortBy = function (items, selector, direction) {
-        if (direction === void 0) { direction = 'desc'; }
-        var result = items.slice();
-        var desc = function (a, b) { return a > b ? -1 : a < b ? 1 : 0; };
-        var asc = function (a, b) { return a < b ? -1 : a > b ? 1 : 0; };
-        var func = direction == 'desc' ? desc : asc;
-        result.sort(function (a, b) { return func(selector(a), selector(b)); });
-        return result;
-    };
     App.prototype.loadSpreadsheetData = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var _a, _b, items;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         _a = this;
                         return [4 /*yield*/, this.dataProvider.getWeapons()];
                     case 1:
-                        _a.weapons = _b.sent();
-                        this.uniqueWeaponsByNameCount = new Set(this.weapons.map(function (o) { return o.name; })).size;
-                        this.highestWeaponComputedAttackSpeed = Math.max.apply(Math, this.weapons.map(function (o) { return o.computedSpeed.attack; }));
-                        this.highestWeaponLength = Math.max.apply(Math, this.weapons.map(function (o) { return o.length; }));
-                        this.highestWeaponComputedAverageDamage = Math.max.apply(Math, this.weapons.map(function (o) { return o.computedDamage.averageDamage; }));
-                        this.displayWeapons = this.weapons.map(function (o) { return new weapon_2.DisplayWeapon(o); });
+                        _a.weapons = _c.sent();
+                        _b = this;
+                        return [4 /*yield*/, this.dataProvider.getProjectiles()];
+                    case 2:
+                        _b.projectiles = _c.sent();
+                        items = this.weapons.concat(this.projectiles).map(function (o) { return new weapon_2.DisplayWeapon(o); });
+                        this.uniqueWeaponsByNameCount = new Set(items.map(function (o) { return o.name; })).size;
+                        this.displayWeapons = items.map(function (o) { return new weapon_2.DisplayWeapon(o); });
                         return [2 /*return*/];
                 }
             });
@@ -375,7 +373,8 @@ var App = /** @class */ (function (_super) {
                     (this.showTwoHandedWeapons && (weapon.handedness & weapon_1.WeaponHandedness.Two))) &&
                 (this.showAltModeWeapons || !weapon.altMode) &&
                 ((this.showStrikeWeapons && weapon.attackType == weapon_1.AttackType.Strike) ||
-                    (this.showThrustWeapons && weapon.attackType == weapon_1.AttackType.Thrust))) {
+                    (this.showThrustWeapons && weapon.attackType == weapon_1.AttackType.Thrust) ||
+                    (this.showProjectiles && weapon.attackType == weapon_1.AttackType.Projectile))) {
                 result.push(weapon);
             }
         }
@@ -466,7 +465,8 @@ var App = /** @class */ (function (_super) {
         vue_property_decorator_1.Watch('displayWeapons'),
         vue_property_decorator_1.Watch('showAltModeWeapons'),
         vue_property_decorator_1.Watch('showStrikeWeapons'),
-        vue_property_decorator_1.Watch('showThrustWeapons')
+        vue_property_decorator_1.Watch('showThrustWeapons'),
+        vue_property_decorator_1.Watch('showProjectiles')
     ], App.prototype, "applyWeaponFilters", null);
     __decorate([
         vue_property_decorator_1.Watch('selectedWeapons')
@@ -479,7 +479,9 @@ var App = /** @class */ (function (_super) {
         vue_property_decorator_1.Watch('showAltModeWeapons'),
         vue_property_decorator_1.Watch('showStrikeWeapons'),
         vue_property_decorator_1.Watch('showThrustWeapons'),
-        vue_property_decorator_1.Watch('sortValues')
+        vue_property_decorator_1.Watch('showProjectiles'),
+        vue_property_decorator_1.Watch('sortValues'),
+        vue_property_decorator_1.Watch('globalCompare')
     ], App.prototype, "stateChanged", null);
     App = __decorate([
         vue_property_decorator_1.Component({
@@ -527,25 +529,57 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var vue_1 = __importDefault(__webpack_require__(/*! vue */ "vue"));
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var sort_1 = __webpack_require__(/*! ../../ts/utils/sort */ "./src/ts/utils/sort.ts");
 var AttributeBars = /** @class */ (function (_super) {
     __extends(AttributeBars, _super);
     function AttributeBars() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.max = 0;
+        _this.displayItems = [];
+        return _this;
     }
     AttributeBars.prototype.mounted = function () {
+        this.itemsChanged();
+    };
+    AttributeBars.prototype.itemsChanged = function () {
+        var func = this.invert ? Math.min : Math.max;
+        this.max = func.apply(void 0, (this.global ? this.allItems : this.items)
+            .map(this.displayValue).filter(function (o) { return !isNaN(o); }));
+        this.displayItems = this.sort ? sort_1.sortBy(this.items, this.displayValue, this.invert) : this.items.slice();
+    };
+    AttributeBars.prototype.formula = function (item) {
+        var value = this.displayValue(item);
+        return this.invert ? this.max / value : value / this.max;
     };
     __decorate([
         vue_property_decorator_1.Prop()
     ], AttributeBars.prototype, "items", void 0);
     __decorate([
         vue_property_decorator_1.Prop()
-    ], AttributeBars.prototype, "formula", void 0);
+    ], AttributeBars.prototype, "allItems", void 0);
     __decorate([
         vue_property_decorator_1.Prop({ type: Function, default: function (item) { return item.id; } })
     ], AttributeBars.prototype, "itemKey", void 0);
     __decorate([
         vue_property_decorator_1.Prop()
     ], AttributeBars.prototype, "displayValue", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop({ type: Function, default: function () { return true; } })
+    ], AttributeBars.prototype, "isEnabled", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBars.prototype, "invert", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBars.prototype, "sort", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBars.prototype, "global", void 0);
+    __decorate([
+        vue_property_decorator_1.Watch('items'),
+        vue_property_decorator_1.Watch('sort'),
+        vue_property_decorator_1.Watch('global')
+    ], AttributeBars.prototype, "itemsChanged", null);
     AttributeBars = __decorate([
         vue_property_decorator_1.Component
     ], AttributeBars);
@@ -980,7 +1014,7 @@ var render = function() {
                     attrs: { type: "button", title: "Reset filters" },
                     on: { click: _vm.resetFilters }
                   },
-                  [_vm._v("Reset")]
+                  [_c("span", [_vm._v("Reset filters")])]
                 )
               ]),
               _vm._v(" "),
@@ -1042,7 +1076,9 @@ var render = function() {
                                 }
                               }
                             }),
-                            _vm._v(" 1-handed ")
+                            _vm._v(
+                              "\n                                        1-handed\n                                    "
+                            )
                           ]),
                           _vm._v(" "),
                           _c("label", [
@@ -1087,7 +1123,9 @@ var render = function() {
                                 }
                               }
                             }),
-                            _vm._v(" 2-handed")
+                            _vm._v(
+                              "\n                                        2-handed\n                                    "
+                            )
                           ])
                         ])
                       ]
@@ -1236,7 +1274,50 @@ var render = function() {
                               }
                             }
                           }),
-                          _vm._v(" Thrust ")
+                          _vm._v(" Thrust")
+                        ]),
+                        _vm._v(" "),
+                        _c("label", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.showProjectiles,
+                                expression: "showProjectiles"
+                              }
+                            ],
+                            staticClass: "input",
+                            attrs: { type: "checkbox" },
+                            domProps: {
+                              checked: Array.isArray(_vm.showProjectiles)
+                                ? _vm._i(_vm.showProjectiles, null) > -1
+                                : _vm.showProjectiles
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.showProjectiles,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = null,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      (_vm.showProjectiles = $$a.concat([$$v]))
+                                  } else {
+                                    $$i > -1 &&
+                                      (_vm.showProjectiles = $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1)))
+                                  }
+                                } else {
+                                  _vm.showProjectiles = $$c
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" Projectile")
                         ])
                       ])
                     ])
@@ -1459,80 +1540,122 @@ var render = function() {
               _vm.selectedWeapons.length > 0
                 ? _c("div", { staticClass: "view-content" }, [
                     _c("div", { staticClass: "view" }, [
-                      _c("header"),
+                      _c("header", [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "size-80 control-group is-vertically-centered margin-right-50"
+                          },
+                          [
+                            _c("div", {
+                              staticClass:
+                                "group-addon is-borderless is-expanded"
+                            }),
+                            _vm._v(" "),
+                            _c("label", { staticClass: "size-75" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.sortValues,
+                                    expression: "sortValues"
+                                  }
+                                ],
+                                staticClass: "input",
+                                attrs: { type: "checkbox" },
+                                domProps: {
+                                  checked: Array.isArray(_vm.sortValues)
+                                    ? _vm._i(_vm.sortValues, null) > -1
+                                    : _vm.sortValues
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.sortValues,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.sortValues = $$a.concat([$$v]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.sortValues = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.sortValues = $$c
+                                    }
+                                  }
+                                }
+                              }),
+                              _vm._v(" Sort values")
+                            ]),
+                            _vm._v(" "),
+                            _c("label", { staticClass: "size-75" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.globalCompare,
+                                    expression: "globalCompare"
+                                  }
+                                ],
+                                staticClass: "input",
+                                attrs: { type: "checkbox" },
+                                domProps: {
+                                  checked: Array.isArray(_vm.globalCompare)
+                                    ? _vm._i(_vm.globalCompare, null) > -1
+                                    : _vm.globalCompare
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.globalCompare,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.globalCompare = $$a.concat([
+                                            $$v
+                                          ]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.globalCompare = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.globalCompare = $$c
+                                    }
+                                  }
+                                }
+                              }),
+                              _vm._v(" Compare to all weapons")
+                            ])
+                          ]
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "view-content" }, [
                         _c("div", { staticClass: "attribute-bars" }, [
                           _c(
                             "div",
                             [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "control-group is-gapless margin-right-50"
-                                },
-                                [
-                                  _vm._m(2),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "size-75" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sortValues,
-                                          expression: "sortValues"
-                                        }
-                                      ],
-                                      staticClass: "input",
-                                      attrs: { type: "checkbox" },
-                                      domProps: {
-                                        checked: Array.isArray(_vm.sortValues)
-                                          ? _vm._i(_vm.sortValues, null) > -1
-                                          : _vm.sortValues
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          var $$a = _vm.sortValues,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = null,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                (_vm.sortValues = $$a.concat([
-                                                  $$v
-                                                ]))
-                                            } else {
-                                              $$i > -1 &&
-                                                (_vm.sortValues = $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1)))
-                                            }
-                                          } else {
-                                            _vm.sortValues = $$c
-                                          }
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" Sort values")
-                                  ])
-                                ]
-                              ),
+                              _vm._m(2),
                               _vm._v(" "),
                               _c("AttributeBars", {
                                 staticClass: "red",
                                 attrs: {
-                                  items: _vm.sortValues
-                                    ? _vm.sortBy(_vm.selectedWeapons, function(
-                                        weapon
-                                      ) {
-                                        return weapon.computedDamage
-                                          .averageDamage
-                                      })
-                                    : _vm.selectedWeapons,
+                                  "all-items": _vm.displayWeapons,
+                                  items: _vm.selectedWeapons,
                                   formula: function(weapon) {
                                     return (
                                       weapon.computedDamage.averageDamage /
@@ -1541,7 +1664,9 @@ var render = function() {
                                   },
                                   "display-value": function(weapon) {
                                     return weapon.computedDamage.averageDamage
-                                  }
+                                  },
+                                  global: _vm.globalCompare,
+                                  sort: _vm.sortValues
                                 },
                                 scopedSlots: _vm._u(
                                   [
@@ -1574,74 +1699,13 @@ var render = function() {
                           _c(
                             "div",
                             [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "control-group is-gapless margin-right-50"
-                                },
-                                [
-                                  _vm._m(3),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "size-75" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sortValues,
-                                          expression: "sortValues"
-                                        }
-                                      ],
-                                      staticClass: "input",
-                                      attrs: { type: "checkbox" },
-                                      domProps: {
-                                        checked: Array.isArray(_vm.sortValues)
-                                          ? _vm._i(_vm.sortValues, null) > -1
-                                          : _vm.sortValues
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          var $$a = _vm.sortValues,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = null,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                (_vm.sortValues = $$a.concat([
-                                                  $$v
-                                                ]))
-                                            } else {
-                                              $$i > -1 &&
-                                                (_vm.sortValues = $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1)))
-                                            }
-                                          } else {
-                                            _vm.sortValues = $$c
-                                          }
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" Sort values")
-                                  ])
-                                ]
-                              ),
+                              _vm._m(3),
                               _vm._v(" "),
                               _c("AttributeBars", {
                                 staticClass: "green",
                                 attrs: {
-                                  items: _vm.sortValues
-                                    ? _vm.sortBy(
-                                        _vm.selectedWeapons,
-                                        function(weapon) {
-                                          return weapon.computedSpeed.attack
-                                        },
-                                        "asc"
-                                      )
-                                    : _vm.selectedWeapons,
+                                  "all-items": _vm.displayWeapons,
+                                  items: _vm.selectedWeapons,
                                   formula: function(weapon) {
                                     return (
                                       _vm.highestWeaponComputedAttackSpeed -
@@ -1653,7 +1717,13 @@ var render = function() {
                                     return weapon.computedSpeed.attack.toFixed(
                                       2
                                     )
-                                  }
+                                  },
+                                  "is-enabled": function(weapon) {
+                                    return weapon.computedSpeed.attack
+                                  },
+                                  sort: _vm.sortValues,
+                                  global: _vm.globalCompare,
+                                  invert: true
                                 },
                                 scopedSlots: _vm._u(
                                   [
@@ -1686,72 +1756,13 @@ var render = function() {
                           _c(
                             "div",
                             [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "control-group is-gapless margin-right-50"
-                                },
-                                [
-                                  _vm._m(4),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "size-75" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sortValues,
-                                          expression: "sortValues"
-                                        }
-                                      ],
-                                      staticClass: "input",
-                                      attrs: { type: "checkbox" },
-                                      domProps: {
-                                        checked: Array.isArray(_vm.sortValues)
-                                          ? _vm._i(_vm.sortValues, null) > -1
-                                          : _vm.sortValues
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          var $$a = _vm.sortValues,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = null,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                (_vm.sortValues = $$a.concat([
-                                                  $$v
-                                                ]))
-                                            } else {
-                                              $$i > -1 &&
-                                                (_vm.sortValues = $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1)))
-                                            }
-                                          } else {
-                                            _vm.sortValues = $$c
-                                          }
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" Sort values")
-                                  ])
-                                ]
-                              ),
+                              _vm._m(4),
                               _vm._v(" "),
                               _c("AttributeBars", {
                                 staticClass: "blue",
                                 attrs: {
-                                  items: _vm.sortValues
-                                    ? _vm.sortBy(_vm.selectedWeapons, function(
-                                        weapon
-                                      ) {
-                                        return weapon.length
-                                      })
-                                    : _vm.selectedWeapons,
+                                  "all-items": _vm.displayWeapons,
+                                  items: _vm.selectedWeapons,
                                   formula: function(weapon) {
                                     return (
                                       weapon.length / _vm.highestWeaponLength
@@ -1759,7 +1770,12 @@ var render = function() {
                                   },
                                   "display-value": function(weapon) {
                                     return weapon.length
-                                  }
+                                  },
+                                  "is-enabled": function(weapon) {
+                                    return !weapon.isProjectile
+                                  },
+                                  global: _vm.globalCompare,
+                                  sort: _vm.sortValues
                                 },
                                 scopedSlots: _vm._u(
                                   [
@@ -1809,7 +1825,8 @@ var render = function() {
           {
             attrs: {
               href:
-                "https://docs.google.com/spreadsheets/d/1HXS_aF9CKeGKg6OecwCw3WobZWcTjDkp_4ipN1vnyVk"
+                "https://docs.google.com/spreadsheets/d/1HXS_aF9CKeGKg6OecwCw3WobZWcTjDkp_4ipN1vnyVk",
+              target: "_blank"
             }
           },
           [
@@ -1839,7 +1856,12 @@ var staticRenderFns = [
         _vm._v("Created and maintained by "),
         _c(
           "a",
-          { attrs: { href: "https://steamcommunity.com/id/Janne252/" } },
+          {
+            attrs: {
+              href: "https://steamcommunity.com/id/Janne252/",
+              target: "_blank"
+            }
+          },
           [_vm._v("Janne252")]
         )
       ])
@@ -1865,49 +1887,37 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "group-adddon is-borderless is-expanded" },
-      [
-        _c("i", {
-          staticClass: "fas fa-balance-scale",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" Average damage")
-      ]
-    )
+    return _c("div", { staticClass: "size-80" }, [
+      _c("i", {
+        staticClass: "fas fa-balance-scale",
+        attrs: { "aria-hidden": "true" }
+      }),
+      _vm._v("  Average damage\n                                ")
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "group-adddon is-borderless is-expanded" },
-      [
-        _c("i", {
-          staticClass: "fas fa-stopwatch",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" Average attack speed")
-      ]
-    )
+    return _c("div", { staticClass: "size-80" }, [
+      _c("i", {
+        staticClass: "fas fa-stopwatch",
+        attrs: { "aria-hidden": "true" }
+      }),
+      _vm._v("  Average attack speed\n                                ")
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "group-adddon is-borderless is-expanded" },
-      [
-        _c("i", {
-          staticClass: "fas fa-arrows-alt-h",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" Reach")
-      ]
-    )
+    return _c("div", { staticClass: "size-80" }, [
+      _c("i", {
+        staticClass: "fas fa-arrows-alt-h",
+        attrs: { "aria-hidden": "true" }
+      }),
+      _vm._v("  Reach\n                                ")
+    ])
   }
 ]
 render._withStripped = true
@@ -1934,7 +1944,7 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "attribute-bar-container" },
-    _vm._l(_vm.items, function(item) {
+    _vm._l(_vm.displayItems, function(item) {
       return _c(
         "div",
         { key: _vm.itemKey(item), staticClass: "attribute-bar-wrapper" },
@@ -1943,7 +1953,11 @@ var render = function() {
             "div",
             {
               staticClass: "attribute-bar",
-              style: { width: _vm.formula(item) * 100 + "%" }
+              style: {
+                width: _vm.isEnabled(item)
+                  ? _vm.formula(item) * 100 + "%"
+                  : "0%"
+              }
             },
             [
               _c("div", { staticClass: "title-wrapper" }, [
@@ -1951,7 +1965,9 @@ var render = function() {
                   _c("div", { staticClass: "title-prefix" }, [
                     _vm._v(
                       "\n                        " +
-                        _vm._s(_vm.displayValue(item)) +
+                        _vm._s(
+                          _vm.isEnabled(item) ? _vm.displayValue(item) : "N/A"
+                        ) +
                         "\n                    "
                     )
                   ]),
@@ -2415,8 +2431,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var weapon_1 = __webpack_require__(/*! ../model/weapon */ "./src/ts/model/weapon.ts");
+var projectile_1 = __importDefault(__webpack_require__(/*! ../model/projectile */ "./src/ts/model/projectile.ts"));
 var SPRADSHEET_ID = '1HXS_aF9CKeGKg6OecwCw3WobZWcTjDkp_4ipN1vnyVk';
 var DataProvider = /** @class */ (function () {
     function DataProvider(googleApiKey, cachingDurationSeconds) {
@@ -2530,6 +2550,31 @@ var DataProvider = /** @class */ (function () {
             });
         });
     };
+    DataProvider.prototype.getProjectiles = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var data, result, headerRowCount, rowIndex, _i, _a, row;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, this.getSheetData(this.spreadsheet.sheets[3].properties.title)];
+                    case 1:
+                        data = _b.sent();
+                        result = [];
+                        headerRowCount = 2;
+                        rowIndex = -1;
+                        for (_i = 0, _a = data.values; _i < _a.length; _i++) {
+                            row = _a[_i];
+                            rowIndex++;
+                            if (rowIndex < headerRowCount) {
+                                continue;
+                            }
+                            result.push(new projectile_1.default(row));
+                        }
+                        result.sort(weapon_1.Weapon.sorter);
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
     return DataProvider;
 }());
 exports.default = DataProvider;
@@ -2598,6 +2643,110 @@ exports.default = BaseModel;
 
 /***/ }),
 
+/***/ "./src/ts/model/projectile.ts":
+/*!************************************!*\
+  !*** ./src/ts/model/projectile.ts ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var weapon_1 = __webpack_require__(/*! ./weapon */ "./src/ts/model/weapon.ts");
+var _1 = __importDefault(__webpack_require__(/*! . */ "./src/ts/model/index.ts"));
+var Projectile = /** @class */ (function (_super) {
+    __extends(Projectile, _super);
+    function Projectile(data) {
+        var _this = _super.call(this) || this;
+        if (data == null) {
+            return _this;
+        }
+        _this.name = data[0];
+        _this.attackType = weapon_1.AttackType.Projectile;
+        _this.handedness = weapon_1.resolveWeaponHandedness(data[1]);
+        _this.isMeleeWeapon = data[2].toLowerCase() == 'yes';
+        _this.canFlinch = data[3].toLowerCase() == 'yes';
+        _this.pointCost = parseInt(data[4]);
+        _this.loadoutPointCost = parseInt(data[5]);
+        _this.damageNoArmor = {
+            head: parseInt(data[6]),
+            torso: parseInt(data[7]),
+            legs: parseInt(data[8]),
+        };
+        _this.damageLightArmor = {
+            head: parseInt(data[9]),
+            torso: parseInt(data[10]),
+            legs: parseInt(data[11]),
+        };
+        _this.damageMediumArmor = {
+            head: parseInt(data[12]),
+            torso: parseInt(data[13]),
+            legs: parseInt(data[14]),
+        };
+        _this.damageHeavyArmor = {
+            head: parseInt(data[15]),
+            torso: parseInt(data[16]),
+            legs: parseInt(data[17]),
+        };
+        _this.computedDamage = {
+            averageDamage: parseInt(data[18]),
+            dps: parseInt(data[19]),
+        };
+        _this.speed = {
+            draw: parseInt(data[20]),
+            reload: parseInt(data[21]),
+        };
+        _this.computedSpeed = {
+            attack: parseFloat(data[22] != '-' ? data[22] : null),
+        };
+        _this.maxAmmo = parseInt(data[23]);
+        _this.projectileSpeed = parseInt(data[24]);
+        _this.gravityScale = parseFloat(data[24]);
+        _this.woodDamage = parseInt(data[24]);
+        _this.stoneDamage = parseInt(data[24]);
+        _this.generateId();
+        return _this;
+    }
+    Projectile.prototype.getSortKey = function () {
+        return this.name + 'projectile' + (this.canFlinch ? '1' : '0');
+    };
+    Projectile.prototype.generateId = function () {
+        var handednessStr = '';
+        if (this.handedness & weapon_1.WeaponHandedness.One && this.handedness & weapon_1.WeaponHandedness.Two) {
+            handednessStr = '3';
+        }
+        else if (this.handedness & weapon_1.WeaponHandedness.One) {
+            handednessStr = '1';
+        }
+        else if (this.handedness & weapon_1.WeaponHandedness.Two) {
+            handednessStr = '2';
+        }
+        this.id = this.name.replace(/ /g, '-') + "-projectile-" + (this.canFlinch ? '1' : '0') + handednessStr;
+    };
+    return Projectile;
+}(_1.default));
+exports.default = Projectile;
+
+
+/***/ }),
+
 /***/ "./src/ts/model/weapon.ts":
 /*!********************************!*\
   !*** ./src/ts/model/weapon.ts ***!
@@ -2635,7 +2784,7 @@ var Weapon = /** @class */ (function (_super) {
         _this.name = data[0];
         _this.attackType = _this.resolveAttackType(data[1]);
         _this.altMode = data[2].toLowerCase() == 'on';
-        _this.handedness = _this.resolveWeaponHandedness(data[3]);
+        _this.handedness = resolveWeaponHandedness(data[3]);
         _this.stopOnHit = data[4].toLowerCase() == 'yes';
         _this.canCombo = data[5].toLowerCase() == 'yes';
         _this.canFlinch = data[6].toLowerCase() == 'yes';
@@ -2699,16 +2848,6 @@ var Weapon = /** @class */ (function (_super) {
                 return AttackType.Thrust;
         }
     };
-    Weapon.prototype.resolveWeaponHandedness = function (value) {
-        switch (value) {
-            case 'One Handed':
-                return WeaponHandedness.One;
-            case 'Two Handed':
-                return WeaponHandedness.Two;
-            case 'One/Two Handed':
-                return WeaponHandedness.One | WeaponHandedness.Two;
-        }
-    };
     Weapon.prototype.generateId = function () {
         var handednessStr = '';
         if (this.handedness & WeaponHandedness.One && this.handedness & WeaponHandedness.Two) {
@@ -2734,6 +2873,7 @@ var AttackType;
 (function (AttackType) {
     AttackType[AttackType["Strike"] = 1] = "Strike";
     AttackType[AttackType["Thrust"] = 2] = "Thrust";
+    AttackType[AttackType["Projectile"] = 4] = "Projectile";
 })(AttackType = exports.AttackType || (exports.AttackType = {}));
 var WeaponDamage = /** @class */ (function () {
     function WeaponDamage() {
@@ -2741,6 +2881,41 @@ var WeaponDamage = /** @class */ (function () {
     return WeaponDamage;
 }());
 exports.WeaponDamage = WeaponDamage;
+function resolveWeaponHandedness(value) {
+    switch (value) {
+        case 'One Handed':
+            return WeaponHandedness.One;
+        case 'Two Handed':
+            return WeaponHandedness.Two;
+        case 'One/Two Handed':
+            return WeaponHandedness.One | WeaponHandedness.Two;
+    }
+}
+exports.resolveWeaponHandedness = resolveWeaponHandedness;
+
+
+/***/ }),
+
+/***/ "./src/ts/utils/sort.ts":
+/*!******************************!*\
+  !*** ./src/ts/utils/sort.ts ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function sortBy(items, selector, invert) {
+    if (invert === void 0) { invert = false; }
+    var result = items.slice();
+    var desc = function (a, b) { return a > b ? -1 : a < b ? 1 : 0; };
+    var asc = function (a, b) { return a < b ? -1 : a > b ? 1 : 0; };
+    var func = !invert ? desc : asc;
+    result.sort(function (a, b) { return func(selector(a), selector(b)); });
+    return result;
+}
+exports.sortBy = sortBy;
 
 
 /***/ }),
@@ -2777,6 +2952,13 @@ var DisplayWeapon = /** @class */ (function (_super) {
         Object.assign(_this, weapon);
         return _this;
     }
+    Object.defineProperty(DisplayWeapon.prototype, "isProjectile", {
+        get: function () {
+            return this.attackType == weapon_1.AttackType.Projectile;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(DisplayWeapon.prototype, "altModeTagClassName", {
         get: function () {
             return this.altMode ? 'is-warning' : '';
@@ -2810,6 +2992,8 @@ var DisplayWeapon = /** @class */ (function (_super) {
                     return 'Strike';
                 case weapon_1.AttackType.Thrust:
                     return 'Thrust';
+                case weapon_1.AttackType.Projectile:
+                    return 'Projectile';
             }
         },
         enumerable: true,
