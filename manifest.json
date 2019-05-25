@@ -1,52 +1,52 @@
 {
-  "name": "Mordhau Tools",
-  "short_name": "Mordhau Tools",
-  "theme_color": "#212121",
-  "background_color": "#212121",
-  "display": "standalone",
-  "Scope": "/",
-  "start_url": "/",
-  "icons": [
-    {
-      "src": "image/icon/icon-72x72.png?hash=13d09f5927c29a0e622d1d152a36987d",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "image/icon/icon-96x96.png?hash=4c9226fbeed8087422935b3217fed978",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "image/icon/icon-128x128.png?hash=c0f7d62f4c5858ef01939847e748f81d",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "image/icon/icon-144x144.png?hash=c94774f1988d64f7d1d620c279164c52",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "image/icon/icon-152x152.png?hash=0f85379eb98bb09a434a53a12afbef88",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "image/icon/icon-192x192.png?hash=c9d13862e0a8ead1b343c2c969a5dd80",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "image/icon/icon-384x384.png?hash=30578c3781bba0d31aebed008b28ae5b",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "image/icon/icon-512x512.png?hash=30578c3781bba0d31aebed008b28ae5b",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "splash_pages": null
+    "name": "Mordhau Tools",
+    "short_name": "Mordhau Tools",
+    "theme_color": "#212121",
+    "background_color": "#212121",
+    "display": "standalone",
+    "Scope": "/Mordhau-Tools/",
+    "start_url": "/Mordhau-Tools/",
+    "icons": [
+        {
+            "src": "image/icon/icon-72x72.png?hash=13d09f5927c29a0e622d1d152a36987d",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon/icon-96x96.png?hash=4c9226fbeed8087422935b3217fed978",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon/icon-128x128.png?hash=c0f7d62f4c5858ef01939847e748f81d",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon/icon-144x144.png?hash=c94774f1988d64f7d1d620c279164c52",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon/icon-152x152.png?hash=0f85379eb98bb09a434a53a12afbef88",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon/icon-192x192.png?hash=c9d13862e0a8ead1b343c2c969a5dd80",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon/icon-384x384.png?hash=30578c3781bba0d31aebed008b28ae5b",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "image/icon/icon-512x512.png?hash=30578c3781bba0d31aebed008b28ae5b",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "splash_pages": null
 }
