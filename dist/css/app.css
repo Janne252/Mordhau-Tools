@@ -349,6 +349,9 @@ a[href] {
   align-items: center;
   position: relative;
 }
+.weapon.is-wrapping[data-v-3b78b493] {
+    flex-wrap: wrap;
+}
 .weapon .weapon-tag[data-v-3b78b493] {
     display: inline-flex;
     font-size: 0.875em;
@@ -362,6 +365,12 @@ a[href] {
 }
 .weapon .weapon-tag + .weapon-tag[data-v-3b78b493] {
       margin-left: 0.25em;
+}
+.weapon .tag-alt-mode[data-v-3b78b493] {
+    color: #9C27B0;
+}
+.weapon .tag-peasant[data-v-3b78b493] {
+    color: #E65100;
 }
 .weapon .hover-unselect-icon[data-v-3b78b493] {
     display: none;
@@ -411,6 +420,143 @@ a[href] {
 }
 .weapon.is-hoverable:hover .hover-unselect-icon[data-v-3b78b493] {
       display: flex;
+}
+
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+.inventory-cost[data-v-da12ffe2] {
+  font-size: 0.75rem;
+  background-color: #ffffff;
+  color: #424242;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1.5em;
+  padding: 0.25em 0.5em;
+  min-height: 1.5em;
+  border-radius: 0.25em;
+  border: 1px solid #E0E0E0;
+}
+.inventory-cost.is-variant-attribute-bar[data-v-da12ffe2] {
+    font-size: 0.65rem;
+    color: inherit;
+    background-color: transparent;
+    padding: 0.1em 0.25em;
+    margin: 0.25em 0.125em;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.inventory-cost.is-selected.is-selectable[data-v-da12ffe2] {
+    border-color: rgba(30, 136, 229, 0.5);
+}
+.inventory-cost .adjusted-value[data-v-da12ffe2] {
+    padding-left: 0.25em;
+    opacity: 0.65;
 }
 
 /*
@@ -797,6 +943,12 @@ label[data-v-0a6dfb62] {
 }
 .weapon-table-wrapper[data-v-0a6dfb62] {
   border: 1px solid #E0E0E0;
+}
+.weapon-table-wrapper .weapon-list-label[data-v-0a6dfb62] {
+    display: flex;
+}
+.weapon-table-wrapper .weapon-list-label .input[data-v-0a6dfb62] {
+      margin-right: 0.5em;
 }
 .selected-weapons-list-wrapper[data-v-0a6dfb62] {
   display: flex;

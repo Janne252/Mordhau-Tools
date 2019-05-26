@@ -118,6 +118,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/sass-loader/lib/loader.js??ref--2-3!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/weapon-label.vue?vue&type=style&index=0&id=3b78b493&lang=scss&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/sass-loader/lib/loader.js??ref--2-3!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/weapon-label.vue?vue&type=style&index=0&id=3b78b493&lang=scss&scoped=true& ***!
@@ -262,6 +273,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var vue_1 = __importDefault(__webpack_require__(/*! vue */ "vue"));
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
 var weapon_label_vue_1 = __importDefault(__webpack_require__(/*! ./partial/weapon-label.vue */ "./src/vue/partial/weapon-label.vue"));
+var weapon_inventory_cost_vue_1 = __importDefault(__webpack_require__(/*! ./partial/weapon-inventory-cost.vue */ "./src/vue/partial/weapon-inventory-cost.vue"));
 var attribute_bars_vue_1 = __importDefault(__webpack_require__(/*! ./partial/attribute-bars.vue */ "./src/vue/partial/attribute-bars.vue"));
 var data_1 = __importDefault(__webpack_require__(/*! ../ts/data */ "./src/ts/data/index.ts"));
 var weapon_1 = __webpack_require__(/*! ../ts/model/weapon */ "./src/ts/model/weapon.ts");
@@ -286,6 +298,9 @@ var App = /** @class */ (function (_super) {
             showThrustWeapons: false,
             showProjectiles: true,
             sortValues: false,
+            sortDamage: false,
+            sortAttackSpeed: false,
+            sortReach: false,
             globalCompare: true,
             attributesLayout: 'grid',
             attributesCollapsed: false,
@@ -299,6 +314,9 @@ var App = /** @class */ (function (_super) {
         _this.showThrustWeapons = null;
         _this.showProjectiles = null;
         _this.sortValues = null;
+        _this.sortDamage = null;
+        _this.sortAttackSpeed = null;
+        _this.sortReach = null;
         _this.globalCompare = null;
         _this.attributesLayout = null;
         _this.attributesCollapsed = null;
@@ -371,6 +389,11 @@ var App = /** @class */ (function (_super) {
         if (this.search != this.$refs.searchInput.value) {
             this.search = this.$refs.searchInput.value;
         }
+    };
+    App.prototype.onSortValuesChanged = function () {
+        this.sortDamage = this.sortValues;
+        this.sortAttackSpeed = this.sortValues;
+        this.sortReach = this.sortValues;
     };
     App.prototype.applyWeaponFilters = function () {
         if (this.isLoading) {
@@ -474,6 +497,9 @@ var App = /** @class */ (function (_super) {
         vue_property_decorator_1.Prop()
     ], App.prototype, "googleApiKey", void 0);
     __decorate([
+        vue_property_decorator_1.Watch('sortValues')
+    ], App.prototype, "onSortValuesChanged", null);
+    __decorate([
         vue_property_decorator_1.Watch('search'),
         vue_property_decorator_1.Watch('showOneHandedWeapons'),
         vue_property_decorator_1.Watch('showTwoHandedWeapons'),
@@ -501,7 +527,7 @@ var App = /** @class */ (function (_super) {
     ], App.prototype, "stateChanged", null);
     App = __decorate([
         vue_property_decorator_1.Component({
-            components: { WeaponLabel: weapon_label_vue_1.default, AttributeBars: attribute_bars_vue_1.default }
+            components: { WeaponLabel: weapon_label_vue_1.default, AttributeBars: attribute_bars_vue_1.default, WeaponInventoryCost: weapon_inventory_cost_vue_1.default }
         })
     ], App);
     return App;
@@ -560,7 +586,7 @@ var AttributeBars = /** @class */ (function (_super) {
     AttributeBars.prototype.itemsChanged = function () {
         var func = this.invert ? Math.min : Math.max;
         this.max = func.apply(void 0, (this.global ? this.allItems : this.items)
-            .map(this.displayValue).filter(function (o) { return !isNaN(o); }));
+            .map(this.displayValue).filter(function (o) { return o != null && !isNaN(o); }));
         this.displayItems = this.sort ? sort_1.sortBy(this.items, this.displayValue, this.invert) : this.items.slice();
     };
     AttributeBars.prototype.formula = function (item) {
@@ -592,6 +618,9 @@ var AttributeBars = /** @class */ (function (_super) {
         vue_property_decorator_1.Prop()
     ], AttributeBars.prototype, "global", void 0);
     __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBars.prototype, "prefixStyle", void 0);
+    __decorate([
         vue_property_decorator_1.Watch('items'),
         vue_property_decorator_1.Watch('sort'),
         vue_property_decorator_1.Watch('global')
@@ -602,6 +631,67 @@ var AttributeBars = /** @class */ (function (_super) {
     return AttributeBars;
 }(vue_1.default));
 exports.default = AttributeBars;
+
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/weapon-inventory-cost.vue?vue&type=script&lang=ts&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/weapon-inventory-cost.vue?vue&type=script&lang=ts& ***!
+  \***************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var vue_1 = __importDefault(__webpack_require__(/*! vue */ "vue"));
+var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var WeaponInventoryCost = /** @class */ (function (_super) {
+    __extends(WeaponInventoryCost, _super);
+    function WeaponInventoryCost() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], WeaponInventoryCost.prototype, "weapon", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], WeaponInventoryCost.prototype, "isTransparent", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], WeaponInventoryCost.prototype, "isSelectable", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], WeaponInventoryCost.prototype, "variant", void 0);
+    WeaponInventoryCost = __decorate([
+        vue_property_decorator_1.Component
+    ], WeaponInventoryCost);
+    return WeaponInventoryCost;
+}(vue_1.default));
+exports.default = WeaponInventoryCost;
 
 
 /***/ }),
@@ -654,6 +744,12 @@ var WeaponLabel = /** @class */ (function (_super) {
     __decorate([
         vue_property_decorator_1.Prop({ default: false })
     ], WeaponLabel.prototype, "displayTags", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop({ default: false })
+    ], WeaponLabel.prototype, "coloredTags", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop({ default: false })
+    ], WeaponLabel.prototype, "wrapLabel", void 0);
     WeaponLabel = __decorate([
         vue_property_decorator_1.Component
     ], WeaponLabel);
@@ -1438,7 +1534,8 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "button is-danger is-text",
+                      staticClass:
+                        "button is-danger is-text size-80 margin-top-40",
                       attrs: {
                         type: "button",
                         disabled:
@@ -1463,6 +1560,8 @@ var render = function() {
                     staticClass: "table weapon-table is-fullwidth is-hoverable"
                   },
                   [
+                    _vm._m(1),
+                    _vm._v(" "),
                     _c(
                       "div",
                       { staticClass: "table-body" },
@@ -1490,6 +1589,7 @@ var render = function() {
                                 _c(
                                   "label",
                                   {
+                                    staticClass: "weapon-list-label",
                                     on: {
                                       click: function($event) {
                                         $event.stopPropagation()
@@ -1551,13 +1651,31 @@ var render = function() {
                                     _c("WeaponLabel", {
                                       attrs: {
                                         weapon: weapon,
-                                        "display-tags": true
+                                        "display-tags": true,
+                                        "colored-tags": true,
+                                        "wrap-label": true
                                       }
                                     })
                                   ],
                                   1
                                 )
                               ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "table-cell has-text-align-right"
+                              },
+                              [
+                                _c("WeaponInventoryCost", {
+                                  attrs: {
+                                    weapon: weapon,
+                                    "is-selectable": true
+                                  }
+                                })
+                              ],
+                              1
                             ),
                             _vm._v(" "),
                             false
@@ -1630,7 +1748,7 @@ var render = function() {
               { staticClass: "view panel panel-attributes" },
               [
                 _vm.selectedWeapons.length == 0
-                  ? [_vm._m(1)]
+                  ? [_vm._m(2)]
                   : [
                       _c(
                         "header",
@@ -1804,7 +1922,7 @@ var render = function() {
                                 "div",
                                 {
                                   staticClass:
-                                    "group-addon control-group is-borderless",
+                                    "group-addon control-group is-borderless has-no-padding-right",
                                   style: {
                                     opacity: _vm.attributesCollapsed ? 0.5 : 1
                                   }
@@ -1858,7 +1976,7 @@ var render = function() {
                                           }
                                         }
                                       }),
-                                      _vm._v(" Sort values")
+                                      _vm._v(" Sort")
                                     ]
                                   ),
                                   _vm._v(" "),
@@ -1913,7 +2031,7 @@ var render = function() {
                                           }
                                         }
                                       }),
-                                      _vm._v(" Compare to all weapons")
+                                      _vm._v(" Compare to all")
                                     ]
                                   )
                                 ]
@@ -1934,26 +2052,95 @@ var render = function() {
                                   _c(
                                     "div",
                                     [
-                                      _vm._m(2),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "control-group size-80"
+                                        },
+                                        [
+                                          _vm._m(3),
+                                          _vm._v(" "),
+                                          _c("span", {
+                                            staticClass:
+                                              "control-group is-borderless is-expanded mobile-control"
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            { staticClass: "margin-top-40" },
+                                            [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.sortDamage,
+                                                    expression: "sortDamage"
+                                                  }
+                                                ],
+                                                staticClass: "input",
+                                                attrs: { type: "checkbox" },
+                                                domProps: {
+                                                  checked: Array.isArray(
+                                                    _vm.sortDamage
+                                                  )
+                                                    ? _vm._i(
+                                                        _vm.sortDamage,
+                                                        null
+                                                      ) > -1
+                                                    : _vm.sortDamage
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$a = _vm.sortDamage,
+                                                      $$el = $event.target,
+                                                      $$c = $$el.checked
+                                                        ? true
+                                                        : false
+                                                    if (Array.isArray($$a)) {
+                                                      var $$v = null,
+                                                        $$i = _vm._i($$a, $$v)
+                                                      if ($$el.checked) {
+                                                        $$i < 0 &&
+                                                          (_vm.sortDamage = $$a.concat(
+                                                            [$$v]
+                                                          ))
+                                                      } else {
+                                                        $$i > -1 &&
+                                                          (_vm.sortDamage = $$a
+                                                            .slice(0, $$i)
+                                                            .concat(
+                                                              $$a.slice($$i + 1)
+                                                            ))
+                                                      }
+                                                    } else {
+                                                      _vm.sortDamage = $$c
+                                                    }
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(
+                                                " Sort\n                                    "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      ),
                                       _vm._v(" "),
                                       _c("AttributeBars", {
                                         staticClass: "red",
                                         attrs: {
                                           "all-items": _vm.displayWeapons,
                                           items: _vm.selectedWeapons,
-                                          formula: function(weapon) {
-                                            return (
-                                              weapon.computedDamage
-                                                .averageDamage /
-                                              _vm.highestWeaponComputedAverageDamage
+                                          "display-value": function(weapon) {
+                                            return weapon.computedDamage.averageDamage.toFixed(
+                                              2
                                             )
                                           },
-                                          "display-value": function(weapon) {
-                                            return weapon.computedDamage
-                                              .averageDamage
-                                          },
                                           global: _vm.globalCompare,
-                                          sort: _vm.sortValues
+                                          sort:
+                                            _vm.sortDamage ||
+                                            (_vm.sortValues && _vm.sortDamage)
                                         },
                                         scopedSlots: _vm._u(
                                           [
@@ -1961,25 +2148,27 @@ var render = function() {
                                               key: "label",
                                               fn: function(ref) {
                                                 var item = ref.item
-                                                return _c(
-                                                  "span",
-                                                  {},
-                                                  [
-                                                    _c("WeaponLabel", {
-                                                      attrs: {
-                                                        weapon: item,
-                                                        "display-tags": true
-                                                      }
-                                                    })
-                                                  ],
-                                                  1
-                                                )
+                                                return [
+                                                  _c("WeaponInventoryCost", {
+                                                    attrs: {
+                                                      weapon: item,
+                                                      variant: "attribute-bar"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("WeaponLabel", {
+                                                    attrs: {
+                                                      weapon: item,
+                                                      "display-tags": true
+                                                    }
+                                                  })
+                                                ]
                                               }
                                             }
                                           ],
                                           null,
                                           false,
-                                          4158362610
+                                          3245588948
                                         )
                                       })
                                     ],
@@ -1989,29 +2178,102 @@ var render = function() {
                                   _c(
                                     "div",
                                     [
-                                      _vm._m(3),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "control-group size-80"
+                                        },
+                                        [
+                                          _vm._m(4),
+                                          _vm._v(" "),
+                                          _c("span", {
+                                            staticClass:
+                                              "control-group is-borderless is-expanded mobile-control"
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            { staticClass: "margin-top-40" },
+                                            [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.sortAttackSpeed,
+                                                    expression:
+                                                      "sortAttackSpeed"
+                                                  }
+                                                ],
+                                                staticClass: "input",
+                                                attrs: { type: "checkbox" },
+                                                domProps: {
+                                                  checked: Array.isArray(
+                                                    _vm.sortAttackSpeed
+                                                  )
+                                                    ? _vm._i(
+                                                        _vm.sortAttackSpeed,
+                                                        null
+                                                      ) > -1
+                                                    : _vm.sortAttackSpeed
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$a =
+                                                        _vm.sortAttackSpeed,
+                                                      $$el = $event.target,
+                                                      $$c = $$el.checked
+                                                        ? true
+                                                        : false
+                                                    if (Array.isArray($$a)) {
+                                                      var $$v = null,
+                                                        $$i = _vm._i($$a, $$v)
+                                                      if ($$el.checked) {
+                                                        $$i < 0 &&
+                                                          (_vm.sortAttackSpeed = $$a.concat(
+                                                            [$$v]
+                                                          ))
+                                                      } else {
+                                                        $$i > -1 &&
+                                                          (_vm.sortAttackSpeed = $$a
+                                                            .slice(0, $$i)
+                                                            .concat(
+                                                              $$a.slice($$i + 1)
+                                                            ))
+                                                      }
+                                                    } else {
+                                                      _vm.sortAttackSpeed = $$c
+                                                    }
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(
+                                                " Sort\n                                    "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      ),
                                       _vm._v(" "),
                                       _c("AttributeBars", {
                                         staticClass: "green",
                                         attrs: {
                                           "all-items": _vm.displayWeapons,
                                           items: _vm.selectedWeapons,
-                                          formula: function(weapon) {
-                                            return (
-                                              _vm.highestWeaponComputedAttackSpeed -
-                                              weapon.computedSpeed.attack /
-                                                _vm.highestWeaponComputedAttackSpeed
-                                            )
-                                          },
                                           "display-value": function(weapon) {
-                                            return weapon.computedSpeed.attack.toFixed(
-                                              2
-                                            )
+                                            return weapon.computedSpeed.attack
+                                              ? weapon.computedSpeed.attack.toFixed(
+                                                  2
+                                                )
+                                              : null
                                           },
                                           "is-enabled": function(weapon) {
                                             return weapon.computedSpeed.attack
                                           },
-                                          sort: _vm.sortValues,
+                                          sort:
+                                            _vm.sortAttackSpeed ||
+                                            (_vm.sortValues &&
+                                              _vm.sortAttackSpeed),
                                           global: _vm.globalCompare,
                                           invert: true
                                         },
@@ -2021,25 +2283,27 @@ var render = function() {
                                               key: "label",
                                               fn: function(ref) {
                                                 var item = ref.item
-                                                return _c(
-                                                  "span",
-                                                  {},
-                                                  [
-                                                    _c("WeaponLabel", {
-                                                      attrs: {
-                                                        weapon: item,
-                                                        "display-tags": true
-                                                      }
-                                                    })
-                                                  ],
-                                                  1
-                                                )
+                                                return [
+                                                  _c("WeaponInventoryCost", {
+                                                    attrs: {
+                                                      weapon: item,
+                                                      variant: "attribute-bar"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("WeaponLabel", {
+                                                    attrs: {
+                                                      weapon: item,
+                                                      "display-tags": true
+                                                    }
+                                                  })
+                                                ]
                                               }
                                             }
                                           ],
                                           null,
                                           false,
-                                          4158362610
+                                          3245588948
                                         )
                                       })
                                     ],
@@ -2049,19 +2313,86 @@ var render = function() {
                                   _c(
                                     "div",
                                     [
-                                      _vm._m(4),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "control-group size-80"
+                                        },
+                                        [
+                                          _vm._m(5),
+                                          _vm._v(" "),
+                                          _c("span", {
+                                            staticClass:
+                                              "control-group is-borderless is-expanded mobile-control"
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "label",
+                                            { staticClass: "margin-top-40" },
+                                            [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.sortReach,
+                                                    expression: "sortReach"
+                                                  }
+                                                ],
+                                                staticClass: "input",
+                                                attrs: { type: "checkbox" },
+                                                domProps: {
+                                                  checked: Array.isArray(
+                                                    _vm.sortReach
+                                                  )
+                                                    ? _vm._i(
+                                                        _vm.sortReach,
+                                                        null
+                                                      ) > -1
+                                                    : _vm.sortReach
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$a = _vm.sortReach,
+                                                      $$el = $event.target,
+                                                      $$c = $$el.checked
+                                                        ? true
+                                                        : false
+                                                    if (Array.isArray($$a)) {
+                                                      var $$v = null,
+                                                        $$i = _vm._i($$a, $$v)
+                                                      if ($$el.checked) {
+                                                        $$i < 0 &&
+                                                          (_vm.sortReach = $$a.concat(
+                                                            [$$v]
+                                                          ))
+                                                      } else {
+                                                        $$i > -1 &&
+                                                          (_vm.sortReach = $$a
+                                                            .slice(0, $$i)
+                                                            .concat(
+                                                              $$a.slice($$i + 1)
+                                                            ))
+                                                      }
+                                                    } else {
+                                                      _vm.sortReach = $$c
+                                                    }
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(
+                                                " Sort\n                                    "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      ),
                                       _vm._v(" "),
                                       _c("AttributeBars", {
                                         staticClass: "blue",
                                         attrs: {
                                           "all-items": _vm.displayWeapons,
                                           items: _vm.selectedWeapons,
-                                          formula: function(weapon) {
-                                            return (
-                                              weapon.length /
-                                              _vm.highestWeaponLength
-                                            )
-                                          },
                                           "display-value": function(weapon) {
                                             return weapon.length
                                           },
@@ -2069,7 +2400,13 @@ var render = function() {
                                             return !weapon.isProjectile
                                           },
                                           global: _vm.globalCompare,
-                                          sort: _vm.sortValues
+                                          sort:
+                                            _vm.sortReach ||
+                                            (_vm.sortValues && _vm.sortReach),
+                                          "prefix-style": {
+                                            "min-width": "1.75rem",
+                                            "text-align": "center"
+                                          }
                                         },
                                         scopedSlots: _vm._u(
                                           [
@@ -2077,25 +2414,27 @@ var render = function() {
                                               key: "label",
                                               fn: function(ref) {
                                                 var item = ref.item
-                                                return _c(
-                                                  "span",
-                                                  {},
-                                                  [
-                                                    _c("WeaponLabel", {
-                                                      attrs: {
-                                                        weapon: item,
-                                                        "display-tags": true
-                                                      }
-                                                    })
-                                                  ],
-                                                  1
-                                                )
+                                                return [
+                                                  _c("WeaponInventoryCost", {
+                                                    attrs: {
+                                                      weapon: item,
+                                                      variant: "attribute-bar"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("WeaponLabel", {
+                                                    attrs: {
+                                                      weapon: item,
+                                                      "display-tags": true
+                                                    }
+                                                  })
+                                                ]
                                               }
                                             }
                                           ],
                                           null,
                                           false,
-                                          4158362610
+                                          3245588948
                                         )
                                       })
                                     ],
@@ -2197,6 +2536,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "table-header" }, [
+      _c("div", { staticClass: "table-row" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "message is-info" }, [
       _c("div", { staticClass: "message-content" }, [
         _c("i", {
@@ -2213,37 +2560,49 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "size-80" }, [
-      _c("i", {
-        staticClass: "fas fa-balance-scale",
-        attrs: { "aria-hidden": "true" }
-      }),
-      _vm._v("  Average damage\n                                ")
-    ])
+    return _c(
+      "span",
+      { staticClass: "group-addon is-borderless has-no-padding-left" },
+      [
+        _c("i", {
+          staticClass: "fas fa-balance-scale",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("  Average damage\n                                    ")
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "size-80" }, [
-      _c("i", {
-        staticClass: "fas fa-stopwatch",
-        attrs: { "aria-hidden": "true" }
-      }),
-      _vm._v("  Average attack speed\n                                ")
-    ])
+    return _c(
+      "span",
+      { staticClass: "group-addon is-borderless has-no-padding-left" },
+      [
+        _c("i", {
+          staticClass: "fas fa-stopwatch",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("  Average attack speed\n                                    ")
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "size-80" }, [
-      _c("i", {
-        staticClass: "fas fa-arrows-alt-h",
-        attrs: { "aria-hidden": "true" }
-      }),
-      _vm._v("  Reach\n                                ")
-    ])
+    return _c(
+      "span",
+      { staticClass: "group-addon is-borderless has-no-padding-left" },
+      [
+        _c("i", {
+          staticClass: "fas fa-arrows-alt-h",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("  Reach\n                                    ")
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -2288,15 +2647,19 @@ var render = function() {
             [
               _c("div", { staticClass: "title-wrapper" }, [
                 _c("div", { staticClass: "title title-overflown" }, [
-                  _c("div", { staticClass: "title-prefix" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(
-                          _vm.isEnabled(item) ? _vm.displayValue(item) : "N/A"
-                        ) +
-                        "\n                    "
-                    )
-                  ]),
+                  _c(
+                    "div",
+                    { staticClass: "title-prefix", style: _vm.prefixStyle },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(
+                            _vm.isEnabled(item) ? _vm.displayValue(item) : "N/A"
+                          ) +
+                          "\n                    "
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -2307,13 +2670,17 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "title title-primary" }, [
-                  _c("div", { staticClass: "title-prefix" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.displayValue(item)) +
-                        "\n                    "
-                    )
-                  ]),
+                  _c(
+                    "div",
+                    { staticClass: "title-prefix", style: _vm.prefixStyle },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.displayValue(item)) +
+                          "\n                    "
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -2329,6 +2696,70 @@ var render = function() {
       )
     }),
     0
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "inventory-cost",
+      class: [
+        "is-variant-" + _vm.variant,
+        {
+          "is-selected": _vm.weapon.isSelected,
+          "is-selectable": _vm.isSelectable
+        }
+      ]
+    },
+    [
+      _c("span", { staticClass: "value" }, [
+        _vm._v(
+          "\n        " +
+            _vm._s(
+              _vm.weapon.pointCost - (_vm.weapon.isPeasantWeapon ? 8 : 0)
+            ) +
+            "\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _vm.weapon.isPeasantWeapon
+        ? _c(
+            "span",
+            {
+              staticClass: "adjusted-value",
+              attrs: { title: "Peasant perk included" }
+            },
+            [
+              _vm._v(
+                "\n        (" +
+                  _vm._s(_vm.weapon.pointCost) +
+                  ")                                                \n    "
+              )
+            ]
+          )
+        : _vm._e()
+    ]
   )
 }
 var staticRenderFns = []
@@ -2355,7 +2786,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "weapon", class: { "is-hoverable": _vm.isHoverable } },
+    {
+      staticClass: "weapon",
+      class: { "is-hoverable": _vm.isHoverable, "is-wrapping": _vm.wrapLabel }
+    },
     [
       _vm.isHoverable
         ? _c("div", { staticClass: "hover-unselect-icon" }, [
@@ -2395,7 +2829,14 @@ var render = function() {
               ? _c("span", { staticClass: "weapon-tag" }, [
                   _c("span", { staticClass: "bar" }, [_vm._v("[")]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "content" }, [_vm._v("Alt")]),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "content",
+                      class: { "tag-alt-mode": _vm.coloredTags }
+                    },
+                    [_vm._v("Alt")]
+                  ),
                   _vm._v(" "),
                   _c("span", { staticClass: "bar" }, [_vm._v("]")])
                 ])
@@ -2409,7 +2850,24 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "bar" }, [_vm._v("]")])
-            ])
+            ]),
+            _vm._v(" "),
+            _vm.weapon.isPeasantWeapon
+              ? _c("span", { staticClass: "weapon-tag" }, [
+                  _c("span", { staticClass: "bar" }, [_vm._v("[")]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "content",
+                      class: { "tag-peasant": _vm.coloredTags }
+                    },
+                    [_vm._v(_vm._s(_vm.weapon.peasantLabel))]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "bar" }, [_vm._v("]")])
+                ])
+              : _vm._e()
           ]
         : _vm._e(),
       _vm._v(" "),
@@ -2853,19 +3311,20 @@ var DataProvider = /** @class */ (function () {
     };
     DataProvider.prototype.getWeapons = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var data, result, headerRowCount, rowIndex, _i, _a, row;
+            var data, result, headerRows, rowIndex, _i, _a, row;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0: return [4 /*yield*/, this.getSheetData(this.spreadsheet.sheets[0].properties.title)];
                     case 1:
                         data = _b.sent();
                         result = [];
-                        headerRowCount = 2;
+                        headerRows = [data.values[0], data.values[1]];
+                        weapon_1.Weapon.Schema.generate(headerRows);
                         rowIndex = -1;
                         for (_i = 0, _a = data.values; _i < _a.length; _i++) {
                             row = _a[_i];
                             rowIndex++;
-                            if (rowIndex < headerRowCount) {
+                            if (rowIndex < headerRows.length) {
                                 continue;
                             }
                             result.push(new weapon_1.Weapon(row));
@@ -2878,19 +3337,20 @@ var DataProvider = /** @class */ (function () {
     };
     DataProvider.prototype.getProjectiles = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var data, result, headerRowCount, rowIndex, _i, _a, row;
+            var data, result, headerRows, rowIndex, _i, _a, row;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0: return [4 /*yield*/, this.getSheetData(this.spreadsheet.sheets[3].properties.title)];
                     case 1:
                         data = _b.sent();
                         result = [];
-                        headerRowCount = 2;
+                        headerRows = [data.values[0], data.values[1]];
+                        projectile_1.default.Schema.generate(headerRows);
                         rowIndex = -1;
                         for (_i = 0, _a = data.values; _i < _a.length; _i++) {
                             row = _a[_i];
                             rowIndex++;
-                            if (rowIndex < headerRowCount) {
+                            if (rowIndex < headerRows.length) {
                                 continue;
                             }
                             result.push(new projectile_1.default(row));
@@ -2949,9 +3409,25 @@ var vue = new Shell_vue_1.default({
 
 "use strict";
 
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModel = /** @class */ (function () {
-    function BaseModel() {
+    function BaseModel(data) {
+        if (data) {
+            this.constructor.Schema.populate(this, data);
+        }
     }
     BaseModel.sorter = function (a, b) {
         var _a = a.getSortKey();
@@ -2965,6 +3441,128 @@ var BaseModel = /** @class */ (function () {
     return BaseModel;
 }());
 exports.default = BaseModel;
+var Schema = /** @class */ (function () {
+    function Schema(fields) {
+        this.fields = [];
+        this.fields = fields;
+    }
+    Schema.prototype.resolveColumnIndex = function (headerRows, field) {
+        var isObject = false;
+        var result = {};
+        var startIndex = 0;
+        for (var i = 0; i < headerRows.length; i++) {
+            var headerRow = headerRows[i];
+            var map = field.mapping[i];
+            if (map != null) {
+                if (typeof map == 'string') {
+                    startIndex = headerRow.indexOf(map, startIndex);
+                }
+                else {
+                    isObject = true;
+                    for (var key in map) {
+                        result[field.name + "." + key] = headerRow.indexOf(map[key], startIndex);
+                    }
+                }
+            }
+        }
+        if (!isObject) {
+            result[field.name] = startIndex;
+        }
+        return result;
+    };
+    Schema.prototype.generate = function (headerRows) {
+        for (var _i = 0, _c = this.fields; _i < _c.length; _i++) {
+            var field = _c[_i];
+            field.columnIndex = this.resolveColumnIndex(headerRows, field);
+        }
+    };
+    Schema.prototype.add = function (field) {
+        this.fields.push(field);
+    };
+    Schema.prototype.populate = function (instance, data) {
+        for (var _i = 0, _c = this.fields; _i < _c.length; _i++) {
+            var field = _c[_i];
+            for (var path in field.columnIndex) {
+                var value = data[field.columnIndex[path]];
+                var pathParts = path.split('.');
+                var targetObject = instance;
+                for (var i = 0; i < pathParts.length; i++) {
+                    var part = pathParts[i];
+                    if (i < pathParts.length - 1 && pathParts.length > 1) {
+                        if (targetObject[part] == null) {
+                            targetObject[part] = {};
+                        }
+                        targetObject = targetObject[part];
+                    }
+                    else {
+                        targetObject[part] = value;
+                    }
+                }
+                if (field.converter) {
+                    var fullValue = instance[pathParts[0]];
+                    var prototype = field.converter.prototype;
+                    if (!!prototype && !!prototype.constructor.name) {
+                        instance[pathParts[0]] = new field.converter(fullValue);
+                    }
+                    else if (typeof field.converter == 'function') {
+                        instance[pathParts[0]] = field.converter(fullValue);
+                    }
+                }
+            }
+        }
+    };
+    return Schema;
+}());
+exports.Schema = Schema;
+var __schemaMappingTempStore = [];
+function Map(mapping, converter) {
+    if (converter === void 0) { converter = null; }
+    return function (target, propertyName) {
+        var model = target;
+        __schemaMappingTempStore.push({
+            prototype: target,
+            field: {
+                mapping: mapping,
+                model: model,
+                name: propertyName,
+                converter: converter,
+            }
+        });
+    };
+}
+exports.Map = Map;
+function Model(constructor) {
+    var _c;
+    var schemaFields = [];
+    for (var i = __schemaMappingTempStore.length - 1; i >= 0; i--) {
+        var field = __schemaMappingTempStore[i];
+        if (field.prototype == constructor.prototype) {
+            schemaFields.push(field.field);
+            __schemaMappingTempStore.splice(i, 1);
+        }
+    }
+    return _c = /** @class */ (function (_super) {
+            __extends(class_1, _super);
+            function class_1() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            return class_1;
+        }(constructor)),
+        _c.Schema = new Schema(schemaFields),
+        _c;
+}
+exports.Model = Model;
+function PropertyCollection(func) {
+    return /** @class */ (function () {
+        function class_2(data) {
+            for (var key in data) {
+                this[key] = func(data[key]);
+            }
+        }
+        return class_2;
+    }());
+}
+exports.PropertyCollection = PropertyCollection;
 
 
 /***/ }),
@@ -2991,62 +3589,31 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var weapon_1 = __webpack_require__(/*! ./weapon */ "./src/ts/model/weapon.ts");
-var _1 = __importDefault(__webpack_require__(/*! . */ "./src/ts/model/index.ts"));
+var _1 = __importStar(__webpack_require__(/*! . */ "./src/ts/model/index.ts"));
 var Projectile = /** @class */ (function (_super) {
     __extends(Projectile, _super);
     function Projectile(data) {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, data) || this;
         if (data == null) {
             return _this;
         }
-        _this.name = data[0];
         _this.attackType = weapon_1.AttackType.Projectile;
-        _this.handedness = weapon_1.resolveWeaponHandedness(data[1]);
-        _this.isMeleeWeapon = data[2].toLowerCase() == 'yes';
-        _this.canFlinch = data[3].toLowerCase() == 'yes';
-        _this.pointCost = parseInt(data[4]);
-        _this.loadoutPointCost = parseInt(data[5]);
-        _this.damageNoArmor = {
-            head: parseInt(data[6]),
-            torso: parseInt(data[7]),
-            legs: parseInt(data[8]),
-        };
-        _this.damageLightArmor = {
-            head: parseInt(data[9]),
-            torso: parseInt(data[10]),
-            legs: parseInt(data[11]),
-        };
-        _this.damageMediumArmor = {
-            head: parseInt(data[12]),
-            torso: parseInt(data[13]),
-            legs: parseInt(data[14]),
-        };
-        _this.damageHeavyArmor = {
-            head: parseInt(data[15]),
-            torso: parseInt(data[16]),
-            legs: parseInt(data[17]),
-        };
-        _this.computedDamage = {
-            averageDamage: parseInt(data[18]),
-            dps: parseInt(data[19]),
-        };
-        _this.speed = {
-            draw: parseInt(data[20]),
-            reload: parseInt(data[21]),
-        };
-        _this.computedSpeed = {
-            attack: parseFloat(data[22] != '-' ? data[22] : null),
-        };
-        _this.maxAmmo = parseInt(data[23]);
-        _this.projectileSpeed = parseInt(data[24]);
-        _this.gravityScale = parseFloat(data[24]);
-        _this.woodDamage = parseInt(data[24]);
-        _this.stoneDamage = parseInt(data[24]);
+        _this.handedness = weapon_1.resolveWeaponHandedness(_this.type);
         _this.generateId();
         return _this;
     }
@@ -3066,6 +3633,66 @@ var Projectile = /** @class */ (function (_super) {
         }
         this.id = this.name.replace(/ /g, '-') + "-projectile-" + (this.canFlinch ? '1' : '0') + handednessStr;
     };
+    __decorate([
+        _1.Map([null, 'Name'])
+    ], Projectile.prototype, "name", void 0);
+    __decorate([
+        _1.Map([null, 'Type'])
+    ], Projectile.prototype, "type", void 0);
+    __decorate([
+        _1.Map([null, 'Is Melee Weapon'], function (o) { return o.toLowerCase() == 'yes'; })
+    ], Projectile.prototype, "isMeleeWeapon", void 0);
+    __decorate([
+        _1.Map([null, 'Can Flinch'], function (o) { return o.toLowerCase() == 'yes'; })
+    ], Projectile.prototype, "canFlinch", void 0);
+    __decorate([
+        _1.Map([null, 'Point Cost'], parseInt)
+    ], Projectile.prototype, "pointCost", void 0);
+    __decorate([
+        _1.Map([null, 'Value'], parseFloat)
+    ], Projectile.prototype, "value", void 0);
+    __decorate([
+        _1.Map(['Damage [No Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Projectile.prototype, "damageNoArmor", void 0);
+    __decorate([
+        _1.Map(['Damage [Light Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Projectile.prototype, "damageLightArmor", void 0);
+    __decorate([
+        _1.Map(['Damage [Medium Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Projectile.prototype, "damageMediumArmor", void 0);
+    __decorate([
+        _1.Map(['Damage [Heavy Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Projectile.prototype, "damageHeavyArmor", void 0);
+    __decorate([
+        _1.Map([null, { averageDamage: 'Avg. Damage', dps: 'DPS' }], _1.PropertyCollection(parseFloat))
+    ], Projectile.prototype, "computedDamage", void 0);
+    __decorate([
+        _1.Map(['Speed', { draw: 'Draw', combo: 'Reload' }], _1.PropertyCollection(parseFloat))
+    ], Projectile.prototype, "speed", void 0);
+    __decorate([
+        _1.Map(['Speed', { computedSpeed: 'Attack Speed' }], _1.PropertyCollection(parseFloat))
+    ], Projectile.prototype, "computedSpeed", void 0);
+    __decorate([
+        _1.Map([null, 'Max Ammo'], parseFloat)
+    ], Projectile.prototype, "maxAmmo", void 0);
+    __decorate([
+        _1.Map([null, 'Projectile Speed'], parseFloat)
+    ], Projectile.prototype, "projectileSpeed", void 0);
+    __decorate([
+        _1.Map([null, 'Gravity Scale'], parseFloat)
+    ], Projectile.prototype, "gravityScale", void 0);
+    __decorate([
+        _1.Map(['Miscellaneous', 'Wood Damage'], parseFloat)
+    ], Projectile.prototype, "woodDamage", void 0);
+    __decorate([
+        _1.Map(['Miscellaneous', 'Stone Damage'], parseFloat)
+    ], Projectile.prototype, "stoneDamage", void 0);
+    __decorate([
+        _1.Map(['Miscellaneous', 'Peasant Perk'], function (o) { return o != null && o.toLowerCase() == 'yes'; })
+    ], Projectile.prototype, "isPeasantWeapon", void 0);
+    Projectile = __decorate([
+        _1.Model
+    ], Projectile);
     return Projectile;
 }(_1.default));
 exports.default = Projectile;
@@ -3095,76 +3722,35 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var _1 = __importDefault(__webpack_require__(/*! . */ "./src/ts/model/index.ts"));
+var _1 = __importStar(__webpack_require__(/*! . */ "./src/ts/model/index.ts"));
 var Weapon = /** @class */ (function (_super) {
     __extends(Weapon, _super);
     function Weapon(data) {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, data) || this;
         if (data == null) {
             return _this;
         }
-        _this.name = data[0];
-        _this.attackType = _this.resolveAttackType(data[1]);
-        _this.altMode = data[2].toLowerCase() == 'on';
-        _this.handedness = resolveWeaponHandedness(data[3]);
-        _this.stopOnHit = data[4].toLowerCase() == 'yes';
-        _this.canCombo = data[5].toLowerCase() == 'yes';
-        _this.canFlinch = data[6].toLowerCase() == 'yes';
-        _this.pointCost = parseInt(data[7]);
-        _this.loadoutPointCost = parseInt(data[8]);
-        _this.damageNoArmor = {
-            head: parseInt(data[9]),
-            torso: parseInt(data[10]),
-            legs: parseInt(data[11]),
-        };
-        _this.damageLightArmor = {
-            head: parseInt(data[12]),
-            torso: parseInt(data[13]),
-            legs: parseInt(data[14]),
-        };
-        _this.damageMediumArmor = {
-            head: parseInt(data[15]),
-            torso: parseInt(data[16]),
-            legs: parseInt(data[17]),
-        };
-        _this.damageHeavyArmor = {
-            head: parseInt(data[18]),
-            torso: parseInt(data[19]),
-            legs: parseInt(data[20]),
-        };
-        _this.computedDamage = {
-            averageDamage: parseInt(data[21]),
-            dps: parseInt(data[22]),
-            cDps: parseInt(data[23]),
-            averageDps: parseInt(data[24]),
-        };
-        _this.staminaCost = {
-            miss: parseInt(data[25]),
-            feint: parseInt(data[26]),
-            morph: parseInt(data[27]),
-            drain: parseInt(data[28]),
-            parryDrainNegation: parseInt(data[29]),
-        };
-        _this.speed = {
-            windup: parseInt(data[30]),
-            combo: parseInt(data[31]),
-            release: parseInt(data[32]),
-            recovery: parseInt(data[33]),
-        };
-        _this.computedSpeed = {
-            attack: parseFloat(data[34]),
-            combo: parseFloat(data[36]),
-        };
-        _this.length = parseInt(data[36]);
+        _this.attackType = _this.resolveAttackType(_this.attack);
+        _this.handedness = resolveWeaponHandedness(_this.type);
         _this.generateId();
         return _this;
     }
     Weapon.prototype.getSortKey = function () {
-        return this.name + this.attackType + (this.altMode ? 'B' : 'A');
+        return this.name + this.attack + (this.altMode ? 'B' : 'A');
     };
     Weapon.prototype.resolveAttackType = function (value) {
         switch (value) {
@@ -3185,11 +3771,77 @@ var Weapon = /** @class */ (function (_super) {
         else if (this.handedness & WeaponHandedness.Two) {
             handednessStr = '2';
         }
-        this.id = this.name.replace(/ /g, '-') + "-" + this.attackType + "-" + (this.altMode ? '1' : '0') + handednessStr;
+        this.id = this.name.replace(/ /g, '-') + "-" + this.attack + "-" + (this.altMode ? '1' : '0') + handednessStr;
     };
+    __decorate([
+        _1.Map([null, 'Name'])
+    ], Weapon.prototype, "name", void 0);
+    __decorate([
+        _1.Map([null, 'Attack'])
+    ], Weapon.prototype, "attack", void 0);
+    __decorate([
+        _1.Map([null, 'Alt Mode'], function (o) { return o.toLowerCase() == 'on'; })
+    ], Weapon.prototype, "altMode", void 0);
+    __decorate([
+        _1.Map([null, 'Type'])
+    ], Weapon.prototype, "type", void 0);
+    __decorate([
+        _1.Map([null, 'Stop On Hit'], function (o) { return o.toLowerCase() == 'yes'; })
+    ], Weapon.prototype, "stopOnHit", void 0);
+    __decorate([
+        _1.Map([null, 'Can Combo'], function (o) { return o.toLowerCase() == 'yes'; })
+    ], Weapon.prototype, "canCombo", void 0);
+    __decorate([
+        _1.Map([null, 'Can Flinch'], function (o) { return o.toLowerCase() == 'yes'; })
+    ], Weapon.prototype, "canFlinch", void 0);
+    __decorate([
+        _1.Map([null, 'Point Cost'], parseInt)
+    ], Weapon.prototype, "pointCost", void 0);
+    __decorate([
+        _1.Map([null, 'Value'], parseFloat)
+    ], Weapon.prototype, "value", void 0);
+    __decorate([
+        _1.Map(['Damage [No Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "damageNoArmor", void 0);
+    __decorate([
+        _1.Map(['Damage [Light Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "damageLightArmor", void 0);
+    __decorate([
+        _1.Map(['Damage [Medium Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "damageMediumArmor", void 0);
+    __decorate([
+        _1.Map(['Damage [Heavy Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "damageHeavyArmor", void 0);
+    __decorate([
+        _1.Map([null, { averageDamage: 'Avg. Damage', dps: 'DPS', cdps: 'CDPS', averageDps: 'Avg. DPS' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "computedDamage", void 0);
+    __decorate([
+        _1.Map(['Stamina', { miss: 'Miss Cost', feint: 'Feint Cost', morph: 'Morph Cost', drain: 'Stamina Drain', parryDrainNegation: 'Parry Drain Negation' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "stamina", void 0);
+    __decorate([
+        _1.Map(['Speed', { windup: 'Windup', combo: 'Combo', release: 'Release', recovery: 'Recovery' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "speed", void 0);
+    __decorate([
+        _1.Map(['Speed', { attack: 'Attack Speed', combo: 'Combo Speed' }], _1.PropertyCollection(parseFloat))
+    ], Weapon.prototype, "computedSpeed", void 0);
+    __decorate([
+        _1.Map([null, 'Length'], parseFloat)
+    ], Weapon.prototype, "length", void 0);
+    __decorate([
+        _1.Map([null, 'Peasant Perk'], function (o) { return o != null && o.toLowerCase() == 'yes'; })
+    ], Weapon.prototype, "isPeasantWeapon", void 0);
+    Weapon = __decorate([
+        _1.Model
+    ], Weapon);
     return Weapon;
 }(_1.default));
 exports.Weapon = Weapon;
+var WeaponDamage = /** @class */ (function () {
+    function WeaponDamage() {
+    }
+    return WeaponDamage;
+}());
+exports.WeaponDamage = WeaponDamage;
 var WeaponHandedness;
 (function (WeaponHandedness) {
     WeaponHandedness[WeaponHandedness["One"] = 1] = "One";
@@ -3201,12 +3853,6 @@ var AttackType;
     AttackType[AttackType["Thrust"] = 2] = "Thrust";
     AttackType[AttackType["Projectile"] = 4] = "Projectile";
 })(AttackType = exports.AttackType || (exports.AttackType = {}));
-var WeaponDamage = /** @class */ (function () {
-    function WeaponDamage() {
-    }
-    return WeaponDamage;
-}());
-exports.WeaponDamage = WeaponDamage;
 function resolveWeaponHandedness(value) {
     switch (value) {
         case 'One Handed':
@@ -3295,6 +3941,13 @@ var DisplayWeapon = /** @class */ (function (_super) {
     Object.defineProperty(DisplayWeapon.prototype, "altModeTagColorClass", {
         get: function () {
             return this.altMode ? 'has-text-warning' : '';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(DisplayWeapon.prototype, "peasantLabel", {
+        get: function () {
+            return this.isPeasantWeapon ? 'Peasant' : '';
         },
         enumerable: true,
         configurable: true
@@ -3617,6 +4270,96 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bars_vue_vue_type_template_id_17ec623e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bars_vue_vue_type_template_id_17ec623e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./src/vue/partial/weapon-inventory-cost.vue":
+/*!***************************************************!*\
+  !*** ./src/vue/partial/weapon-inventory-cost.vue ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _weapon_inventory_cost_vue_vue_type_template_id_da12ffe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true& */ "./src/vue/partial/weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true&");
+/* harmony import */ var _weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weapon-inventory-cost.vue?vue&type=script&lang=ts& */ "./src/vue/partial/weapon-inventory-cost.vue?vue&type=script&lang=ts&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _weapon_inventory_cost_vue_vue_type_style_index_0_id_da12ffe2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true& */ "./src/vue/partial/weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _weapon_inventory_cost_vue_vue_type_template_id_da12ffe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _weapon_inventory_cost_vue_vue_type_template_id_da12ffe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "da12ffe2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/vue/partial/weapon-inventory-cost.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/vue/partial/weapon-inventory-cost.vue?vue&type=script&lang=ts&":
+/*!****************************************************************************!*\
+  !*** ./src/vue/partial/weapon-inventory-cost.vue?vue&type=script&lang=ts& ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/ts-loader??ref--0!../../../node_modules/vue-loader/lib??vue-loader-options!./weapon-inventory-cost.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/weapon-inventory-cost.vue?vue&type=script&lang=ts&");
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./src/vue/partial/weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true&":
+/*!*************************************************************************************************************!*\
+  !*** ./src/vue/partial/weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_style_index_0_id_da12ffe2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--2-2!../../../node_modules/sass-loader/lib/loader.js??ref--2-3!../../../node_modules/vue-loader/lib??vue-loader-options!./weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true& */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/weapon-inventory-cost.vue?vue&type=style&index=0&id=da12ffe2&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_style_index_0_id_da12ffe2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_style_index_0_id_da12ffe2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_style_index_0_id_da12ffe2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_style_index_0_id_da12ffe2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_style_index_0_id_da12ffe2_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./src/vue/partial/weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./src/vue/partial/weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_template_id_da12ffe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/weapon-inventory-cost.vue?vue&type=template&id=da12ffe2&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_template_id_da12ffe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_weapon_inventory_cost_vue_vue_type_template_id_da12ffe2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
