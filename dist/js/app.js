@@ -1367,7 +1367,8 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass: "group-addon desktop-control is-borderless"
+                      staticClass:
+                        "group-addon desktop-control is-borderless has-text-grey"
                     },
                     [
                       _vm._v(
@@ -1686,7 +1687,7 @@ var render = function() {
                                 "div",
                                 {
                                   staticClass:
-                                    "group-addon is-borderless is-expanded is-paddingless"
+                                    "group-addon is-borderless is-paddingless"
                                 },
                                 [
                                   _c(
@@ -1786,111 +1787,127 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
+                              _c("div", {
+                                staticClass:
+                                  "group-addon is-borderless is-expanded mobile-control"
+                              }),
+                              _vm._v(" "),
                               _c(
                                 "div",
                                 {
+                                  staticClass:
+                                    "group-addon control-group is-borderless",
                                   style: {
                                     opacity: _vm.attributesCollapsed ? 0.5 : 1
                                   }
                                 },
                                 [
-                                  _c("label", { staticClass: "size-75" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sortValues,
-                                          expression: "sortValues"
-                                        }
-                                      ],
-                                      staticClass: "input",
-                                      attrs: {
-                                        type: "checkbox",
-                                        disabled: _vm.attributesCollapsed
-                                      },
-                                      domProps: {
-                                        checked: Array.isArray(_vm.sortValues)
-                                          ? _vm._i(_vm.sortValues, null) > -1
-                                          : _vm.sortValues
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          var $$a = _vm.sortValues,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = null,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                (_vm.sortValues = $$a.concat([
-                                                  $$v
-                                                ]))
+                                  _c(
+                                    "label",
+                                    { staticClass: "size-75 padding-top-50" },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.sortValues,
+                                            expression: "sortValues"
+                                          }
+                                        ],
+                                        staticClass: "input",
+                                        attrs: {
+                                          type: "checkbox",
+                                          disabled: _vm.attributesCollapsed
+                                        },
+                                        domProps: {
+                                          checked: Array.isArray(_vm.sortValues)
+                                            ? _vm._i(_vm.sortValues, null) > -1
+                                            : _vm.sortValues
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.sortValues,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.sortValues = $$a.concat([
+                                                    $$v
+                                                  ]))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.sortValues = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
                                             } else {
-                                              $$i > -1 &&
-                                                (_vm.sortValues = $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1)))
+                                              _vm.sortValues = $$c
                                             }
-                                          } else {
-                                            _vm.sortValues = $$c
                                           }
                                         }
-                                      }
-                                    }),
-                                    _vm._v(" Sort values")
-                                  ]),
+                                      }),
+                                      _vm._v(" Sort values")
+                                    ]
+                                  ),
                                   _vm._v(" "),
-                                  _c("label", { staticClass: "size-75" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.globalCompare,
-                                          expression: "globalCompare"
-                                        }
-                                      ],
-                                      staticClass: "input",
-                                      attrs: {
-                                        type: "checkbox",
-                                        disabled: _vm.attributesCollapsed
-                                      },
-                                      domProps: {
-                                        checked: Array.isArray(
-                                          _vm.globalCompare
-                                        )
-                                          ? _vm._i(_vm.globalCompare, null) > -1
-                                          : _vm.globalCompare
-                                      },
-                                      on: {
-                                        change: function($event) {
-                                          var $$a = _vm.globalCompare,
-                                            $$el = $event.target,
-                                            $$c = $$el.checked ? true : false
-                                          if (Array.isArray($$a)) {
-                                            var $$v = null,
-                                              $$i = _vm._i($$a, $$v)
-                                            if ($$el.checked) {
-                                              $$i < 0 &&
-                                                (_vm.globalCompare = $$a.concat(
-                                                  [$$v]
-                                                ))
+                                  _c(
+                                    "label",
+                                    { staticClass: "size-75 padding-top-50" },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.globalCompare,
+                                            expression: "globalCompare"
+                                          }
+                                        ],
+                                        staticClass: "input",
+                                        attrs: {
+                                          type: "checkbox",
+                                          disabled: _vm.attributesCollapsed
+                                        },
+                                        domProps: {
+                                          checked: Array.isArray(
+                                            _vm.globalCompare
+                                          )
+                                            ? _vm._i(_vm.globalCompare, null) >
+                                              -1
+                                            : _vm.globalCompare
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            var $$a = _vm.globalCompare,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  (_vm.globalCompare = $$a.concat(
+                                                    [$$v]
+                                                  ))
+                                              } else {
+                                                $$i > -1 &&
+                                                  (_vm.globalCompare = $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1)))
+                                              }
                                             } else {
-                                              $$i > -1 &&
-                                                (_vm.globalCompare = $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1)))
+                                              _vm.globalCompare = $$c
                                             }
-                                          } else {
-                                            _vm.globalCompare = $$c
                                           }
                                         }
-                                      }
-                                    }),
-                                    _vm._v(" Compare to all weapons")
-                                  ])
+                                      }),
+                                      _vm._v(" Compare to all weapons")
+                                    ]
+                                  )
                                 ]
                               )
                             ]
