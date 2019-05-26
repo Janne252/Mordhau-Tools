@@ -271,6 +271,7 @@ var App = /** @class */ (function (_super) {
     function App() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.isLoading = true;
+        _this.showCopyright = false;
         _this.weapons = [];
         _this.uniqueWeaponsByNameCount = 0;
         _this.displayWeapons = [];
@@ -286,6 +287,9 @@ var App = /** @class */ (function (_super) {
             showProjectiles: true,
             sortValues: false,
             globalCompare: true,
+            attributesLayout: 'grid',
+            attributesCollapsed: false,
+            weaponsListCollapsed: false,
         };
         _this.search = null;
         _this.showOneHandedWeapons = null;
@@ -296,6 +300,9 @@ var App = /** @class */ (function (_super) {
         _this.showProjectiles = null;
         _this.sortValues = null;
         _this.globalCompare = null;
+        _this.attributesLayout = null;
+        _this.attributesCollapsed = null;
+        _this.weaponsListCollapsed = null;
         _this.highestWeaponComputedAverageDamage = 0;
         _this.highestWeaponComputedAttackSpeed = 0;
         _this.highestWeaponLength = 0;
@@ -351,6 +358,7 @@ var App = /** @class */ (function (_super) {
                     case 2:
                         _a.sent();
                         this.isLoading = false;
+                        this.showCopyright = true;
                         this.deserializeState();
                         this.applyWeaponFilters();
                         return [2 /*return*/];
@@ -385,6 +393,7 @@ var App = /** @class */ (function (_super) {
         }
         this.serializeState();
     };
+    // All the properties that are saved in state
     App.prototype.stateChanged = function () {
         if (this.isLoading) {
             return;
@@ -393,7 +402,7 @@ var App = /** @class */ (function (_super) {
     };
     App.prototype.serializeState = function () {
         this.$router.replace({
-            query: __assign({}, this.$route.query, { search: this.search, oneHanded: JSON.stringify(this.showOneHandedWeapons), twoHanded: JSON.stringify(this.showTwoHandedWeapons), altMode: JSON.stringify(this.showAltModeWeapons), strike: JSON.stringify(this.showStrikeWeapons), thrust: JSON.stringify(this.showThrustWeapons), sortValues: JSON.stringify(this.sortValues), selected: this.selectedWeapons.map(function (o) { return o.id; }).join(',') })
+            query: __assign({}, this.$route.query, { search: this.search, oneHanded: JSON.stringify(this.showOneHandedWeapons), twoHanded: JSON.stringify(this.showTwoHandedWeapons), altMode: JSON.stringify(this.showAltModeWeapons), strike: JSON.stringify(this.showStrikeWeapons), thrust: JSON.stringify(this.showThrustWeapons), sortValues: JSON.stringify(this.sortValues), layout: this.attributesLayout, selected: this.selectedWeapons.map(function (o) { return o.id; }).join(',') })
         });
     };
     App.prototype.deserializeState = function () {
@@ -404,6 +413,7 @@ var App = /** @class */ (function (_super) {
         this.showStrikeWeapons = JSON.parse(this.$route.query.strike || JSON.stringify(this.defaults.showStrikeWeapons));
         this.showThrustWeapons = JSON.parse(this.$route.query.thrust || JSON.stringify(this.defaults.showThrustWeapons));
         this.sortValues = JSON.parse(this.$route.query.sortValues || JSON.stringify(this.defaults.sortValues));
+        this.attributesLayout = this.$route.query.layout || this.defaults.attributesLayout;
         var selectedIds = (this.$route.query.selected || '').split(',');
         for (var _i = 0, _a = this.displayWeapons; _i < _a.length; _i++) {
             var weapon = _a[_i];
@@ -421,12 +431,12 @@ var App = /** @class */ (function (_super) {
             var weapon = _a[_i];
             weapon.isSelected = false;
         }
+        this.weaponsListCollapsed = false;
     };
     App.prototype.resetFilters = function () {
         for (var key in this.defaults) {
             this.$set(this, key, this.defaults[key]);
         }
-        this.unSelectAll();
     };
     App.prototype.reload = function () {
     };
@@ -480,7 +490,8 @@ var App = /** @class */ (function (_super) {
         vue_property_decorator_1.Watch('showThrustWeapons'),
         vue_property_decorator_1.Watch('showProjectiles'),
         vue_property_decorator_1.Watch('sortValues'),
-        vue_property_decorator_1.Watch('globalCompare')
+        vue_property_decorator_1.Watch('globalCompare'),
+        vue_property_decorator_1.Watch('attributesLayout')
     ], App.prototype, "stateChanged", null);
     App = __decorate([
         vue_property_decorator_1.Component({
@@ -951,7 +962,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "view" }, [
+  return _c("div", { staticClass: "view is-fullheight" }, [
     _c("header", { staticClass: "app-header" }, [
       _c("div", { staticClass: "mordhau-logo", on: { click: _vm.reload } }, [
         _c("img", { attrs: { src: "image/mordhau-logo.x256.png" } }),
@@ -981,363 +992,579 @@ var render = function() {
           "main",
           {
             staticClass: "view-content no-overflow primary-panels",
-            class: { "no-weapons-selected": _vm.selectedWeapons.length == 0 }
+            class: {
+              "no-weapons-selected": _vm.selectedWeapons.length == 0,
+              "collapse-attributes-panel": _vm.attributesCollapsed,
+              "collapse-weapons-list": _vm.weaponsListCollapsed
+            }
           },
           [
             _c("div", { staticClass: "view panel panel-weapons" }, [
               _c("header", [
-                _c("div", { staticClass: "control-group is-gapless" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.search,
-                        expression: "search"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: {
-                      type: "search",
-                      placeholder: "Search by weapon name..."
-                    },
-                    domProps: { value: _vm.search },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _c("div", { staticClass: "weapon-filters" }, [
+                  _c("div", { staticClass: "control-group is-gapless" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.search,
+                          expression: "search"
                         }
-                        _vm.search = $event.target.value
+                      ],
+                      staticClass: "input",
+                      attrs: {
+                        type: "search",
+                        placeholder: "Search by weapon name..."
+                      },
+                      domProps: { value: _vm.search },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.search = $event.target.value
+                        }
                       }
-                    }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "button is-danger is-border-text",
+                        attrs: { type: "button", title: "Reset filters" },
+                        on: { click: _vm.resetFilters }
+                      },
+                      [_c("span", [_vm._v("Reset filters")])]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "size-75 margin-top-30" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "control-group is-gapless is-wrapping no-adjacent-margin no-wrapping-margin"
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "group-addon has-no-border-left has-no-horizontal-borders"
+                          },
+                          [
+                            _c("div", { staticClass: "control-group" }, [
+                              _c("label", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.showOneHandedWeapons,
+                                      expression: "showOneHandedWeapons"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    checked: Array.isArray(
+                                      _vm.showOneHandedWeapons
+                                    )
+                                      ? _vm._i(_vm.showOneHandedWeapons, null) >
+                                        -1
+                                      : _vm.showOneHandedWeapons
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.showOneHandedWeapons,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.showOneHandedWeapons = $$a.concat(
+                                              [$$v]
+                                            ))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.showOneHandedWeapons = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.showOneHandedWeapons = $$c
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n                                        1-handed\n                                    "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("label", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.showTwoHandedWeapons,
+                                      expression: "showTwoHandedWeapons"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    checked: Array.isArray(
+                                      _vm.showTwoHandedWeapons
+                                    )
+                                      ? _vm._i(_vm.showTwoHandedWeapons, null) >
+                                        -1
+                                      : _vm.showTwoHandedWeapons
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.showTwoHandedWeapons,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.showTwoHandedWeapons = $$a.concat(
+                                              [$$v]
+                                            ))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.showTwoHandedWeapons = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.showTwoHandedWeapons = $$c
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n                                        2-handed\n                                    "
+                                )
+                              ])
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "group-addon has-no-border-left has-no-horizontal-borders"
+                          },
+                          [
+                            _c("label", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.showAltModeWeapons,
+                                    expression: "showAltModeWeapons"
+                                  }
+                                ],
+                                staticClass: "input",
+                                attrs: { type: "checkbox" },
+                                domProps: {
+                                  checked: Array.isArray(_vm.showAltModeWeapons)
+                                    ? _vm._i(_vm.showAltModeWeapons, null) > -1
+                                    : _vm.showAltModeWeapons
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.showAltModeWeapons,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = null,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          (_vm.showAltModeWeapons = $$a.concat([
+                                            $$v
+                                          ]))
+                                      } else {
+                                        $$i > -1 &&
+                                          (_vm.showAltModeWeapons = $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1)))
+                                      }
+                                    } else {
+                                      _vm.showAltModeWeapons = $$c
+                                    }
+                                  }
+                                }
+                              }),
+                              _vm._v(" Alt mode")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "group-addon is-borderless" },
+                          [
+                            _c("div", { staticClass: "control-group" }, [
+                              _c("label", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.showStrikeWeapons,
+                                      expression: "showStrikeWeapons"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    checked: Array.isArray(
+                                      _vm.showStrikeWeapons
+                                    )
+                                      ? _vm._i(_vm.showStrikeWeapons, null) > -1
+                                      : _vm.showStrikeWeapons
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.showStrikeWeapons,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.showStrikeWeapons = $$a.concat(
+                                              [$$v]
+                                            ))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.showStrikeWeapons = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.showStrikeWeapons = $$c
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(" Strike")
+                              ]),
+                              _vm._v(" "),
+                              _c("label", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.showThrustWeapons,
+                                      expression: "showThrustWeapons"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    checked: Array.isArray(
+                                      _vm.showThrustWeapons
+                                    )
+                                      ? _vm._i(_vm.showThrustWeapons, null) > -1
+                                      : _vm.showThrustWeapons
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.showThrustWeapons,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.showThrustWeapons = $$a.concat(
+                                              [$$v]
+                                            ))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.showThrustWeapons = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.showThrustWeapons = $$c
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(" Thrust")
+                              ]),
+                              _vm._v(" "),
+                              _c("label", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.showProjectiles,
+                                      expression: "showProjectiles"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  attrs: { type: "checkbox" },
+                                  domProps: {
+                                    checked: Array.isArray(_vm.showProjectiles)
+                                      ? _vm._i(_vm.showProjectiles, null) > -1
+                                      : _vm.showProjectiles
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.showProjectiles,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.showProjectiles = $$a.concat([
+                                              $$v
+                                            ]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.showProjectiles = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.showProjectiles = $$c
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(" Projectile")
+                              ])
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "control-group is-gapless" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "group-addon desktop-control is-borderless"
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.selectedWeapons.length) +
+                          " " +
+                          _vm._s(
+                            _vm.selectedWeapons.length == 1
+                              ? "weapon"
+                              : "weapons"
+                          ) +
+                          " selected\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "button is-borderless is-content-aligned-left mobile-control",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.weaponsListCollapsed = !_vm.weaponsListCollapsed
+                        }
+                      }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "icon",
+                        class: {
+                          "fas fa-chevron-up": !_vm.weaponsListCollapsed,
+                          "fas fa-chevron-down": _vm.weaponsListCollapsed
+                        },
+                        attrs: { "aria-hidden": "true" }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.selectedWeapons.length) +
+                            " " +
+                            _vm._s(
+                              _vm.selectedWeapons.length == 1
+                                ? "weapon"
+                                : "weapons"
+                            ) +
+                            " selected\n                        "
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", {
+                    staticClass: "group-addon is-borderless is-expanded"
                   }),
                   _vm._v(" "),
                   _c(
                     "button",
                     {
-                      staticClass: "button is-danger is-border-text",
-                      attrs: { type: "button", title: "Reset filters" },
-                      on: { click: _vm.resetFilters }
-                    },
-                    [_c("span", [_vm._v("Reset filters")])]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "size-75 margin-top-30" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "control-group is-gapless is-wrapping no-adjacent-margin no-wrapping-margin"
+                      staticClass: "button is-danger is-text",
+                      attrs: {
+                        type: "button",
+                        disabled:
+                          _vm.weaponsListCollapsed ||
+                          _vm.selectedWeapons.length == 0
+                      },
+                      on: { click: _vm.unSelectAll }
                     },
                     [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "group-addon has-no-border-left has-no-horizontal-borders"
-                        },
-                        [
-                          _c("div", { staticClass: "control-group" }, [
-                            _c("label", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.showOneHandedWeapons,
-                                    expression: "showOneHandedWeapons"
-                                  }
-                                ],
-                                staticClass: "input",
-                                attrs: { type: "checkbox" },
-                                domProps: {
-                                  checked: Array.isArray(
-                                    _vm.showOneHandedWeapons
-                                  )
-                                    ? _vm._i(_vm.showOneHandedWeapons, null) >
-                                      -1
-                                    : _vm.showOneHandedWeapons
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$a = _vm.showOneHandedWeapons,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = null,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.showOneHandedWeapons = $$a.concat(
-                                            [$$v]
-                                          ))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.showOneHandedWeapons = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.showOneHandedWeapons = $$c
-                                    }
-                                  }
-                                }
-                              }),
-                              _vm._v(
-                                "\n                                        1-handed\n                                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("label", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.showTwoHandedWeapons,
-                                    expression: "showTwoHandedWeapons"
-                                  }
-                                ],
-                                staticClass: "input",
-                                attrs: { type: "checkbox" },
-                                domProps: {
-                                  checked: Array.isArray(
-                                    _vm.showTwoHandedWeapons
-                                  )
-                                    ? _vm._i(_vm.showTwoHandedWeapons, null) >
-                                      -1
-                                    : _vm.showTwoHandedWeapons
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$a = _vm.showTwoHandedWeapons,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = null,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.showTwoHandedWeapons = $$a.concat(
-                                            [$$v]
-                                          ))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.showTwoHandedWeapons = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.showTwoHandedWeapons = $$c
-                                    }
-                                  }
-                                }
-                              }),
-                              _vm._v(
-                                "\n                                        2-handed\n                                    "
-                              )
-                            ])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "group-addon has-no-border-left has-no-horizontal-borders"
-                        },
-                        [
-                          _c("label", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.showAltModeWeapons,
-                                  expression: "showAltModeWeapons"
-                                }
-                              ],
-                              staticClass: "input",
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                checked: Array.isArray(_vm.showAltModeWeapons)
-                                  ? _vm._i(_vm.showAltModeWeapons, null) > -1
-                                  : _vm.showAltModeWeapons
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.showAltModeWeapons,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        (_vm.showAltModeWeapons = $$a.concat([
-                                          $$v
-                                        ]))
-                                    } else {
-                                      $$i > -1 &&
-                                        (_vm.showAltModeWeapons = $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1)))
-                                    }
-                                  } else {
-                                    _vm.showAltModeWeapons = $$c
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(" Alt mode")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "group-addon is-borderless" }, [
-                        _c("div", { staticClass: "control-group" }, [
-                          _c("label", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.showStrikeWeapons,
-                                  expression: "showStrikeWeapons"
-                                }
-                              ],
-                              staticClass: "input",
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                checked: Array.isArray(_vm.showStrikeWeapons)
-                                  ? _vm._i(_vm.showStrikeWeapons, null) > -1
-                                  : _vm.showStrikeWeapons
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.showStrikeWeapons,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        (_vm.showStrikeWeapons = $$a.concat([
-                                          $$v
-                                        ]))
-                                    } else {
-                                      $$i > -1 &&
-                                        (_vm.showStrikeWeapons = $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1)))
-                                    }
-                                  } else {
-                                    _vm.showStrikeWeapons = $$c
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(" Strike")
-                          ]),
-                          _vm._v(" "),
-                          _c("label", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.showThrustWeapons,
-                                  expression: "showThrustWeapons"
-                                }
-                              ],
-                              staticClass: "input",
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                checked: Array.isArray(_vm.showThrustWeapons)
-                                  ? _vm._i(_vm.showThrustWeapons, null) > -1
-                                  : _vm.showThrustWeapons
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.showThrustWeapons,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        (_vm.showThrustWeapons = $$a.concat([
-                                          $$v
-                                        ]))
-                                    } else {
-                                      $$i > -1 &&
-                                        (_vm.showThrustWeapons = $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1)))
-                                    }
-                                  } else {
-                                    _vm.showThrustWeapons = $$c
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(" Thrust")
-                          ]),
-                          _vm._v(" "),
-                          _c("label", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.showProjectiles,
-                                  expression: "showProjectiles"
-                                }
-                              ],
-                              staticClass: "input",
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                checked: Array.isArray(_vm.showProjectiles)
-                                  ? _vm._i(_vm.showProjectiles, null) > -1
-                                  : _vm.showProjectiles
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.showProjectiles,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        (_vm.showProjectiles = $$a.concat([
-                                          $$v
-                                        ]))
-                                    } else {
-                                      $$i > -1 &&
-                                        (_vm.showProjectiles = $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1)))
-                                    }
-                                  } else {
-                                    _vm.showProjectiles = $$c
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(" Projectile")
-                          ])
-                        ])
-                      ])
+                      _vm._v(
+                        "\n                        Unselect all\n                    "
+                      )
                     ]
                   )
-                ]),
-                _vm._v(" "),
+                ])
+              ]),
+              _vm._v(" "),
+              _c("main", { staticClass: "view-content weapon-table-wrapper" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "table weapon-table is-fullwidth is-hoverable"
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "table-body" },
+                      _vm._l(_vm.filteredWeapons, function(weapon) {
+                        return _c(
+                          "div",
+                          {
+                            key: weapon.id,
+                            staticClass: "table-row",
+                            class: { "is-selected": weapon.isSelected },
+                            on: {
+                              click: function($event) {
+                                weapon.isSelected = !weapon.isSelected
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "table-cell weapon-name-cell",
+                                class: { "has-text-info": weapon.isSelected }
+                              },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        $event.stopPropagation()
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: weapon.isSelected,
+                                          expression: "weapon.isSelected"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      class: { "is-info": weapon.isSelected },
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          weapon.isSelected
+                                        )
+                                          ? _vm._i(weapon.isSelected, null) > -1
+                                          : weapon.isSelected
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = weapon.isSelected,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  weapon,
+                                                  "isSelected",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  weapon,
+                                                  "isSelected",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(weapon, "isSelected", $$c)
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("WeaponLabel", {
+                                      attrs: {
+                                        weapon: weapon,
+                                        "display-tags": true
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            false
+                              ? undefined
+                              : _vm._e()
+                          ],
+                          2
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("footer", [
                 _c(
                   "div",
                   {
@@ -1386,115 +1613,6 @@ var render = function() {
                   ],
                   2
                 )
-              ]),
-              _vm._v(" "),
-              _c("main", { staticClass: "view-content weapon-table-wrapper" }, [
-                _c("div", { staticClass: "table is-fullwidth is-hoverable" }, [
-                  _c(
-                    "div",
-                    { staticClass: "table-body" },
-                    _vm._l(_vm.filteredWeapons, function(weapon) {
-                      return _c(
-                        "div",
-                        {
-                          key: weapon.id,
-                          staticClass: "table-row",
-                          class: { "is-selected": weapon.isSelected },
-                          on: {
-                            click: function($event) {
-                              weapon.isSelected = !weapon.isSelected
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "table-cell weapon-name-cell",
-                              class: { "has-text-info": weapon.isSelected }
-                            },
-                            [
-                              _c(
-                                "label",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      $event.stopPropagation()
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: weapon.isSelected,
-                                        expression: "weapon.isSelected"
-                                      }
-                                    ],
-                                    staticClass: "input",
-                                    class: { "is-info": weapon.isSelected },
-                                    attrs: { type: "checkbox" },
-                                    domProps: {
-                                      checked: Array.isArray(weapon.isSelected)
-                                        ? _vm._i(weapon.isSelected, null) > -1
-                                        : weapon.isSelected
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = weapon.isSelected,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              _vm.$set(
-                                                weapon,
-                                                "isSelected",
-                                                $$a.concat([$$v])
-                                              )
-                                          } else {
-                                            $$i > -1 &&
-                                              _vm.$set(
-                                                weapon,
-                                                "isSelected",
-                                                $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1))
-                                              )
-                                          }
-                                        } else {
-                                          _vm.$set(weapon, "isSelected", $$c)
-                                        }
-                                      }
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("WeaponLabel", {
-                                    attrs: {
-                                      weapon: weapon,
-                                      "display-tags": true
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          false
-                            ? undefined
-                            : _vm._e()
-                        ],
-                        2
-                      )
-                    }),
-                    0
-                  )
-                ])
               ])
             ]),
             _vm._v(" "),
@@ -1507,7 +1625,10 @@ var render = function() {
                   : [
                       _c(
                         "header",
-                        { staticClass: "selected-weapons-list-wrapper" },
+                        {
+                          staticClass:
+                            "selected-weapons-list-wrapper desktop-control"
+                        },
                         [
                           _c("div", { staticClass: "selected-weapons-list" }, [
                             _c(
@@ -1558,275 +1679,406 @@ var render = function() {
                             "div",
                             {
                               staticClass:
-                                "size-80 control-group is-vertically-centered margin-right-50"
+                                "control-group is-vertically-centered margin-left-50 margin-right-50 margin-top-20 margin-bottom-20"
                             },
                             [
-                              _c("div", {
-                                staticClass:
-                                  "group-addon is-borderless is-expanded"
-                              }),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "size-75" }, [
-                                _c("input", {
-                                  directives: [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "group-addon is-borderless is-expanded is-paddingless"
+                                },
+                                [
+                                  _c(
+                                    "div",
                                     {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.sortValues,
-                                      expression: "sortValues"
-                                    }
-                                  ],
-                                  staticClass: "input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.sortValues)
-                                      ? _vm._i(_vm.sortValues, null) > -1
-                                      : _vm.sortValues
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.sortValues,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.sortValues = $$a.concat([$$v]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.sortValues = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.sortValues = $$c
-                                      }
-                                    }
-                                  }
-                                }),
-                                _vm._v(" Sort values")
-                              ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "size-75" }, [
-                                _c("input", {
-                                  directives: [
+                                      staticClass:
+                                        "control-group is-gapless mobile-control"
+                                    },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "button is-borderless",
+                                          attrs: {
+                                            type: "button",
+                                            title: "Collapse"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.attributesCollapsed = !_vm.attributesCollapsed
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "icon",
+                                            class: {
+                                              "fas fa-chevron-down":
+                                                _vm.attributesCollapsed,
+                                              "fas fa-chevron-up": !_vm.attributesCollapsed
+                                            },
+                                            attrs: { "aria-hidden": "true" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", [_vm._v("Statistics")])
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
                                     {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.globalCompare,
-                                      expression: "globalCompare"
-                                    }
-                                  ],
-                                  staticClass: "input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    checked: Array.isArray(_vm.globalCompare)
-                                      ? _vm._i(_vm.globalCompare, null) > -1
-                                      : _vm.globalCompare
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.globalCompare,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.globalCompare = $$a.concat([
-                                              $$v
-                                            ]))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.globalCompare = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.globalCompare = $$c
-                                      }
-                                    }
+                                      staticClass:
+                                        "control-group is-gapless desktop-control"
+                                    },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "button is-icon",
+                                          attrs: {
+                                            type: "button",
+                                            disabled:
+                                              _vm.attributesLayout == "grid",
+                                            title: "Grid layout"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.attributesLayout = "grid"
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "icon fas fa-th-large",
+                                            attrs: { "aria-hidden": "true" }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "button is-icon",
+                                          attrs: {
+                                            type: "button",
+                                            disabled:
+                                              _vm.attributesLayout == "list",
+                                            title: "List layout"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.attributesLayout = "list"
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "icon fas fa-th-list",
+                                            attrs: { "aria-hidden": "true" }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  style: {
+                                    opacity: _vm.attributesCollapsed ? 0.5 : 1
                                   }
-                                }),
-                                _vm._v(" Compare to all weapons")
-                              ])
+                                },
+                                [
+                                  _c("label", { staticClass: "size-75" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.sortValues,
+                                          expression: "sortValues"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: {
+                                        type: "checkbox",
+                                        disabled: _vm.attributesCollapsed
+                                      },
+                                      domProps: {
+                                        checked: Array.isArray(_vm.sortValues)
+                                          ? _vm._i(_vm.sortValues, null) > -1
+                                          : _vm.sortValues
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.sortValues,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.sortValues = $$a.concat([
+                                                  $$v
+                                                ]))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.sortValues = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.sortValues = $$c
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" Sort values")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "size-75" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.globalCompare,
+                                          expression: "globalCompare"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: {
+                                        type: "checkbox",
+                                        disabled: _vm.attributesCollapsed
+                                      },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.globalCompare
+                                        )
+                                          ? _vm._i(_vm.globalCompare, null) > -1
+                                          : _vm.globalCompare
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.globalCompare,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.globalCompare = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.globalCompare = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.globalCompare = $$c
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" Compare to all weapons")
+                                  ])
+                                ]
+                              )
                             ]
                           )
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "view-content" }, [
-                          _c("div", { staticClass: "attribute-bars" }, [
-                            _c(
-                              "div",
-                              [
-                                _vm._m(2),
-                                _vm._v(" "),
-                                _c("AttributeBars", {
-                                  staticClass: "red",
-                                  attrs: {
-                                    "all-items": _vm.displayWeapons,
-                                    items: _vm.selectedWeapons,
-                                    formula: function(weapon) {
-                                      return (
-                                        weapon.computedDamage.averageDamage /
-                                        _vm.highestWeaponComputedAverageDamage
-                                      )
-                                    },
-                                    "display-value": function(weapon) {
-                                      return weapon.computedDamage.averageDamage
-                                    },
-                                    global: _vm.globalCompare,
-                                    sort: _vm.sortValues
-                                  },
-                                  scopedSlots: _vm._u(
+                          !_vm.attributesCollapsed
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "attribute-bars",
+                                  class: ["layout-" + _vm.attributesLayout]
+                                },
+                                [
+                                  _c(
+                                    "div",
                                     [
-                                      {
-                                        key: "label",
-                                        fn: function(ref) {
-                                          var item = ref.item
-                                          return _c(
-                                            "span",
-                                            {},
-                                            [
-                                              _c("WeaponLabel", {
-                                                attrs: {
-                                                  weapon: item,
-                                                  "display-tags": true
-                                                }
-                                              })
-                                            ],
-                                            1
-                                          )
-                                        }
-                                      }
+                                      _vm._m(2),
+                                      _vm._v(" "),
+                                      _c("AttributeBars", {
+                                        staticClass: "red",
+                                        attrs: {
+                                          "all-items": _vm.displayWeapons,
+                                          items: _vm.selectedWeapons,
+                                          formula: function(weapon) {
+                                            return (
+                                              weapon.computedDamage
+                                                .averageDamage /
+                                              _vm.highestWeaponComputedAverageDamage
+                                            )
+                                          },
+                                          "display-value": function(weapon) {
+                                            return weapon.computedDamage
+                                              .averageDamage
+                                          },
+                                          global: _vm.globalCompare,
+                                          sort: _vm.sortValues
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "label",
+                                              fn: function(ref) {
+                                                var item = ref.item
+                                                return _c(
+                                                  "span",
+                                                  {},
+                                                  [
+                                                    _c("WeaponLabel", {
+                                                      attrs: {
+                                                        weapon: item,
+                                                        "display-tags": true
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              }
+                                            }
+                                          ],
+                                          null,
+                                          false,
+                                          4158362610
+                                        )
+                                      })
                                     ],
-                                    null,
-                                    false,
-                                    4158362610
-                                  )
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              [
-                                _vm._m(3),
-                                _vm._v(" "),
-                                _c("AttributeBars", {
-                                  staticClass: "green",
-                                  attrs: {
-                                    "all-items": _vm.displayWeapons,
-                                    items: _vm.selectedWeapons,
-                                    formula: function(weapon) {
-                                      return (
-                                        _vm.highestWeaponComputedAttackSpeed -
-                                        weapon.computedSpeed.attack /
-                                          _vm.highestWeaponComputedAttackSpeed
-                                      )
-                                    },
-                                    "display-value": function(weapon) {
-                                      return weapon.computedSpeed.attack.toFixed(
-                                        2
-                                      )
-                                    },
-                                    "is-enabled": function(weapon) {
-                                      return weapon.computedSpeed.attack
-                                    },
-                                    sort: _vm.sortValues,
-                                    global: _vm.globalCompare,
-                                    invert: true
-                                  },
-                                  scopedSlots: _vm._u(
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
                                     [
-                                      {
-                                        key: "label",
-                                        fn: function(ref) {
-                                          var item = ref.item
-                                          return _c(
-                                            "span",
-                                            {},
-                                            [
-                                              _c("WeaponLabel", {
-                                                attrs: {
-                                                  weapon: item,
-                                                  "display-tags": true
-                                                }
-                                              })
-                                            ],
-                                            1
-                                          )
-                                        }
-                                      }
+                                      _vm._m(3),
+                                      _vm._v(" "),
+                                      _c("AttributeBars", {
+                                        staticClass: "green",
+                                        attrs: {
+                                          "all-items": _vm.displayWeapons,
+                                          items: _vm.selectedWeapons,
+                                          formula: function(weapon) {
+                                            return (
+                                              _vm.highestWeaponComputedAttackSpeed -
+                                              weapon.computedSpeed.attack /
+                                                _vm.highestWeaponComputedAttackSpeed
+                                            )
+                                          },
+                                          "display-value": function(weapon) {
+                                            return weapon.computedSpeed.attack.toFixed(
+                                              2
+                                            )
+                                          },
+                                          "is-enabled": function(weapon) {
+                                            return weapon.computedSpeed.attack
+                                          },
+                                          sort: _vm.sortValues,
+                                          global: _vm.globalCompare,
+                                          invert: true
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "label",
+                                              fn: function(ref) {
+                                                var item = ref.item
+                                                return _c(
+                                                  "span",
+                                                  {},
+                                                  [
+                                                    _c("WeaponLabel", {
+                                                      attrs: {
+                                                        weapon: item,
+                                                        "display-tags": true
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              }
+                                            }
+                                          ],
+                                          null,
+                                          false,
+                                          4158362610
+                                        )
+                                      })
                                     ],
-                                    null,
-                                    false,
-                                    4158362610
-                                  )
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              [
-                                _vm._m(4),
-                                _vm._v(" "),
-                                _c("AttributeBars", {
-                                  staticClass: "blue",
-                                  attrs: {
-                                    "all-items": _vm.displayWeapons,
-                                    items: _vm.selectedWeapons,
-                                    formula: function(weapon) {
-                                      return (
-                                        weapon.length / _vm.highestWeaponLength
-                                      )
-                                    },
-                                    "display-value": function(weapon) {
-                                      return weapon.length
-                                    },
-                                    "is-enabled": function(weapon) {
-                                      return !weapon.isProjectile
-                                    },
-                                    global: _vm.globalCompare,
-                                    sort: _vm.sortValues
-                                  },
-                                  scopedSlots: _vm._u(
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
                                     [
-                                      {
-                                        key: "label",
-                                        fn: function(ref) {
-                                          var item = ref.item
-                                          return _c(
-                                            "span",
-                                            {},
-                                            [
-                                              _c("WeaponLabel", {
-                                                attrs: {
-                                                  weapon: item,
-                                                  "display-tags": true
-                                                }
-                                              })
-                                            ],
-                                            1
-                                          )
-                                        }
-                                      }
+                                      _vm._m(4),
+                                      _vm._v(" "),
+                                      _c("AttributeBars", {
+                                        staticClass: "blue",
+                                        attrs: {
+                                          "all-items": _vm.displayWeapons,
+                                          items: _vm.selectedWeapons,
+                                          formula: function(weapon) {
+                                            return (
+                                              weapon.length /
+                                              _vm.highestWeaponLength
+                                            )
+                                          },
+                                          "display-value": function(weapon) {
+                                            return weapon.length
+                                          },
+                                          "is-enabled": function(weapon) {
+                                            return !weapon.isProjectile
+                                          },
+                                          global: _vm.globalCompare,
+                                          sort: _vm.sortValues
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "label",
+                                              fn: function(ref) {
+                                                var item = ref.item
+                                                return _c(
+                                                  "span",
+                                                  {},
+                                                  [
+                                                    _c("WeaponLabel", {
+                                                      attrs: {
+                                                        weapon: item,
+                                                        "display-tags": true
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              }
+                                            }
+                                          ],
+                                          null,
+                                          false,
+                                          4158362610
+                                        )
+                                      })
                                     ],
-                                    null,
-                                    false,
-                                    4158362610
+                                    1
                                   )
-                                })
-                              ],
-                              1
-                            )
-                          ])
+                                ]
+                              )
+                            : _vm._e()
                         ])
                       ])
                     ])
@@ -1839,33 +2091,59 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("footer", [
-      _c("div", { staticClass: "data-copyright" }, [
-        _vm._v(
-          "\n            All weapon/item data displayed on this page is loaded from a Google Sheet: \n            "
-        ),
-        _c(
-          "a",
-          {
-            attrs: {
-              href:
-                "https://docs.google.com/spreadsheets/d/1HXS_aF9CKeGKg6OecwCw3WobZWcTjDkp_4ipN1vnyVk",
-              target: "_blank"
-            }
-          },
-          [
-            _vm.dataProvider && _vm.dataProvider.spreadsheet
-              ? [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.dataProvider.spreadsheet.properties.title) +
-                      "\n                "
-                  )
-                ]
-              : [_c("i", [_vm._v("Loading...")])]
-          ],
-          2
-        )
-      ])
+      _vm.showCopyright
+        ? _c("div", { staticClass: "data-copyright" }, [
+            _c("div", { staticClass: "copyright-title" }, [
+              _vm._v(
+                "\n                All weapon/item data displayed on this page is loaded from a Google Sheet: \n                "
+              ),
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href:
+                      "https://docs.google.com/spreadsheets/d/1HXS_aF9CKeGKg6OecwCw3WobZWcTjDkp_4ipN1vnyVk",
+                    target: "_blank"
+                  }
+                },
+                [
+                  _vm.dataProvider && _vm.dataProvider.spreadsheet
+                    ? [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(
+                              _vm.dataProvider.spreadsheet.properties.title
+                            ) +
+                            "\n                    "
+                        )
+                      ]
+                    : [_c("i", [_vm._v("Loading...")])]
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "copyright-dismiss button is-icon is-transparent is-danger is-square is-inverted",
+                attrs: { type: "button", title: "Dismiss" },
+                on: {
+                  click: function($event) {
+                    _vm.showCopyright = false
+                  }
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "icon fas fa-times",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            )
+          ])
+        : _vm._e()
     ])
   ])
 }

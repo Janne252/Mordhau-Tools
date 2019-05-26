@@ -518,6 +518,12 @@ th {
 .is-borderless {
   border: none !important; }
 
+.is-paddingless {
+  padding: 0 !important; }
+
+.is-marginless {
+  margin: 0 !important; }
+
 .has-no-horizontal-borders {
   border-top: none !important;
   border-bottom: none !important; }
@@ -629,6 +635,36 @@ th {
 
 .size-200 {
   font-size: 2rem !important; }
+
+.margin-20 {
+  margin: 0.2rem !important; }
+
+.margin-top-20 {
+  margin-top: 0.2rem !important; }
+
+.margin-right-20 {
+  margin-right: 0.2rem !important; }
+
+.margin-bottom-20 {
+  margin-bottom: 0.2rem !important; }
+
+.margin-left-20 {
+  margin-left: 0.2rem !important; }
+
+.padding-20 {
+  padding: 0.2rem !important; }
+
+.padding-top-20 {
+  padding-top: 0.2rem !important; }
+
+.padding-right-20 {
+  padding-right: 0.2rem !important; }
+
+.padding-bottom-20 {
+  padding-bottom: 0.2rem !important; }
+
+.padding-left-20 {
+  padding-left: 0.2rem !important; }
 
 .margin-25 {
   margin: 0.25rem !important; }
@@ -1989,6 +2025,23 @@ body {
     outline: none; }
   .button::-moz-focus-inner {
     border: 0; }
+  .button.is-icon {
+    padding: 0;
+    width: 1.5em;
+    height: 2.375em;
+    border: none; }
+    .button.is-icon.is-square {
+      width: 2.375em; }
+    .button.is-icon ~ .button.is-icon {
+      margin-left: 0.875em; }
+    .button.is-icon > .icon {
+      font-size: 1.5em; }
+  .button.is-transparent {
+    background-color: transparent !important; }
+  .button.is-content-aligned-left {
+    justify-content: flex-start; }
+  .button.is-content-aligned-right {
+    justify-content: flex-end; }
   .apply-is-shadowed .button, .button.is-shadowed {
     box-shadow: 0 0.1875em 0.0625em -0.125em rgba(0, 0, 0, 0.2), 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.14), 0 0.0625em 0.3125em 0 rgba(0, 0, 0, 0.12); }
     .apply-is-shadowed .button:focus:not(:disabled), .button.is-shadowed:focus:not(:disabled) {
@@ -2891,13 +2944,14 @@ body {
       border-color: #757575;
       background-color: rgba(229, 57, 53, 0.1); }
 
-.button > .icon:not(:only-child) {
-  margin-left: -0.1875em;
-  margin-right: 0.4375em; }
-
-.button > .icon:only-child {
-  margin-left: -0.25em;
-  margin-right: -0.25em; }
+.button > .icon {
+  padding: 0; }
+  .button > .icon:not(:only-child) {
+    margin-left: -0.1875em;
+    margin-right: 0.4375em; }
+  .button > .icon:only-child {
+    margin-left: -0.25em;
+    margin-right: -0.25em; }
 
 .icon {
   display: inline-flex;
