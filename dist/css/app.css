@@ -546,10 +546,10 @@ a[href] {
 .inventory-cost.is-variant-attribute-bar[data-v-da12ffe2] {
     font-size: 0.65rem;
     color: inherit;
+    border-color: inherit;
     background-color: transparent;
     padding: 0.1em 0.25em;
     margin: 0.25em 0.125em;
-    border-color: rgba(255, 255, 255, 0.5);
 }
 .inventory-cost.is-selected.is-selectable[data-v-da12ffe2] {
     border-color: rgba(30, 136, 229, 0.5);
@@ -672,24 +672,30 @@ a[href] {
 }
 .attribute-bar-container.red .attribute-bar[data-v-17ec623e] {
     color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
     background-color: #C62828;
 }
 .attribute-bar-container.red .title-overflown[data-v-17ec623e] {
     color: #C62828;
+    border-color: rgba(198, 40, 40, 0.5);
 }
 .attribute-bar-container.green .attribute-bar[data-v-17ec623e] {
     color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
     background-color: #2E7D32;
 }
 .attribute-bar-container.green .title-overflown[data-v-17ec623e] {
     color: #2E7D32;
+    border-color: rgba(46, 125, 50, 0.5);
 }
 .attribute-bar-container.blue .attribute-bar[data-v-17ec623e] {
     color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
     background-color: #1565C0;
 }
 .attribute-bar-container.blue .title-overflown[data-v-17ec623e] {
     color: #1565C0;
+    border-color: rgba(21, 101, 192, 0.5);
 }
 .attribute-bar-container .attribute-bar-wrapper[data-v-17ec623e] {
     border: 1px solid #E0E0E0;
