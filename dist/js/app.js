@@ -366,6 +366,12 @@ var App = /** @class */ (function (_super) {
             });
         });
     };
+    App.prototype.searchKeyUp = function () {
+        console.log('keyup!');
+        if (this.search != this.$refs.searchInput.value) {
+            this.search = this.$refs.searchInput.value;
+        }
+    };
     App.prototype.applyWeaponFilters = function () {
         if (this.isLoading) {
             return;
@@ -1012,6 +1018,7 @@ var render = function() {
                           expression: "search"
                         }
                       ],
+                      ref: "searchInput",
                       staticClass: "input",
                       attrs: {
                         type: "search",
@@ -1019,6 +1026,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.search },
                       on: {
+                        keyup: _vm.searchKeyUp,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
