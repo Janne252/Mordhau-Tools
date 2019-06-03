@@ -236,6 +236,18 @@ a[href] {
   a[href]:hover {
     color: #3949AB; }
 
+@media screen and (min-width: 1026px) {
+  .mobile-control {
+    display: none !important; }
+  .mobile-control {
+    display: none !important; } }
+
+@media screen and (max-width: 1024px) {
+  .desktop-control {
+    display: none !important; }
+  .desktop-control {
+    display: none !important; } }
+
 /*
     Generates root-level selectors for a component variant.
     Example:
@@ -670,6 +682,182 @@ a[href] {
 /* Material design color: brown */
 /* Material design color: grey */
 /* Material design color: blue-grey */
+.attribute-bar-wrapper[data-v-c733bafc] {
+  font-size: 0.85rem;
+  border: 1px solid #E0E0E0;
+}
+.attribute-bar-wrapper.red .attribute-bar[data-v-c733bafc] {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: #C62828;
+}
+.attribute-bar-wrapper.red .title-overflown[data-v-c733bafc] {
+    color: #C62828;
+    border-color: rgba(198, 40, 40, 0.5);
+}
+.attribute-bar-wrapper.green .attribute-bar[data-v-c733bafc] {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: #2E7D32;
+}
+.attribute-bar-wrapper.green .title-overflown[data-v-c733bafc] {
+    color: #2E7D32;
+    border-color: rgba(46, 125, 50, 0.5);
+}
+.attribute-bar-wrapper.blue .attribute-bar[data-v-c733bafc] {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: #1565C0;
+}
+.attribute-bar-wrapper.blue .title-overflown[data-v-c733bafc] {
+    color: #1565C0;
+    border-color: rgba(21, 101, 192, 0.5);
+}
+.attribute-bar-wrapper[data-v-c733bafc]:not(:last-child) {
+    border-bottom: none;
+}
+.attribute-bar .title-wrapper[data-v-c733bafc] {
+  position: relative;
+  white-space: nowrap;
+}
+.attribute-bar .title-wrapper .title[data-v-c733bafc] {
+    display: flex;
+}
+.attribute-bar .title-wrapper .title .title-prefix[data-v-c733bafc] {
+      flex: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.25em;
+      opacity: 0.75;
+}
+.attribute-bar .title-wrapper .title .title-content[data-v-c733bafc] {
+      flex: 1;
+      padding-left: 0.25em;
+      display: inline-flex;
+      align-items: stretch;
+}
+.attribute-bar .title-wrapper .title-primary[data-v-c733bafc] {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    max-width: 100%;
+}
+.attribute-bar .title-wrapper .title-overflown[data-v-c733bafc] {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
+/*
+    Generates root-level selectors for a component variant.
+    Example:
+    component-variant(('is-foo', 'is-danger'), '.component') {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger,
+    
+    // Primary selector present in apply, secondary selectors used in inner components 
+    .apply-is-foo .component.is-danger {
+        foo: bar; 
+    }
+
+*/
+/*
+    Generates root-level selectors for multiple component variants. 
+    Example:
+    component-variants(
+        (('is-foo', 'is-danger'), '.component'),
+        (('is-bar', 'is-danger'), '.component'),    
+    ) {
+        foo: bar;
+    }    
+
+    output:
+    .apply-is-foo.apply-is-danger .component, 
+    .component.is-foo.is-danger, 
+    .apply-is-bar.apply-is-danger .component, 
+    .component.is-bar.is-danger {
+        foo: bar; 
+    }
+*/
+/* Material design color: red */
+/* Material design color: pink */
+/* Material design color: purple */
+/* Material design color: deep-purple */
+/* Material design color: indigo */
+/* Material design color: blue */
+/* Material design color: light-blue */
+/* Material design color: cyan */
+/* Material design color: teal */
+/* Material design color: green */
+/* Material design color: light-green */
+/* Material design color: lime */
+/* Material design color: yellow */
+/* Material design color: amber */
+/* Material design color: orange */
+/* Material design color: deep-orange */
+/* Material design color: brown */
+/* Material design color: grey */
+/* Material design color: blue-grey */
 .attribute-bar-container[data-v-17ec623e] {
   font-size: 0.85rem;
 }
@@ -717,6 +905,7 @@ a[href] {
         flex: 0;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         padding: 0 0.25em;
         opacity: 0.75;
 }
@@ -897,6 +1086,33 @@ label[data-v-0a6dfb62] {
 .primary-panels .panel-attributes .message[data-v-0a6dfb62] {
   margin: 0.5rem;
 }
+.primary-panels .panel-attributes .armor-level-icon[data-v-0a6dfb62] {
+  position: relative;
+  top: 0.125em;
+  width: 1.5em;
+  height: 1.5em;
+}
+.primary-panels .panel-attributes .armor-level-icon .level-icon[data-v-0a6dfb62] {
+    font-size: 1.5em;
+}
+.primary-panels .panel-attributes .armor-level-icon .armor-level[data-v-0a6dfb62] {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+    color: #FFC107;
+    font-weight: bold;
+    text-shadow: 0 0 4px #000000, 0 0 4px #000000, 0 0 4px #000000, 0 0 4px #000000;
+}
+.primary-panels .panel-attributes .armor-level-icon.level-zero .level-icon[data-v-0a6dfb62] {
+    color: #9E9E9E;
+}
+.primary-panels .panel-attributes .armor-level-icon.level-zero .armor-level[data-v-0a6dfb62] {
+    color: #E53935;
+    text-shadow: none;
+}
 @media screen and (min-width: 1026px) {
 .primary-panels[data-v-0a6dfb62] {
     display: grid;
@@ -915,6 +1131,9 @@ label[data-v-0a6dfb62] {
 }
 .attribute-bars.layout-list[data-v-0a6dfb62] {
       grid-template-columns: minmax(auto, 600px);
+}
+.mobile-control[data-v-0a6dfb62] {
+    display: none !important;
 }
 .mobile-control[data-v-0a6dfb62] {
     display: none !important;
@@ -948,6 +1167,9 @@ label[data-v-0a6dfb62] {
 }
 .primary-panels .panel-weapons[data-v-0a6dfb62] {
       border-bottom: 1px solid #E0E0E0;
+}
+.desktop-control[data-v-0a6dfb62] {
+    display: none !important;
 }
 .desktop-control[data-v-0a6dfb62] {
     display: none !important;

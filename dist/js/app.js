@@ -107,6 +107,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/sass-loader/lib/loader.js??ref--2-3!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bars.vue?vue&type=style&index=0&id=17ec623e&lang=scss&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--2-2!./node_modules/sass-loader/lib/loader.js??ref--2-3!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/attribute-bars.vue?vue&type=style&index=0&id=17ec623e&lang=scss&scoped=true& ***!
@@ -275,6 +286,7 @@ var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */
 var weapon_label_vue_1 = __importDefault(__webpack_require__(/*! ./partial/weapon-label.vue */ "./src/vue/partial/weapon-label.vue"));
 var weapon_inventory_cost_vue_1 = __importDefault(__webpack_require__(/*! ./partial/weapon-inventory-cost.vue */ "./src/vue/partial/weapon-inventory-cost.vue"));
 var attribute_bars_vue_1 = __importDefault(__webpack_require__(/*! ./partial/attribute-bars.vue */ "./src/vue/partial/attribute-bars.vue"));
+var attribute_bar_container_vue_1 = __importDefault(__webpack_require__(/*! ./partial/attribute-bar-container.vue */ "./src/vue/partial/attribute-bar-container.vue"));
 var data_1 = __importDefault(__webpack_require__(/*! ../ts/data */ "./src/ts/data/index.ts"));
 var weapon_1 = __webpack_require__(/*! ../ts/model/weapon */ "./src/ts/model/weapon.ts");
 var weapon_2 = __webpack_require__(/*! ../ts/view-model/weapon */ "./src/ts/view-model/weapon.ts");
@@ -285,10 +297,19 @@ var App = /** @class */ (function (_super) {
         _this.isLoading = true;
         _this.showCopyright = false;
         _this.weapons = [];
-        _this.uniqueWeaponsByNameCount = 0;
         _this.displayWeapons = [];
-        _this.projectiles = [];
         _this.filteredWeapons = [];
+        _this.displayDamage = {
+            average: true,
+            none: false,
+            light: false,
+            medium: false,
+            heavy: false
+        };
+        _this.displaySpeed = {
+            average: true,
+            detail: false,
+        };
         _this.defaults = {
             search: '',
             showOneHandedWeapons: true,
@@ -342,21 +363,15 @@ var App = /** @class */ (function (_super) {
     });
     App.prototype.loadSpreadsheetData = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, items;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
                         _a = this;
                         return [4 /*yield*/, this.dataProvider.getWeapons()];
                     case 1:
-                        _a.weapons = _c.sent();
-                        _b = this;
-                        return [4 /*yield*/, this.dataProvider.getProjectiles()];
-                    case 2:
-                        _b.projectiles = _c.sent();
-                        items = this.weapons.concat(this.projectiles).map(function (o) { return new weapon_2.DisplayWeapon(o); });
-                        this.uniqueWeaponsByNameCount = new Set(items.map(function (o) { return o.name; })).size;
-                        this.displayWeapons = items.map(function (o) { return new weapon_2.DisplayWeapon(o); });
+                        _a.weapons = _b.sent();
+                        this.displayWeapons = this.weapons.map(function (o) { return new weapon_2.DisplayWeapon(o); });
                         return [2 /*return*/];
                 }
             });
@@ -405,12 +420,10 @@ var App = /** @class */ (function (_super) {
         for (var i = 0; i < this.displayWeapons.length; i++) {
             var weapon = this.displayWeapons[i];
             if ((search.length == 0 || weapon.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1) &&
-                ((this.showOneHandedWeapons && (weapon.handedness & weapon_1.WeaponHandedness.One)) ||
-                    (this.showTwoHandedWeapons && (weapon.handedness & weapon_1.WeaponHandedness.Two))) &&
-                (this.showAltModeWeapons || !weapon.altMode) &&
-                ((this.showStrikeWeapons && weapon.attackType == weapon_1.AttackType.Strike) ||
-                    (this.showThrustWeapons && weapon.attackType == weapon_1.AttackType.Thrust) ||
-                    (this.showProjectiles && weapon.attackType == weapon_1.AttackType.Projectile))) {
+                ((this.showOneHandedWeapons && (weapon.handedness & weapon_1.Handedness.One)) ||
+                    (this.showTwoHandedWeapons && (weapon.handedness & weapon_1.Handedness.Two)))
+                &&
+                    ((this.showProjectiles || weapon.attackType != weapon_1.AttackType.Projectile))) {
                 result.push(weapon);
             }
         }
@@ -527,12 +540,163 @@ var App = /** @class */ (function (_super) {
     ], App.prototype, "stateChanged", null);
     App = __decorate([
         vue_property_decorator_1.Component({
-            components: { WeaponLabel: weapon_label_vue_1.default, AttributeBars: attribute_bars_vue_1.default, WeaponInventoryCost: weapon_inventory_cost_vue_1.default }
+            components: { WeaponLabel: weapon_label_vue_1.default, AttributeBars: attribute_bars_vue_1.default, AttributeBarContainer: attribute_bar_container_vue_1.default, WeaponInventoryCost: weapon_inventory_cost_vue_1.default }
         })
     ], App);
     return App;
 }(vue_1.default));
 exports.default = App;
+
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar-container.vue?vue&type=script&lang=ts&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/attribute-bar-container.vue?vue&type=script&lang=ts& ***!
+  \*****************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var vue_1 = __importDefault(__webpack_require__(/*! vue */ "vue"));
+var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var attribute_bars_vue_1 = __importDefault(__webpack_require__(/*! ./attribute-bars.vue */ "./src/vue/partial/attribute-bars.vue"));
+var weapon_inventory_cost_vue_1 = __importDefault(__webpack_require__(/*! ./weapon-inventory-cost.vue */ "./src/vue/partial/weapon-inventory-cost.vue"));
+var weapon_label_vue_1 = __importDefault(__webpack_require__(/*! ./weapon-label.vue */ "./src/vue/partial/weapon-label.vue"));
+var AttributeBarContainer = /** @class */ (function (_super) {
+    __extends(AttributeBarContainer, _super);
+    function AttributeBarContainer() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.sortValues = false;
+        return _this;
+    }
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "title", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "iconClass", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "variant", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "sort", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "globalCompare", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "weapon", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "allWeapons", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "weapons", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "displayValue", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBarContainer.prototype, "prefixStyle", void 0);
+    AttributeBarContainer = __decorate([
+        vue_property_decorator_1.Component({ components: { AttributeBars: attribute_bars_vue_1.default, WeaponLabel: weapon_label_vue_1.default, WeaponInventoryCost: weapon_inventory_cost_vue_1.default } })
+    ], AttributeBarContainer);
+    return AttributeBarContainer;
+}(vue_1.default));
+exports.default = AttributeBarContainer;
+
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar.vue?vue&type=script&lang=ts&":
+/*!*******************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/attribute-bar.vue?vue&type=script&lang=ts& ***!
+  \*******************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var vue_1 = __importDefault(__webpack_require__(/*! vue */ "vue"));
+var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var AttributeBar = /** @class */ (function (_super) {
+    __extends(AttributeBar, _super);
+    function AttributeBar() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBar.prototype, "value", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBar.prototype, "displayValue", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBar.prototype, "isEnabled", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBar.prototype, "prefixStyle", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBar.prototype, "item", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBar.prototype, "variant", void 0);
+    AttributeBar = __decorate([
+        vue_property_decorator_1.Component
+    ], AttributeBar);
+    return AttributeBar;
+}(vue_1.default));
+exports.default = AttributeBar;
 
 
 /***/ }),
@@ -572,6 +736,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var vue_1 = __importDefault(__webpack_require__(/*! vue */ "vue"));
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
 var sort_1 = __webpack_require__(/*! ../../ts/utils/sort */ "./src/ts/utils/sort.ts");
+var attribute_bar_vue_1 = __importDefault(__webpack_require__(/*! ./attribute-bar.vue */ "./src/vue/partial/attribute-bar.vue"));
 var AttributeBars = /** @class */ (function (_super) {
     __extends(AttributeBars, _super);
     function AttributeBars() {
@@ -621,12 +786,15 @@ var AttributeBars = /** @class */ (function (_super) {
         vue_property_decorator_1.Prop()
     ], AttributeBars.prototype, "prefixStyle", void 0);
     __decorate([
+        vue_property_decorator_1.Prop()
+    ], AttributeBars.prototype, "variant", void 0);
+    __decorate([
         vue_property_decorator_1.Watch('items'),
         vue_property_decorator_1.Watch('sort'),
         vue_property_decorator_1.Watch('global')
     ], AttributeBars.prototype, "itemsChanged", null);
     AttributeBars = __decorate([
-        vue_property_decorator_1.Component
+        vue_property_decorator_1.Component({ components: { AttributeBar: attribute_bar_vue_1.default } })
     ], AttributeBars);
     return AttributeBars;
 }(vue_1.default));
@@ -1257,162 +1425,6 @@ var render = function() {
                                 _vm._v(
                                   "\n                                        2-handed\n                                    "
                                 )
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "group-addon has-no-border-left has-no-horizontal-borders"
-                          },
-                          [
-                            _c("label", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.showAltModeWeapons,
-                                    expression: "showAltModeWeapons"
-                                  }
-                                ],
-                                staticClass: "input",
-                                attrs: { type: "checkbox" },
-                                domProps: {
-                                  checked: Array.isArray(_vm.showAltModeWeapons)
-                                    ? _vm._i(_vm.showAltModeWeapons, null) > -1
-                                    : _vm.showAltModeWeapons
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$a = _vm.showAltModeWeapons,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = null,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.showAltModeWeapons = $$a.concat([
-                                            $$v
-                                          ]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.showAltModeWeapons = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.showAltModeWeapons = $$c
-                                    }
-                                  }
-                                }
-                              }),
-                              _vm._v(" Alt mode")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "group-addon is-borderless" },
-                          [
-                            _c("div", { staticClass: "control-group" }, [
-                              _c("label", [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.showStrikeWeapons,
-                                      expression: "showStrikeWeapons"
-                                    }
-                                  ],
-                                  staticClass: "input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    checked: Array.isArray(
-                                      _vm.showStrikeWeapons
-                                    )
-                                      ? _vm._i(_vm.showStrikeWeapons, null) > -1
-                                      : _vm.showStrikeWeapons
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.showStrikeWeapons,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.showStrikeWeapons = $$a.concat(
-                                              [$$v]
-                                            ))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.showStrikeWeapons = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.showStrikeWeapons = $$c
-                                      }
-                                    }
-                                  }
-                                }),
-                                _vm._v(" Strike")
-                              ]),
-                              _vm._v(" "),
-                              _c("label", [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.showThrustWeapons,
-                                      expression: "showThrustWeapons"
-                                    }
-                                  ],
-                                  staticClass: "input",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    checked: Array.isArray(
-                                      _vm.showThrustWeapons
-                                    )
-                                      ? _vm._i(_vm.showThrustWeapons, null) > -1
-                                      : _vm.showThrustWeapons
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.showThrustWeapons,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            (_vm.showThrustWeapons = $$a.concat(
-                                              [$$v]
-                                            ))
-                                        } else {
-                                          $$i > -1 &&
-                                            (_vm.showThrustWeapons = $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1)))
-                                        }
-                                      } else {
-                                        _vm.showThrustWeapons = $$c
-                                      }
-                                    }
-                                  }
-                                }),
-                                _vm._v(" Thrust")
                               ]),
                               _vm._v(" "),
                               _c("label", [
@@ -1461,7 +1473,9 @@ var render = function() {
                               ])
                             ])
                           ]
-                        )
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1)
                       ]
                     )
                   ])
@@ -1560,7 +1574,7 @@ var render = function() {
                     staticClass: "table weapon-table is-fullwidth is-hoverable"
                   },
                   [
-                    _vm._m(1),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -1702,14 +1716,14 @@ var render = function() {
                     _vm._v(
                       "\n                    Displaying \n                    "
                     ),
-                    _vm.filteredWeapons.length == _vm.weapons.length
+                    _vm.filteredWeapons.length == _vm.displayWeapons.length
                       ? [
                           _vm._v(
                             "\n                        all " +
-                              _vm._s(_vm.weapons.length) +
+                              _vm._s(_vm.displayWeapons.length) +
                               " " +
                               _vm._s(
-                                _vm.weapons.length == 1
+                                _vm.displayWeapons.length == 1
                                   ? "weapon variant"
                                   : "weapon variants"
                               ) +
@@ -1721,16 +1735,18 @@ var render = function() {
                             "\n                       " +
                               _vm._s(_vm.filteredWeapons.length) +
                               " of " +
-                              _vm._s(_vm.weapons.length) +
+                              _vm._s(_vm.displayWeapons.length) +
                               " " +
                               _vm._s(
-                                _vm.weapons.length == 1 ? "variant" : "variants"
+                                _vm.displayWeapons.length == 1
+                                  ? "variant"
+                                  : "variants"
                               ) +
                               "\n                       (" +
-                              _vm._s(_vm.uniqueWeaponsByNameCount) +
+                              _vm._s(_vm.displayWeapons.length) +
                               " " +
                               _vm._s(
-                                _vm.uniqueWeaponsByNameCount == 1
+                                _vm.displayWeapons.length == 1
                                   ? "unique weapon"
                                   : "unique weapons"
                               ) +
@@ -1748,7 +1764,7 @@ var render = function() {
               { staticClass: "view panel panel-attributes" },
               [
                 _vm.selectedWeapons.length == 0
-                  ? [_vm._m(2)]
+                  ? [_vm._m(3)]
                   : [
                       _c(
                         "header",
@@ -1922,118 +1938,564 @@ var render = function() {
                                 "div",
                                 {
                                   staticClass:
-                                    "group-addon control-group is-borderless has-no-padding-right",
+                                    "group-addon control-group is-borderless has-no-padding-right size-75 padding-top-50",
                                   style: {
                                     opacity: _vm.attributesCollapsed ? 0.5 : 1
                                   }
                                 },
                                 [
-                                  _c(
-                                    "label",
-                                    { staticClass: "size-75 padding-top-50" },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.sortValues,
-                                            expression: "sortValues"
-                                          }
-                                        ],
-                                        staticClass: "input",
-                                        attrs: {
-                                          type: "checkbox",
-                                          disabled: _vm.attributesCollapsed
-                                        },
-                                        domProps: {
-                                          checked: Array.isArray(_vm.sortValues)
-                                            ? _vm._i(_vm.sortValues, null) > -1
-                                            : _vm.sortValues
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            var $$a = _vm.sortValues,
-                                              $$el = $event.target,
-                                              $$c = $$el.checked ? true : false
-                                            if (Array.isArray($$a)) {
-                                              var $$v = null,
-                                                $$i = _vm._i($$a, $$v)
-                                              if ($$el.checked) {
-                                                $$i < 0 &&
-                                                  (_vm.sortValues = $$a.concat([
-                                                    $$v
-                                                  ]))
-                                              } else {
-                                                $$i > -1 &&
-                                                  (_vm.sortValues = $$a
-                                                    .slice(0, $$i)
-                                                    .concat($$a.slice($$i + 1)))
-                                              }
+                                  _c("label", [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.sortValues,
+                                          expression: "sortValues"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: {
+                                        type: "checkbox",
+                                        disabled: _vm.attributesCollapsed
+                                      },
+                                      domProps: {
+                                        checked: Array.isArray(_vm.sortValues)
+                                          ? _vm._i(_vm.sortValues, null) > -1
+                                          : _vm.sortValues
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.sortValues,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.sortValues = $$a.concat([
+                                                  $$v
+                                                ]))
                                             } else {
-                                              _vm.sortValues = $$c
+                                              $$i > -1 &&
+                                                (_vm.sortValues = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
                                             }
+                                          } else {
+                                            _vm.sortValues = $$c
                                           }
                                         }
-                                      }),
-                                      _vm._v(" Sort")
-                                    ]
-                                  ),
+                                      }
+                                    }),
+                                    _vm._v(" Sort")
+                                  ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "label",
-                                    { staticClass: "size-75 padding-top-50" },
-                                    [
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.globalCompare,
-                                            expression: "globalCompare"
-                                          }
-                                        ],
-                                        staticClass: "input",
-                                        attrs: {
-                                          type: "checkbox",
-                                          disabled: _vm.attributesCollapsed
-                                        },
-                                        domProps: {
-                                          checked: Array.isArray(
-                                            _vm.globalCompare
-                                          )
-                                            ? _vm._i(_vm.globalCompare, null) >
-                                              -1
-                                            : _vm.globalCompare
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            var $$a = _vm.globalCompare,
-                                              $$el = $event.target,
-                                              $$c = $$el.checked ? true : false
-                                            if (Array.isArray($$a)) {
-                                              var $$v = null,
-                                                $$i = _vm._i($$a, $$v)
-                                              if ($$el.checked) {
-                                                $$i < 0 &&
-                                                  (_vm.globalCompare = $$a.concat(
-                                                    [$$v]
-                                                  ))
-                                              } else {
-                                                $$i > -1 &&
-                                                  (_vm.globalCompare = $$a
-                                                    .slice(0, $$i)
-                                                    .concat($$a.slice($$i + 1)))
-                                              }
+                                  _c("label", [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.globalCompare,
+                                          expression: "globalCompare"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: {
+                                        type: "checkbox",
+                                        disabled: _vm.attributesCollapsed
+                                      },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.globalCompare
+                                        )
+                                          ? _vm._i(_vm.globalCompare, null) > -1
+                                          : _vm.globalCompare
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.globalCompare,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.globalCompare = $$a.concat(
+                                                  [$$v]
+                                                ))
                                             } else {
-                                              _vm.globalCompare = $$c
+                                              $$i > -1 &&
+                                                (_vm.globalCompare = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
                                             }
+                                          } else {
+                                            _vm.globalCompare = $$c
                                           }
                                         }
-                                      }),
-                                      _vm._v(" Compare to all")
-                                    ]
-                                  )
+                                      }
+                                    }),
+                                    _vm._v(" Compare to all")
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "group-addon has-no-border-left has-no-border-right control-group is-gapless is-paddingless size-75",
+                                  style: {
+                                    opacity: _vm.attributesCollapsed ? 0.5 : 1
+                                  }
+                                },
+                                [
+                                  _vm._m(4),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "group-addon" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.displayDamage.average,
+                                          expression: "displayDamage.average"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.displayDamage.average
+                                        )
+                                          ? _vm._i(
+                                              _vm.displayDamage.average,
+                                              null
+                                            ) > -1
+                                          : _vm.displayDamage.average
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.displayDamage.average,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "average",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "average",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(
+                                              _vm.displayDamage,
+                                              "average",
+                                              $$c
+                                            )
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [_vm._v("Average")])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "group-addon" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.displayDamage.none,
+                                          expression: "displayDamage.none"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.displayDamage.none
+                                        )
+                                          ? _vm._i(
+                                              _vm.displayDamage.none,
+                                              null
+                                            ) > -1
+                                          : _vm.displayDamage.none
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.displayDamage.none,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "none",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "none",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(
+                                              _vm.displayDamage,
+                                              "none",
+                                              $$c
+                                            )
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._m(5)
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "group-addon" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.displayDamage.light,
+                                          expression: "displayDamage.light"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.displayDamage.light
+                                        )
+                                          ? _vm._i(
+                                              _vm.displayDamage.light,
+                                              null
+                                            ) > -1
+                                          : _vm.displayDamage.light
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.displayDamage.light,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "light",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "light",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(
+                                              _vm.displayDamage,
+                                              "light",
+                                              $$c
+                                            )
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [_vm._v("1")])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "group-addon" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.displayDamage.medium,
+                                          expression: "displayDamage.medium"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.displayDamage.medium
+                                        )
+                                          ? _vm._i(
+                                              _vm.displayDamage.medium,
+                                              null
+                                            ) > -1
+                                          : _vm.displayDamage.medium
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.displayDamage.medium,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "medium",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "medium",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(
+                                              _vm.displayDamage,
+                                              "medium",
+                                              $$c
+                                            )
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [_vm._v("2")])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "group-addon" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.displayDamage.heavy,
+                                          expression: "displayDamage.heavy"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.displayDamage.heavy
+                                        )
+                                          ? _vm._i(
+                                              _vm.displayDamage.heavy,
+                                              null
+                                            ) > -1
+                                          : _vm.displayDamage.heavy
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.displayDamage.heavy,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "heavy",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  _vm.displayDamage,
+                                                  "heavy",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(
+                                              _vm.displayDamage,
+                                              "heavy",
+                                              $$c
+                                            )
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [_vm._v("3")])
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "group-addon has-no-border-left has-no-border-right control-group is-gapless is-paddingless size-75 has-no-margin-top",
+                                  style: {
+                                    opacity: _vm.attributesCollapsed ? 0.5 : 1
+                                  }
+                                },
+                                [
+                                  _vm._m(6),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "group-addon" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.displaySpeed.average,
+                                          expression: "displaySpeed.average"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.displaySpeed.average
+                                        )
+                                          ? _vm._i(
+                                              _vm.displaySpeed.average,
+                                              null
+                                            ) > -1
+                                          : _vm.displaySpeed.average
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.displaySpeed.average,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  _vm.displaySpeed,
+                                                  "average",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  _vm.displaySpeed,
+                                                  "average",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(
+                                              _vm.displaySpeed,
+                                              "average",
+                                              $$c
+                                            )
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [_vm._v("Average")])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "group-addon" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.displaySpeed.detail,
+                                          expression: "displaySpeed.detail"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      attrs: { type: "checkbox" },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.displaySpeed.detail
+                                        )
+                                          ? _vm._i(
+                                              _vm.displaySpeed.detail,
+                                              null
+                                            ) > -1
+                                          : _vm.displaySpeed.detail
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.displaySpeed.detail,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                _vm.$set(
+                                                  _vm.displaySpeed,
+                                                  "detail",
+                                                  $$a.concat([$$v])
+                                                )
+                                            } else {
+                                              $$i > -1 &&
+                                                _vm.$set(
+                                                  _vm.displaySpeed,
+                                                  "detail",
+                                                  $$a
+                                                    .slice(0, $$i)
+                                                    .concat($$a.slice($$i + 1))
+                                                )
+                                            }
+                                          } else {
+                                            _vm.$set(
+                                              _vm.displaySpeed,
+                                              "detail",
+                                              $$c
+                                            )
+                                          }
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", [_vm._v("Full")])
+                                  ])
                                 ]
                               )
                             ]
@@ -2049,398 +2511,61 @@ var render = function() {
                                   class: ["layout-" + _vm.attributesLayout]
                                 },
                                 [
-                                  _c(
-                                    "div",
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "control-group size-80"
-                                        },
-                                        [
-                                          _vm._m(3),
-                                          _vm._v(" "),
-                                          _c("span", {
-                                            staticClass:
-                                              "control-group is-borderless is-expanded mobile-control"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "label",
-                                            { staticClass: "margin-top-40" },
-                                            [
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value: _vm.sortDamage,
-                                                    expression: "sortDamage"
-                                                  }
-                                                ],
-                                                staticClass: "input",
-                                                attrs: { type: "checkbox" },
-                                                domProps: {
-                                                  checked: Array.isArray(
-                                                    _vm.sortDamage
-                                                  )
-                                                    ? _vm._i(
-                                                        _vm.sortDamage,
-                                                        null
-                                                      ) > -1
-                                                    : _vm.sortDamage
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$a = _vm.sortDamage,
-                                                      $$el = $event.target,
-                                                      $$c = $$el.checked
-                                                        ? true
-                                                        : false
-                                                    if (Array.isArray($$a)) {
-                                                      var $$v = null,
-                                                        $$i = _vm._i($$a, $$v)
-                                                      if ($$el.checked) {
-                                                        $$i < 0 &&
-                                                          (_vm.sortDamage = $$a.concat(
-                                                            [$$v]
-                                                          ))
-                                                      } else {
-                                                        $$i > -1 &&
-                                                          (_vm.sortDamage = $$a
-                                                            .slice(0, $$i)
-                                                            .concat(
-                                                              $$a.slice($$i + 1)
-                                                            ))
-                                                      }
-                                                    } else {
-                                                      _vm.sortDamage = $$c
-                                                    }
-                                                  }
-                                                }
-                                              }),
-                                              _vm._v(
-                                                " Sort\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("AttributeBars", {
-                                        staticClass: "red",
+                                  _vm.displayDamage.average
+                                    ? _c("AttributeBarContainer", {
                                         attrs: {
-                                          "all-items": _vm.displayWeapons,
-                                          items: _vm.selectedWeapons,
+                                          "all-weapons": _vm.displayWeapons,
+                                          weapons: _vm.selectedWeapons,
+                                          "global-compare": _vm.globalCompare,
+                                          sort: _vm.sortValues,
+                                          title: "Average damage",
+                                          variant: "red",
+                                          "icon-class": "fas fa-balance-scale",
                                           "display-value": function(weapon) {
                                             return weapon.computedDamage.averageDamage.toFixed(
                                               2
                                             )
-                                          },
-                                          global: _vm.globalCompare,
-                                          sort:
-                                            _vm.sortDamage ||
-                                            (_vm.sortValues && _vm.sortDamage)
-                                        },
-                                        scopedSlots: _vm._u(
-                                          [
-                                            {
-                                              key: "label",
-                                              fn: function(ref) {
-                                                var item = ref.item
-                                                return [
-                                                  _c("WeaponInventoryCost", {
-                                                    attrs: {
-                                                      weapon: item,
-                                                      variant: "attribute-bar"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("WeaponLabel", {
-                                                    attrs: {
-                                                      weapon: item,
-                                                      "display-tags": true
-                                                    }
-                                                  })
-                                                ]
-                                              }
-                                            }
-                                          ],
-                                          null,
-                                          false,
-                                          3245588948
-                                        )
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "control-group size-80"
-                                        },
-                                        [
-                                          _vm._m(4),
-                                          _vm._v(" "),
-                                          _c("span", {
-                                            staticClass:
-                                              "control-group is-borderless is-expanded mobile-control"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "label",
-                                            { staticClass: "margin-top-40" },
-                                            [
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value: _vm.sortAttackSpeed,
-                                                    expression:
-                                                      "sortAttackSpeed"
-                                                  }
-                                                ],
-                                                staticClass: "input",
-                                                attrs: { type: "checkbox" },
-                                                domProps: {
-                                                  checked: Array.isArray(
-                                                    _vm.sortAttackSpeed
-                                                  )
-                                                    ? _vm._i(
-                                                        _vm.sortAttackSpeed,
-                                                        null
-                                                      ) > -1
-                                                    : _vm.sortAttackSpeed
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$a =
-                                                        _vm.sortAttackSpeed,
-                                                      $$el = $event.target,
-                                                      $$c = $$el.checked
-                                                        ? true
-                                                        : false
-                                                    if (Array.isArray($$a)) {
-                                                      var $$v = null,
-                                                        $$i = _vm._i($$a, $$v)
-                                                      if ($$el.checked) {
-                                                        $$i < 0 &&
-                                                          (_vm.sortAttackSpeed = $$a.concat(
-                                                            [$$v]
-                                                          ))
-                                                      } else {
-                                                        $$i > -1 &&
-                                                          (_vm.sortAttackSpeed = $$a
-                                                            .slice(0, $$i)
-                                                            .concat(
-                                                              $$a.slice($$i + 1)
-                                                            ))
-                                                      }
-                                                    } else {
-                                                      _vm.sortAttackSpeed = $$c
-                                                    }
-                                                  }
-                                                }
-                                              }),
-                                              _vm._v(
-                                                " Sort\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("AttributeBars", {
-                                        staticClass: "green",
-                                        attrs: {
-                                          "all-items": _vm.displayWeapons,
-                                          items: _vm.selectedWeapons,
-                                          "display-value": function(weapon) {
-                                            return weapon.computedSpeed.attack
-                                              ? weapon.computedSpeed.attack.toFixed(
-                                                  2
-                                                )
-                                              : null
-                                          },
-                                          "is-enabled": function(weapon) {
-                                            return weapon.computedSpeed.attack
-                                          },
-                                          sort:
-                                            _vm.sortAttackSpeed ||
-                                            (_vm.sortValues &&
-                                              _vm.sortAttackSpeed),
-                                          global: _vm.globalCompare,
-                                          invert: true
-                                        },
-                                        scopedSlots: _vm._u(
-                                          [
-                                            {
-                                              key: "label",
-                                              fn: function(ref) {
-                                                var item = ref.item
-                                                return [
-                                                  _c("WeaponInventoryCost", {
-                                                    attrs: {
-                                                      weapon: item,
-                                                      variant: "attribute-bar"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("WeaponLabel", {
-                                                    attrs: {
-                                                      weapon: item,
-                                                      "display-tags": true
-                                                    }
-                                                  })
-                                                ]
-                                              }
-                                            }
-                                          ],
-                                          null,
-                                          false,
-                                          3245588948
-                                        )
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "control-group size-80"
-                                        },
-                                        [
-                                          _vm._m(5),
-                                          _vm._v(" "),
-                                          _c("span", {
-                                            staticClass:
-                                              "control-group is-borderless is-expanded mobile-control"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "label",
-                                            { staticClass: "margin-top-40" },
-                                            [
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value: _vm.sortReach,
-                                                    expression: "sortReach"
-                                                  }
-                                                ],
-                                                staticClass: "input",
-                                                attrs: { type: "checkbox" },
-                                                domProps: {
-                                                  checked: Array.isArray(
-                                                    _vm.sortReach
-                                                  )
-                                                    ? _vm._i(
-                                                        _vm.sortReach,
-                                                        null
-                                                      ) > -1
-                                                    : _vm.sortReach
-                                                },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$a = _vm.sortReach,
-                                                      $$el = $event.target,
-                                                      $$c = $$el.checked
-                                                        ? true
-                                                        : false
-                                                    if (Array.isArray($$a)) {
-                                                      var $$v = null,
-                                                        $$i = _vm._i($$a, $$v)
-                                                      if ($$el.checked) {
-                                                        $$i < 0 &&
-                                                          (_vm.sortReach = $$a.concat(
-                                                            [$$v]
-                                                          ))
-                                                      } else {
-                                                        $$i > -1 &&
-                                                          (_vm.sortReach = $$a
-                                                            .slice(0, $$i)
-                                                            .concat(
-                                                              $$a.slice($$i + 1)
-                                                            ))
-                                                      }
-                                                    } else {
-                                                      _vm.sortReach = $$c
-                                                    }
-                                                  }
-                                                }
-                                              }),
-                                              _vm._v(
-                                                " Sort\n                                    "
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("AttributeBars", {
-                                        staticClass: "blue",
-                                        attrs: {
-                                          "all-items": _vm.displayWeapons,
-                                          items: _vm.selectedWeapons,
-                                          "display-value": function(weapon) {
-                                            return weapon.length
-                                          },
-                                          "is-enabled": function(weapon) {
-                                            return !weapon.isProjectile
-                                          },
-                                          global: _vm.globalCompare,
-                                          sort:
-                                            _vm.sortReach ||
-                                            (_vm.sortValues && _vm.sortReach),
-                                          "prefix-style": {
-                                            "min-width": "1.75rem",
-                                            "text-align": "center"
                                           }
-                                        },
-                                        scopedSlots: _vm._u(
-                                          [
-                                            {
-                                              key: "label",
-                                              fn: function(ref) {
-                                                var item = ref.item
-                                                return [
-                                                  _c("WeaponInventoryCost", {
-                                                    attrs: {
-                                                      weapon: item,
-                                                      variant: "attribute-bar"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("WeaponLabel", {
-                                                    attrs: {
-                                                      weapon: item,
-                                                      "display-tags": true
-                                                    }
-                                                  })
-                                                ]
-                                              }
-                                            }
-                                          ],
-                                          null,
-                                          false,
-                                          3245588948
-                                        )
+                                        }
                                       })
-                                    ],
-                                    1
-                                  )
-                                ]
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c("AttributeBarContainer", {
+                                    attrs: {
+                                      "all-weapons": _vm.displayWeapons,
+                                      weapons: _vm.selectedWeapons,
+                                      "global-compare": _vm.globalCompare,
+                                      sort: _vm.sortValues,
+                                      title: "Attack speed",
+                                      variant: "green",
+                                      "icon-class": "fas fa-stopwatch",
+                                      "display-value": function(weapon) {
+                                        return weapon.computedSpeed.attack
+                                          ? weapon.computedSpeed.attack.toFixed(
+                                              2
+                                            )
+                                          : null
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("AttributeBarContainer", {
+                                    attrs: {
+                                      "all-weapons": _vm.displayWeapons,
+                                      weapons: _vm.selectedWeapons,
+                                      "global-compare": _vm.globalCompare,
+                                      sort: _vm.sortValues,
+                                      title: "Reach",
+                                      variant: "blue",
+                                      "icon-class": "fas fa-arrows-alt-h",
+                                      "display-value": function(weapon) {
+                                        return weapon.length
+                                      },
+                                      "prefix-style": { "min-width": "1.75rem" }
+                                    }
+                                  })
+                                ],
+                                1
                               )
                             : _vm._e()
                         ])
@@ -2536,6 +2661,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "group-addon is-borderless" }, [
+      _c("div", { staticClass: "control-group" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "table-header" }, [
       _c("div", { staticClass: "table-row" })
     ])
@@ -2560,51 +2693,231 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "group-addon is-borderless has-no-padding-left" },
-      [
-        _c("i", {
-          staticClass: "fas fa-balance-scale",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v("  Average damage\n                                    ")
-      ]
-    )
+    return _c("div", { staticClass: "group-addon has-background-light" }, [
+      _c("i", {
+        staticClass: "fas fa-shield-alt",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "group-addon is-borderless has-no-padding-left" },
-      [
-        _c("i", {
-          staticClass: "fas fa-stopwatch",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v("  Average attack speed\n                                    ")
-      ]
-    )
+    return _c("span", { staticClass: "icon has-text-danger" }, [
+      _c("i", { staticClass: "fas fa-times", attrs: { "aria-hidden": "true" } })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "group-addon is-borderless has-no-padding-left" },
-      [
-        _c("i", {
-          staticClass: "fas fa-arrows-alt-h",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v("  Reach\n                                    ")
-      ]
-    )
+    return _c("div", { staticClass: "group-addon has-background-light" }, [
+      _c("i", {
+        staticClass: "fas fa-stopwatch",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "control-group size-80" }, [
+        _c(
+          "span",
+          { staticClass: "group-addon is-borderless has-no-padding-left" },
+          [
+            _c("i", {
+              class: [_vm.iconClass],
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v("  " + _vm._s(_vm.title) + "\n        ")
+          ]
+        ),
+        _vm._v(" "),
+        _c("span", {
+          staticClass: "control-group is-borderless is-expanded mobile-control"
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "margin-top-40" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.sortValues,
+                expression: "sortValues"
+              }
+            ],
+            staticClass: "input",
+            attrs: { type: "checkbox" },
+            domProps: {
+              checked: Array.isArray(_vm.sortValues)
+                ? _vm._i(_vm.sortValues, null) > -1
+                : _vm.sortValues
+            },
+            on: {
+              change: function($event) {
+                var $$a = _vm.sortValues,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = null,
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 && (_vm.sortValues = $$a.concat([$$v]))
+                  } else {
+                    $$i > -1 &&
+                      (_vm.sortValues = $$a
+                        .slice(0, $$i)
+                        .concat($$a.slice($$i + 1)))
+                  }
+                } else {
+                  _vm.sortValues = $$c
+                }
+              }
+            }
+          }),
+          _vm._v(" Sort\n        ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("AttributeBars", {
+        attrs: {
+          variant: [_vm.variant],
+          "all-items": _vm.allWeapons,
+          items: _vm.weapons,
+          "display-value": _vm.displayValue,
+          global: _vm.globalCompare,
+          sort: _vm.sortValues || (_vm.sort && _vm.sortValues),
+          "prefix-style": _vm.prefixStyle
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "label",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c("WeaponInventoryCost", {
+                  attrs: { weapon: item, variant: "attribute-bar" }
+                }),
+                _vm._v(" "),
+                _c("WeaponLabel", {
+                  attrs: { weapon: item, "display-tags": true }
+                })
+              ]
+            }
+          }
+        ])
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/vue/partial/attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "attribute-bar-wrapper", class: [_vm.variant] },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "attribute-bar",
+          style: { width: _vm.isEnabled ? _vm.value * 100 + "%" : "0%" }
+        },
+        [
+          _c("div", { staticClass: "title-wrapper" }, [
+            _c("div", { staticClass: "title title-overflown" }, [
+              _c(
+                "div",
+                { staticClass: "title-prefix", style: _vm.prefixStyle },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.isEnabled ? _vm.displayValue : "N/A") +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "title-content" },
+                [_vm._t("label", null, { item: _vm.item })],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "title title-primary" }, [
+              _c(
+                "div",
+                { staticClass: "title-prefix", style: _vm.prefixStyle },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.displayValue) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "title-content" },
+                [_vm._t("label", null, { item: _vm.item })],
+                2
+              )
+            ])
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -2630,72 +2943,32 @@ var render = function() {
     "div",
     { staticClass: "attribute-bar-container" },
     _vm._l(_vm.displayItems, function(item) {
-      return _c(
-        "div",
-        { key: _vm.itemKey(item), staticClass: "attribute-bar-wrapper" },
-        [
-          _c(
-            "div",
+      return _c("AttributeBar", {
+        key: _vm.itemKey(item),
+        attrs: {
+          value: _vm.formula(item),
+          "display-value": _vm.displayValue(item),
+          "is-enabled": _vm.isEnabled(item),
+          "prefix-style": _vm.prefixStyle,
+          item: item,
+          variant: _vm.variant
+        },
+        scopedSlots: _vm._u(
+          [
             {
-              staticClass: "attribute-bar",
-              style: {
-                width: _vm.isEnabled(item)
-                  ? _vm.formula(item) * 100 + "%"
-                  : "0%"
+              key: "label",
+              fn: function(ref) {
+                var item = ref.item
+                return _vm._t("label", null, { item: item })
               }
-            },
-            [
-              _c("div", { staticClass: "title-wrapper" }, [
-                _c("div", { staticClass: "title title-overflown" }, [
-                  _c(
-                    "div",
-                    { staticClass: "title-prefix", style: _vm.prefixStyle },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(
-                            _vm.isEnabled(item) ? _vm.displayValue(item) : "N/A"
-                          ) +
-                          "\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "title-content" },
-                    [_vm._t("label", null, { item: item })],
-                    2
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "title title-primary" }, [
-                  _c(
-                    "div",
-                    { staticClass: "title-prefix", style: _vm.prefixStyle },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.displayValue(item)) +
-                          "\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "title-content" },
-                    [_vm._t("label", null, { item: item })],
-                    2
-                  )
-                ])
-              ])
-            ]
-          )
-        ]
-      )
+            }
+          ],
+          null,
+          true
+        )
+      })
     }),
-    0
+    1
   )
 }
 var staticRenderFns = []
@@ -3311,49 +3584,41 @@ var DataProvider = /** @class */ (function () {
     };
     DataProvider.prototype.getWeapons = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var data, result, headerRows, rowIndex, _i, _a, row;
+            var _a, meleeWeaponsData, projectileWeaponData, result, weapons, meleeHeaderRows, projectileHeaderRows, parseWeapons, name_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
-                    case 0: return [4 /*yield*/, this.getSheetData(this.spreadsheet.sheets[0].properties.title)];
+                    case 0: return [4 /*yield*/, Promise.all([
+                            this.getSheetData(this.spreadsheet.sheets[0].properties.title),
+                            this.getSheetData(this.spreadsheet.sheets[3].properties.title)
+                        ])];
                     case 1:
-                        data = _b.sent();
+                        _a = _b.sent(), meleeWeaponsData = _a[0], projectileWeaponData = _a[1];
                         result = [];
-                        headerRows = [data.values[0], data.values[1]];
-                        weapon_1.Weapon.Schema.generate(headerRows);
-                        rowIndex = -1;
-                        for (_i = 0, _a = data.values; _i < _a.length; _i++) {
-                            row = _a[_i];
-                            rowIndex++;
-                            if (rowIndex < headerRows.length) {
-                                continue;
+                        weapons = {};
+                        meleeHeaderRows = [meleeWeaponsData.values[0], meleeWeaponsData.values[1]];
+                        projectileHeaderRows = [projectileWeaponData.values[0], projectileWeaponData.values[1]];
+                        weapon_1.MeleeWeapon.Schema.generate(meleeHeaderRows);
+                        projectile_1.default.Schema.generate(projectileHeaderRows);
+                        parseWeapons = function (rows, varaintClass, headerRows, data) {
+                            var rowIndex = -1;
+                            for (var _i = 0, rows_1 = rows; _i < rows_1.length; _i++) {
+                                var row = rows_1[_i];
+                                rowIndex++;
+                                if (rowIndex < headerRows.length) {
+                                    continue;
+                                }
+                                var variant = new varaintClass(row);
+                                if (!(variant.name in weapons)) {
+                                    weapons[variant.name] = new weapon_1.Weapon(variant.name);
+                                }
+                                weapons[variant.name].variants.push(variant);
                             }
-                            result.push(new weapon_1.Weapon(row));
-                        }
-                        result.sort(weapon_1.Weapon.sorter);
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    DataProvider.prototype.getProjectiles = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var data, result, headerRows, rowIndex, _i, _a, row;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, this.getSheetData(this.spreadsheet.sheets[3].properties.title)];
-                    case 1:
-                        data = _b.sent();
-                        result = [];
-                        headerRows = [data.values[0], data.values[1]];
-                        projectile_1.default.Schema.generate(headerRows);
-                        rowIndex = -1;
-                        for (_i = 0, _a = data.values; _i < _a.length; _i++) {
-                            row = _a[_i];
-                            rowIndex++;
-                            if (rowIndex < headerRows.length) {
-                                continue;
-                            }
-                            result.push(new projectile_1.default(row));
+                        };
+                        parseWeapons(meleeWeaponsData.values, weapon_1.MeleeWeapon, meleeHeaderRows, meleeWeaponsData);
+                        parseWeapons(projectileWeaponData.values, projectile_1.default, projectileHeaderRows, projectileWeaponData);
+                        for (name_1 in weapons) {
+                            weapons[name_1].variants.sort(weapon_1.MeleeWeapon.sorter);
+                            result.push(weapons[name_1]);
                         }
                         result.sort(weapon_1.Weapon.sorter);
                         return [2 /*return*/, result];
@@ -3605,7 +3870,7 @@ var Projectile = /** @class */ (function (_super) {
             return _this;
         }
         _this.attackType = weapon_1.AttackType.Projectile;
-        _this.handedness = weapon_1.resolveWeaponHandedness(_this.type);
+        _this.handedness = weapon_1.resolveHandedness(_this.type);
         _this.generateId();
         return _this;
     }
@@ -3614,13 +3879,13 @@ var Projectile = /** @class */ (function (_super) {
     };
     Projectile.prototype.generateId = function () {
         var handednessStr = '';
-        if (this.handedness & weapon_1.WeaponHandedness.One && this.handedness & weapon_1.WeaponHandedness.Two) {
+        if (this.handedness & weapon_1.Handedness.One && this.handedness & weapon_1.Handedness.Two) {
             handednessStr = '3';
         }
-        else if (this.handedness & weapon_1.WeaponHandedness.One) {
+        else if (this.handedness & weapon_1.Handedness.One) {
             handednessStr = '1';
         }
-        else if (this.handedness & weapon_1.WeaponHandedness.Two) {
+        else if (this.handedness & weapon_1.Handedness.Two) {
             handednessStr = '2';
         }
         this.id = this.name.replace(/ /g, '-') + "-projectile-" + (this.canFlinch ? '1' : '0') + handednessStr;
@@ -3731,20 +3996,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _1 = __importStar(__webpack_require__(/*! . */ "./src/ts/model/index.ts"));
 var Weapon = /** @class */ (function (_super) {
     __extends(Weapon, _super);
-    function Weapon(data) {
+    function Weapon(name) {
+        var _this = _super.call(this) || this;
+        _this.variants = [];
+        _this.name = name;
+        _this.id = name ? name.toLowerCase().replace(/\s/g, '-') : null;
+        return _this;
+    }
+    Weapon.prototype.getSortKey = function () {
+        return this.name;
+    };
+    return Weapon;
+}(_1.default));
+exports.Weapon = Weapon;
+var MeleeWeapon = /** @class */ (function (_super) {
+    __extends(MeleeWeapon, _super);
+    function MeleeWeapon(data) {
         var _this = _super.call(this, data) || this;
         if (data == null) {
             return _this;
         }
         _this.attackType = _this.resolveAttackType(_this.attack);
-        _this.handedness = resolveWeaponHandedness(_this.type);
-        _this.generateId();
+        _this.handedness = resolveHandedness(_this.type);
         return _this;
     }
-    Weapon.prototype.getSortKey = function () {
+    MeleeWeapon.prototype.getSortKey = function () {
         return this.name + this.attack + (this.altMode ? 'B' : 'A');
     };
-    Weapon.prototype.resolveAttackType = function (value) {
+    MeleeWeapon.prototype.resolveAttackType = function (value) {
         switch (value) {
             case 'Strike':
                 return AttackType.Strike;
@@ -3752,110 +4031,97 @@ var Weapon = /** @class */ (function (_super) {
                 return AttackType.Thrust;
         }
     };
-    Weapon.prototype.generateId = function () {
-        var handednessStr = '';
-        if (this.handedness & WeaponHandedness.One && this.handedness & WeaponHandedness.Two) {
-            handednessStr = '3';
-        }
-        else if (this.handedness & WeaponHandedness.One) {
-            handednessStr = '1';
-        }
-        else if (this.handedness & WeaponHandedness.Two) {
-            handednessStr = '2';
-        }
-        this.id = this.name.replace(/ /g, '-') + "-" + this.attack + "-" + (this.altMode ? '1' : '0') + handednessStr;
-    };
     __decorate([
         _1.Map([null, 'Name'])
-    ], Weapon.prototype, "name", void 0);
+    ], MeleeWeapon.prototype, "name", void 0);
     __decorate([
         _1.Map([null, 'Attack'])
-    ], Weapon.prototype, "attack", void 0);
+    ], MeleeWeapon.prototype, "attack", void 0);
     __decorate([
         _1.Map([null, 'Alt Mode'], function (o) { return o.toLowerCase() == 'on'; })
-    ], Weapon.prototype, "altMode", void 0);
+    ], MeleeWeapon.prototype, "altMode", void 0);
     __decorate([
         _1.Map([null, 'Type'])
-    ], Weapon.prototype, "type", void 0);
+    ], MeleeWeapon.prototype, "type", void 0);
     __decorate([
         _1.Map([null, 'Stop On Hit'], function (o) { return o.toLowerCase() == 'yes'; })
-    ], Weapon.prototype, "stopOnHit", void 0);
+    ], MeleeWeapon.prototype, "stopOnHit", void 0);
     __decorate([
         _1.Map([null, 'Can Combo'], function (o) { return o.toLowerCase() == 'yes'; })
-    ], Weapon.prototype, "canCombo", void 0);
+    ], MeleeWeapon.prototype, "canCombo", void 0);
     __decorate([
         _1.Map([null, 'Can Flinch'], function (o) { return o.toLowerCase() == 'yes'; })
-    ], Weapon.prototype, "canFlinch", void 0);
+    ], MeleeWeapon.prototype, "canFlinch", void 0);
     __decorate([
         _1.Map([null, 'Point Cost'], parseInt)
-    ], Weapon.prototype, "pointCost", void 0);
+    ], MeleeWeapon.prototype, "pointCost", void 0);
     __decorate([
         _1.Map([null, 'Value'], parseFloat)
-    ], Weapon.prototype, "value", void 0);
+    ], MeleeWeapon.prototype, "value", void 0);
     __decorate([
         _1.Map(['Damage [No Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "damageNoArmor", void 0);
+    ], MeleeWeapon.prototype, "damageNoArmor", void 0);
     __decorate([
         _1.Map(['Damage [Light Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "damageLightArmor", void 0);
+    ], MeleeWeapon.prototype, "damageLightArmor", void 0);
     __decorate([
         _1.Map(['Damage [Medium Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "damageMediumArmor", void 0);
+    ], MeleeWeapon.prototype, "damageMediumArmor", void 0);
     __decorate([
         _1.Map(['Damage [Heavy Armor]', { head: 'Head', torso: 'Torso', legs: 'Legs' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "damageHeavyArmor", void 0);
+    ], MeleeWeapon.prototype, "damageHeavyArmor", void 0);
     __decorate([
         _1.Map([null, { averageDamage: 'Avg. Damage', dps: 'DPS', cdps: 'CDPS', averageDps: 'Avg. DPS' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "computedDamage", void 0);
+    ], MeleeWeapon.prototype, "computedDamage", void 0);
     __decorate([
         _1.Map(['Stamina', { miss: 'Miss Cost', feint: 'Feint Cost', morph: 'Morph Cost', drain: 'Stamina Drain', parryDrainNegation: 'Parry Drain Negation' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "stamina", void 0);
+    ], MeleeWeapon.prototype, "stamina", void 0);
     __decorate([
         _1.Map(['Speed', { windup: 'Windup', combo: 'Combo', release: 'Release', recovery: 'Recovery' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "speed", void 0);
+    ], MeleeWeapon.prototype, "speed", void 0);
     __decorate([
         _1.Map(['Speed', { attack: 'Attack Speed', combo: 'Combo Speed' }], _1.propertyCollection(parseFloat))
-    ], Weapon.prototype, "computedSpeed", void 0);
+    ], MeleeWeapon.prototype, "computedSpeed", void 0);
     __decorate([
         _1.Map([null, 'Length'], parseFloat)
-    ], Weapon.prototype, "length", void 0);
+    ], MeleeWeapon.prototype, "length", void 0);
     __decorate([
         _1.Map([null, 'Peasant Perk'], function (o) { return o != null && o.toLowerCase() == 'yes'; })
-    ], Weapon.prototype, "isPeasantWeapon", void 0);
-    Weapon = __decorate([
+    ], MeleeWeapon.prototype, "isPeasantWeapon", void 0);
+    MeleeWeapon = __decorate([
         _1.Model
-    ], Weapon);
-    return Weapon;
+    ], MeleeWeapon);
+    return MeleeWeapon;
 }(_1.default));
-exports.Weapon = Weapon;
+exports.MeleeWeapon = MeleeWeapon;
 var WeaponDamage = /** @class */ (function () {
     function WeaponDamage() {
     }
     return WeaponDamage;
 }());
 exports.WeaponDamage = WeaponDamage;
-var WeaponHandedness;
-(function (WeaponHandedness) {
-    WeaponHandedness[WeaponHandedness["One"] = 1] = "One";
-    WeaponHandedness[WeaponHandedness["Two"] = 2] = "Two";
-})(WeaponHandedness = exports.WeaponHandedness || (exports.WeaponHandedness = {}));
+var Handedness;
+(function (Handedness) {
+    Handedness[Handedness["One"] = 1] = "One";
+    Handedness[Handedness["Two"] = 2] = "Two";
+})(Handedness = exports.Handedness || (exports.Handedness = {}));
 var AttackType;
 (function (AttackType) {
     AttackType[AttackType["Strike"] = 1] = "Strike";
     AttackType[AttackType["Thrust"] = 2] = "Thrust";
     AttackType[AttackType["Projectile"] = 4] = "Projectile";
 })(AttackType = exports.AttackType || (exports.AttackType = {}));
-function resolveWeaponHandedness(value) {
+function resolveHandedness(value) {
     switch (value) {
         case 'One Handed':
-            return WeaponHandedness.One;
+            return Handedness.One;
         case 'Two Handed':
-            return WeaponHandedness.Two;
+            return Handedness.Two;
         case 'One/Two Handed':
-            return WeaponHandedness.One | WeaponHandedness.Two;
+            return Handedness.One | Handedness.Two;
     }
 }
-exports.resolveWeaponHandedness = resolveWeaponHandedness;
+exports.resolveHandedness = resolveHandedness;
 
 
 /***/ }),
@@ -3911,118 +4177,91 @@ var weapon_1 = __webpack_require__(/*! ../model/weapon */ "./src/ts/model/weapon
 var DisplayWeapon = /** @class */ (function (_super) {
     __extends(DisplayWeapon, _super);
     function DisplayWeapon(weapon) {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, weapon.name) || this;
         _this.isSelected = false;
+        _this.isPeasantWeapon = null;
+        _this.pointCost = null;
+        _this.length = null;
+        _this.handedness = null;
+        _this.attackType = null;
         Object.assign(_this, weapon);
+        var primaryVariant = _this.variants[0];
+        _this.isPeasantWeapon = primaryVariant.isPeasantWeapon;
+        _this.pointCost = primaryVariant.pointCost;
+        _this.length = primaryVariant instanceof weapon_1.MeleeWeapon ? primaryVariant.length : null;
+        _this.handedness = primaryVariant.handedness;
+        _this.attackType = primaryVariant.attackType;
+        // TODO remove
+        _this.computedSpeed = primaryVariant.computedSpeed;
+        _this.computedDamage = primaryVariant.computedDamage;
         return _this;
     }
-    Object.defineProperty(DisplayWeapon.prototype, "isProjectile", {
-        get: function () {
-            return this.attackType == weapon_1.AttackType.Projectile;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(DisplayWeapon.prototype, "altModeTagClassName", {
-        get: function () {
-            return this.altMode ? 'is-warning' : '';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(DisplayWeapon.prototype, "altModeTagColorClass", {
-        get: function () {
-            return this.altMode ? 'has-text-warning' : '';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(DisplayWeapon.prototype, "peasantLabel", {
-        get: function () {
-            return this.isPeasantWeapon ? 'Peasant' : '';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(DisplayWeapon.prototype, "attackTypeTagClassName", {
-        get: function () {
-            switch (this.attackType) {
-                case weapon_1.AttackType.Strike:
-                    return 'is-success';
-                case weapon_1.AttackType.Thrust:
-                    return 'is-primary';
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(DisplayWeapon.prototype, "attackTypeLabel", {
         get: function () {
-            switch (this.attackType) {
-                case weapon_1.AttackType.Strike:
-                    return 'Strike';
-                case weapon_1.AttackType.Thrust:
-                    return 'Thrust';
-                case weapon_1.AttackType.Projectile:
-                    return 'Projectile';
-            }
+            return '';
+            // switch (this.attackType) {
+            //     case AttackType.Strike:
+            //         return 'Strike';
+            //     case AttackType.Thrust:
+            //         return 'Thrust';          
+            //     case AttackType.Projectile:
+            //         return 'Projectile';                
+            // }
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DisplayWeapon.prototype, "attackTypeTagColorClass", {
         get: function () {
-            switch (this.attackType) {
-                case weapon_1.AttackType.Strike:
-                    return 'has-text-success';
-                case weapon_1.AttackType.Thrust:
-                    return 'has-text-primary';
-            }
+            return '';
+            //switch (this.attackType) {
+            //    case AttackType.Strike:
+            //        return 'has-text-success';
+            //    case AttackType.Thrust:
+            //        return 'has-text-primary';                
+            //}
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DisplayWeapon.prototype, "handednessTagClassName", {
         get: function () {
-            if (this.handedness & weapon_1.WeaponHandedness.One && this.handedness & weapon_1.WeaponHandedness.Two) {
-                return 'is-black';
-            }
-            else if (this.handedness & weapon_1.WeaponHandedness.One) {
-                return 'is-grey';
-            }
-            else if (this.handedness & weapon_1.WeaponHandedness.Two) {
-                return 'is-dark';
-            }
+            return '';
+            //if (this.handedness & Handedness.One && this.handedness & Handedness.Two) {
+            //    return 'is-black';
+            //} else if (this.handedness & Handedness.One) {
+            //    return 'is-grey';
+            //} else if (this.handedness & Handedness.Two) {
+            //    return 'is-dark';
+            //}
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DisplayWeapon.prototype, "handednessTagColorClass", {
         get: function () {
-            if (this.handedness & weapon_1.WeaponHandedness.One && this.handedness & weapon_1.WeaponHandedness.Two) {
-                return 'has-text-black';
-            }
-            else if (this.handedness & weapon_1.WeaponHandedness.One) {
-                return 'has-text-light';
-            }
-            else if (this.handedness & weapon_1.WeaponHandedness.Two) {
-                return 'has-text-grey';
-            }
+            return '';
+            //if (this.handedness & Handedness.One && this.handedness & Handedness.Two) {
+            //    return 'has-text-black';
+            //} else if (this.handedness & Handedness.One) {
+            //    return 'has-text-light';
+            //} else if (this.handedness & Handedness.Two) {
+            //    return 'has-text-grey';
+            //}
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DisplayWeapon.prototype, "handednessLabel", {
         get: function () {
-            if (this.handedness & weapon_1.WeaponHandedness.One && this.handedness & weapon_1.WeaponHandedness.Two) {
-                return '1/2-handed';
-            }
-            else if (this.handedness & weapon_1.WeaponHandedness.One) {
-                return '1-handed';
-            }
-            else if (this.handedness & weapon_1.WeaponHandedness.Two) {
-                return '2-handed';
-            }
+            return '';
+            //if (this.handedness & Handedness.One && this.handedness & Handedness.Two) {
+            //    return '1/2-handed';
+            //} else if (this.handedness & Handedness.One) {
+            //    return '1-handed';
+            //} else if (this.handedness & Handedness.Two) {
+            //    return '2-handed';
+            //}
         },
         enumerable: true,
         configurable: true
@@ -4172,6 +4411,168 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_app_vue_vue_type_template_id_0a6dfb62_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_app_vue_vue_type_template_id_0a6dfb62_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./src/vue/partial/attribute-bar-container.vue":
+/*!*****************************************************!*\
+  !*** ./src/vue/partial/attribute-bar-container.vue ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _attribute_bar_container_vue_vue_type_template_id_31445af6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true& */ "./src/vue/partial/attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true&");
+/* harmony import */ var _attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attribute-bar-container.vue?vue&type=script&lang=ts& */ "./src/vue/partial/attribute-bar-container.vue?vue&type=script&lang=ts&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _attribute_bar_container_vue_vue_type_template_id_31445af6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _attribute_bar_container_vue_vue_type_template_id_31445af6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "31445af6",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/vue/partial/attribute-bar-container.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/vue/partial/attribute-bar-container.vue?vue&type=script&lang=ts&":
+/*!******************************************************************************!*\
+  !*** ./src/vue/partial/attribute-bar-container.vue?vue&type=script&lang=ts& ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/ts-loader??ref--0!../../../node_modules/vue-loader/lib??vue-loader-options!./attribute-bar-container.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar-container.vue?vue&type=script&lang=ts&");
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./src/vue/partial/attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./src/vue/partial/attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_template_id_31445af6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar-container.vue?vue&type=template&id=31445af6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_template_id_31445af6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_container_vue_vue_type_template_id_31445af6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./src/vue/partial/attribute-bar.vue":
+/*!*******************************************!*\
+  !*** ./src/vue/partial/attribute-bar.vue ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _attribute_bar_vue_vue_type_template_id_c733bafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true& */ "./src/vue/partial/attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true&");
+/* harmony import */ var _attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attribute-bar.vue?vue&type=script&lang=ts& */ "./src/vue/partial/attribute-bar.vue?vue&type=script&lang=ts&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _attribute_bar_vue_vue_type_style_index_0_id_c733bafc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true& */ "./src/vue/partial/attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _attribute_bar_vue_vue_type_template_id_c733bafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _attribute_bar_vue_vue_type_template_id_c733bafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "c733bafc",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/vue/partial/attribute-bar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/vue/partial/attribute-bar.vue?vue&type=script&lang=ts&":
+/*!********************************************************************!*\
+  !*** ./src/vue/partial/attribute-bar.vue?vue&type=script&lang=ts& ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/ts-loader??ref--0!../../../node_modules/vue-loader/lib??vue-loader-options!./attribute-bar.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar.vue?vue&type=script&lang=ts&");
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./src/vue/partial/attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true&":
+/*!*****************************************************************************************************!*\
+  !*** ./src/vue/partial/attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true& ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_style_index_0_id_c733bafc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--2-2!../../../node_modules/sass-loader/lib/loader.js??ref--2-3!../../../node_modules/vue-loader/lib??vue-loader-options!./attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true& */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar.vue?vue&type=style&index=0&id=c733bafc&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_style_index_0_id_c733bafc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_style_index_0_id_c733bafc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_style_index_0_id_c733bafc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_style_index_0_id_c733bafc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_2_2_node_modules_sass_loader_lib_loader_js_ref_2_3_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_style_index_0_id_c733bafc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./src/vue/partial/attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true&":
+/*!**************************************************************************************!*\
+  !*** ./src/vue/partial/attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_template_id_c733bafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/vue/partial/attribute-bar.vue?vue&type=template&id=c733bafc&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_template_id_c733bafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_attribute_bar_vue_vue_type_template_id_c733bafc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
